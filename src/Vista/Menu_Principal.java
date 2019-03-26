@@ -21,7 +21,50 @@ public class Menu_Principal extends javax.swing.JFrame {
      * Creates new form Menu_Principal
      */
     public Menu_Principal() {
+        
+        // dejar la funcion del cuentaReg en un controlador "controlTimer"
+        //usar el constructor 
         initComponents();
+        LocalDateTime pruebaLDT = LocalDateTime.now().plusHours(1);
+        new Timer (1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jtxtReloj.setText(LocalDateTime.now().plusHours(0).format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+                
+                // TODO:
+                // Aplicar funcion CuentaReg al elemento de la tabla de cada Habitación Ocupada
+                
+                jtxtReloj.setText(CuentaReg(pruebaLDT));
+
+            }
+
+            private String CuentaReg(LocalDateTime a) {
+                String CuentaReg;
+                Long diferencia = java.time.Duration.between(LocalDateTime.now(), a).getSeconds();
+                Long segundos = diferencia % 60;
+                Long minutos = diferencia / 60;
+                Long horas = minutos / 60;
+                Long min = minutos % 60;
+
+                String HH = String.valueOf(horas);
+                String mm = String.valueOf(min);
+                String ss = String.valueOf(segundos);
+
+                if (horas<10) {
+                    HH = "0"+HH;
+                }
+                if (min <10){
+                    mm = "0"+mm;
+                }
+                if (segundos<10) {
+                    ss = "0"+ss;
+                }
+
+                CuentaReg = HH+":"+mm+":"+ss;
+
+                return CuentaReg;            
+            }
+        }).start();
     }
 
     /**
@@ -209,7 +252,7 @@ public class Menu_Principal extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     
- 
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -237,7 +280,7 @@ public class Menu_Principal extends javax.swing.JFrame {
 
         /* Create and display the form */
         
-        LocalDateTime pruebaLDT = LocalDateTime.now().plusHours(1);
+        
         
         
         
@@ -248,45 +291,7 @@ public class Menu_Principal extends javax.swing.JFrame {
             }
         });
         
-          new Timer (1000, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                jtxtReloj.setText(LocalDateTime.now().plusHours(0).format(DateTimeFormatter.ofPattern("HH:mm:ss")));
-                
-                // TODO:
-                // Aplicar funcion CuentaReg al elemento de la tabla de cada Habitación Ocupada
-                
-                jtxtReloj.setText(CuentaReg(pruebaLDT));
-
-            }
-
-            private String CuentaReg(LocalDateTime a) {
-                String CuentaReg;
-                Long diferencia = java.time.Duration.between(LocalDateTime.now(), a).getSeconds();
-                Long segundos = diferencia % 60;
-                Long minutos = diferencia / 60;
-                Long horas = minutos / 60;
-                Long min = minutos % 60;
-
-                String HH = String.valueOf(horas);
-                String mm = String.valueOf(min);
-                String ss = String.valueOf(segundos);
-
-                if (horas<10) {
-                    HH = "0"+HH;
-                }
-                if (min <10){
-                    mm = "0"+mm;
-                }
-                if (segundos<10) {
-                    ss = "0"+ss;
-                }
-
-                CuentaReg = HH+":"+mm+":"+ss;
-
-                return CuentaReg;            
-            }
-        }).start();
+          
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
