@@ -5,6 +5,9 @@
  */
 package controlador;
 
+import javax.swing.JTextField;
+import modelo.Pax;
+
 /**
  *
  * @author duoc
@@ -22,6 +25,49 @@ public class Validacion {
         }
 
         return pase;
+        
+    }
+    public static boolean deRegistro(JTextField TFRut, JTextField TFNombre, JTextField TFApellidoPat, JTextField TFApellidoMat, JTextField TFNac) {
+        Pax pasajero = Pax.getPax();
+        String rut, nombre, apellidoPat, apellidoMat, nacionalidad;
+        boolean isNotNull;
+        
+        rut = TFRut.getText();
+        
+        if(!rut.isEmpty() && Validacion.validarInt(rut)) {
+            pasajero.setRut(Integer.valueOf(rut));
+        }
+        
+        nombre = TFNombre.getText();
+        
+        if(!nombre.isEmpty() & !Validacion.validarInt(nombre)) {
+            pasajero.setNombre(nombre);
+        }
+        
+        apellidoPat = TFApellidoPat.getText();
+        
+        if(!apellidoPat.isEmpty() & !Validacion.validarInt(apellidoPat)) {
+            pasajero.setApellidoPat(apellidoPat);
+        }
+        
+        apellidoMat = TFApellidoMat.getText();
+        
+        if(!apellidoMat.isEmpty() & !Validacion.validarInt(apellidoMat)) {
+            pasajero.setApellidoMat(apellidoMat);
+        }
+        
+        
+        nacionalidad = TFNac.getText();
+        
+        if(!nacionalidad.isEmpty() & !Validacion.validarInt(nacionalidad)) {
+            pasajero.setNacionalidad(nacionalidad);
+        }
+        
+        
+        isNotNull = (!rut.equals("")|!nombre.equals("")|!apellidoPat.equals("")|!apellidoMat.equals("")|!nacionalidad.equals(""));
+        
+        
+        return isNotNull;
         
     }
     

@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class Pax {
 
-    private int rut,
+    private Integer rut,
             visitasComoPpal;
     private String digitoVerificador,
             nombre,
@@ -23,7 +23,7 @@ public class Pax {
             sexo,
             nacionalidad;
     private LocalDate fechaNacimiento;
-    private boolean clienteFrec,
+    private Boolean clienteFrec,
             clientePpal;
 
     private static ArrayList<Pax> p;
@@ -36,7 +36,7 @@ public class Pax {
         return visitasComoPpal;
     }
 
-    public void setVisitasComoPpal(int visitasComoPpal) {
+    public void setVisitasComoPpal(Integer visitasComoPpal) {
         this.visitasComoPpal = visitasComoPpal;
     }
 
@@ -55,7 +55,17 @@ public class Pax {
     }
 
     public static void clearPax() {
-        p.clear();
+        pax.setRut(null);
+        pax.setNombre(null);
+        pax.setApellidoPat(null);
+        pax.setApellidoMat(null);
+        pax.setNacionalidad(null);
+        pax.setSexo(null);
+        pax.setVisitasComoPpal(null);
+        pax.setClientePpal(null);
+        pax.setDigitoVerificador(null);
+        pax.setFechaNacimiento(null);
+        pax.setClienteFrecuente(null);
     }
     
     
@@ -64,7 +74,7 @@ public class Pax {
         return rut;
     }
 
-    public void setRut(int rut) {
+    public void setRut(Integer rut) {
         this.rut = rut;
     }
 
@@ -117,11 +127,11 @@ public class Pax {
         this.nacionalidad = nacionalidad;
     }
 
-    public boolean isClienteFrec() {
+    public Boolean isClienteFrec() {
         return clienteFrec;
     }
 
-    public void setClienteFrec(boolean clienteFrec) {
+    public void setClienteFrecuente(Boolean clienteFrec) {
         this.clienteFrec = clienteFrec;
     }
 
@@ -141,12 +151,18 @@ public class Pax {
         Pax.p = p;
     }
 
-    public boolean isClientePpal() {
+    public Boolean isClientePpal() {
         return clientePpal;
     }
 
-    public void setClientePpal(boolean clientePpal) {
+    public void setClientePpal(Boolean clientePpal) {
         this.clientePpal = clientePpal;
     }
+
+    @Override
+    public String toString() {
+        return "Pax{" + "rut=" + rut + ", visitasComoPpal=" + visitasComoPpal + ", digitoVerificador=" + digitoVerificador + ", nombre=" + nombre + ", apellidoPat=" + apellidoPat + ", apellidoMat=" + apellidoMat + ", sexo=" + sexo + ", nacionalidad=" + nacionalidad + ", fechaNacimiento=" + fechaNacimiento + ", clienteFrec=" + clienteFrec + ", clientePpal=" + clientePpal + '}';
+    }
+    
 
 }

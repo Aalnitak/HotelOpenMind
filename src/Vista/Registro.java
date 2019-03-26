@@ -6,7 +6,12 @@
 
 package Vista;
 
+import controlador.ControlFormulario;
 import controlador.JDBCPaxDAO;
+import controlador.Validacion;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import modelo.FormularioRegistroPax;
 import modelo.Pax;
 import modelo.Reserva;
 
@@ -18,6 +23,7 @@ public class Registro extends javax.swing.JFrame {
     int paxActual;
     JDBCPaxDAO jdbcpax = new JDBCPaxDAO();
     Pax pasajero = Pax.getPax();
+    FormularioRegistroPax frp;
     
 
     /** Creates new form Registro
@@ -25,6 +31,7 @@ public class Registro extends javax.swing.JFrame {
      * 
      */
     public Registro(int paxActual) {
+        
         this.paxActual = paxActual;
         initComponents();
         Reserva res = Reserva.getRes();
@@ -37,6 +44,7 @@ public class Registro extends javax.swing.JFrame {
             LBPasajeroPrincipal.setVisible(false);
             BTNSorteo.setVisible(false);
         }
+        
         Pax.clearPax();
 
     }
@@ -65,16 +73,17 @@ public class Registro extends javax.swing.JFrame {
         TFNombre = new javax.swing.JTextField();
         TFApellidoPat = new javax.swing.JTextField();
         TFApellidoMat = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        CBSexo = new javax.swing.JComboBox<>();
+        CBFechaAño = new javax.swing.JComboBox<>();
+        CBFechaMes = new javax.swing.JComboBox<>();
+        CBFechaDia = new javax.swing.JComboBox<>();
         TFNac = new javax.swing.JTextField();
         BTNSorteo = new javax.swing.JButton();
         BTNIngresar = new javax.swing.JButton();
         BTNCancelar = new javax.swing.JButton();
         BTNVolver = new javax.swing.JButton();
         LBPasajeroPrincipal = new javax.swing.JLabel();
+        BTNVerificar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -100,7 +109,18 @@ public class Registro extends javax.swing.JFrame {
 
         jLabel9.setText("Apellido Materno:");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
+        TFRut.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                TFRutComponentAdded(evt);
+            }
+        });
+        TFRut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TFRutActionPerformed(evt);
+            }
+        });
+
+        CBFechaMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
 
         BTNSorteo.setText("SORTEO!");
 
@@ -117,6 +137,13 @@ public class Registro extends javax.swing.JFrame {
 
         LBPasajeroPrincipal.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
         LBPasajeroPrincipal.setText("PASAJERO PRINCIPAL");
+
+        BTNVerificar.setText("Verificar pax");
+        BTNVerificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTNVerificarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -153,16 +180,18 @@ public class Registro extends javax.swing.JFrame {
                     .addComponent(TFNac)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CBSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(CBFechaAño, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(CBFechaMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(CBFechaDia, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
-                .addComponent(BTNSorteo)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(BTNVerificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BTNSorteo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(12, 12, 12))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
@@ -192,8 +221,11 @@ public class Registro extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(TFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(TFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(BTNVerificar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(TFApellidoPat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -204,19 +236,19 @@ public class Registro extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(CBSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(CBFechaAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CBFechaMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CBFechaDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(TFNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(BTNSorteo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 100, Short.MAX_VALUE)
+                    .addComponent(BTNSorteo, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BTNIngresar)
                     .addComponent(BTNCancelar)
@@ -234,6 +266,37 @@ public class Registro extends javax.swing.JFrame {
         new Registro(paxActual).setVisible(true);
         dispose();*/
     }//GEN-LAST:event_BTNIngresarActionPerformed
+
+    private void TFRutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFRutActionPerformed
+        // TODO add your handling code here:
+        
+       
+    }//GEN-LAST:event_TFRutActionPerformed
+
+    private void BTNVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNVerificarActionPerformed
+        // TODO add your handling code here:
+        frp = FormularioRegistroPax.getForm(TFRut, TFNombre, TFApellidoPat, TFApellidoMat, TFNac, CBFechaAño, CBFechaMes, CBFechaDia, CBSexo);
+        Pax.clearPax();
+         if (Validacion.validarInt(TFRut.getText())){
+            int rut = Integer.parseInt(TFRut.getText());
+            if (jdbcpax.existe(rut)){
+               
+               pasajero = jdbcpax.selectRead(rut);
+               
+               ControlFormulario.llenarFormularioRegistro(pasajero, frp);
+               
+            }
+            
+                
+        }
+        
+        
+    }//GEN-LAST:event_BTNVerificarActionPerformed
+
+    private void TFRutComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_TFRutComponentAdded
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_TFRutComponentAdded
 
     /**
      * @param args the command line arguments
@@ -274,7 +337,12 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JButton BTNCancelar;
     private javax.swing.JButton BTNIngresar;
     private javax.swing.JButton BTNSorteo;
+    private javax.swing.JButton BTNVerificar;
     private javax.swing.JButton BTNVolver;
+    private javax.swing.JComboBox<String> CBFechaAño;
+    private javax.swing.JComboBox<String> CBFechaDia;
+    private javax.swing.JComboBox<String> CBFechaMes;
+    private javax.swing.JComboBox<String> CBSexo;
     private javax.swing.JLabel LBActual;
     private javax.swing.JLabel LBPasajeroPrincipal;
     private javax.swing.JLabel LBTotal;
@@ -283,10 +351,6 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JTextField TFNac;
     private javax.swing.JTextField TFNombre;
     private javax.swing.JTextField TFRut;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

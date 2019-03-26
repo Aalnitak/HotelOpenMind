@@ -76,14 +76,15 @@ public class JDBCPaxDAO implements PaxDAO {
             preparedStatement.setInt(1, rut);
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();
+            pax.setRut(rut);
             pax.setDigitoVerificador(resultSet.getString("digito_verificador"));
-            pax.setNombre(resultSet.getString("nombre"));
+            pax.setNombre(resultSet.getString("nombres"));
             pax.setApellidoPat(resultSet.getString("apellido_paterno"));
             pax.setApellidoMat(resultSet.getString("apellido_materno"));
             pax.setSexo(resultSet.getString("sexo"));
             pax.setFechaNacimiento(resultSet.getDate("fecha_nacimiento").toLocalDate());
             pax.setNacionalidad(resultSet.getString("nacionalidad"));
-            pax.setClienteFrec(resultSet.getBoolean("cliente_frecuente"));
+            pax.setClienteFrecuente(resultSet.getBoolean("cliente_frecuente"));
 
         } catch (SQLException ex) {
 
