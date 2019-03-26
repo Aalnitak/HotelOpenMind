@@ -15,7 +15,7 @@ import modelo.Pax;
 public class ControlFormulario {
     
     public static void llenarFormularioRegistro(Pax pax, FormularioRegistroPax frp) {
-        
+        //ue lindo es soñar
         frp.setTFRut(pax.getRut());
         frp.setTFNombre(pax.getNombre());
         frp.setTFApellidoPat(pax.getApellidoPat());
