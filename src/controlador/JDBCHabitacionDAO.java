@@ -19,11 +19,14 @@ import modelo.Habitacion;
 public class JDBCHabitacionDAO implements HabitacionDAO {
 
     HashMap<String, Integer> mapHabitacionDisponible;
+    HashMap<String, Integer> mapHabitacionOcupada;
     Connection c = Conexion.getConnection();
 
     public JDBCHabitacionDAO() {
         this.mapHabitacionDisponible = new HashMap<>();
         mapHabitacionDisponible = getMap();
+        this.mapHabitacionOcupada = new HashMap<>();
+        mapHabitacionOcupada = getMapOcupada();
     }
 
     @Override
@@ -103,6 +106,29 @@ public class JDBCHabitacionDAO implements HabitacionDAO {
             e.getMessage();
         }
         return mapHabitacionDisponible;
+    }
+    
+    public HashMap<String, Integer> getMapOcupada() {
+       
+
+        try {
+            String sql = "Select * from habitacion where ocupado = '1'";
+            PreparedStatement ps = c.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            
+
+            while (rs.next()) {
+                String clave = rs.getString("nombre");
+                Integer valor = rs.getInt("idhabitacion");
+                System.out.println(clave + valor);
+                mapHabitacionOcupada.put(clave, valor);
+
+            }
+
+        } catch (SQLException e) {
+            e.getMessage();
+        }
+        return mapHabitacionOcupada;
     }
 
 }
