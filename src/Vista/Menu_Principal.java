@@ -30,6 +30,7 @@ public class Menu_Principal extends javax.swing.JFrame {
         LocalDateTime pruebaLDT = LocalDateTime.now().plusHours(1);
         
         ControlMenu_Principal.llenarTablaHabitacionesDisponibles(jtableHabitacionesLibres);
+        ControlMenu_Principal.llenarTablaHabitacionesOcupadas(jtableHabitacionesOcupadas);
         // 
         
         // llenar tablas con habitaciones llenas y habitaciones vacías
