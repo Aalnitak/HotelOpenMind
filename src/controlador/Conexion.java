@@ -20,7 +20,7 @@ public class Conexion {
     private Conexion() {
         
     }
-
+// commit comentario en conexion
     public static Connection getConnection() {
         
         String url = "jdbc:mysql://localhost:3307/hotel?autoReconnect=true&useSSL=false";
