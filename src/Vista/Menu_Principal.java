@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import controlador.ControlMenu_Principal;
 import controlador.ControlTimer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -28,7 +29,12 @@ public class Menu_Principal extends javax.swing.JFrame {
         initComponents();
         LocalDateTime pruebaLDT = LocalDateTime.now().plusHours(1);
         
+        ControlMenu_Principal.llenarTablaHabitacionesDisponibles(jtableHabitacionesLibres);
+        // 
+        
         // llenar tablas con habitaciones llenas y habitaciones vacías
+        
+        // habitaciones disponibles, usar 
         
         new Timer (1000, new ActionListener() {
             @Override
