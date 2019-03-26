@@ -129,8 +129,7 @@ public class JDBCPaxDAO implements PaxDAO {
             preparedStatement.setInt(1, rut);
             ResultSet resultSet = preparedStatement.executeQuery();
             pase = resultSet.next();
-            
-//dfg545            
+                
         } catch (SQLException e) {
             e.getMessage();
         }
