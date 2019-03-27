@@ -6,11 +6,10 @@
 
 package Vista;
 
+import controlador.ControlComboBox;
 import controlador.ControlFormulario;
 import controlador.JDBCPaxDAO;
 import controlador.Validacion;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import modelo.FormularioRegistroPax;
 import modelo.Pax;
 import modelo.Reserva;
@@ -74,9 +73,9 @@ public class Registro extends javax.swing.JFrame {
         TFApellidoPat = new javax.swing.JTextField();
         TFApellidoMat = new javax.swing.JTextField();
         CBSexo = new javax.swing.JComboBox<>();
-        CBFechaAño = new javax.swing.JComboBox<>();
-        CBFechaMes = new javax.swing.JComboBox<>();
         CBFechaDia = new javax.swing.JComboBox<>();
+        CBFechaMes = new javax.swing.JComboBox<>();
+        CBFechaAño = new javax.swing.JComboBox<>();
         TFNac = new javax.swing.JTextField();
         BTNSorteo = new javax.swing.JButton();
         BTNIngresar = new javax.swing.JButton();
@@ -120,7 +119,19 @@ public class Registro extends javax.swing.JFrame {
             }
         });
 
-        CBFechaMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
+        CBFechaMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
+        CBFechaMes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CBFechaMesActionPerformed(evt);
+            }
+        });
+
+        CBFechaAño.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2001", "2000", "1999", "1998", "1997", "1996", "1995", "1994", "1993", "1992", "1991", "1990", "1989", "1988", "1987", "1986", "1985", "1984", "1983", "1982", "1981", "1980", "1979", "1978", "1977", "1976", "1975", "1974", "1973", "1972", "1971", "1970", "1969", "1968", "1967", "1966", "1965", "1964", "1963", "1962", "1961", "1960", "1959", "1958", "1957", "1956", "1955", "1954", "1953", "1952", "1951", "1950", "1949", "1948", "1947", "1946", "1945", "1944", "1943", "1942", "1941", "1940", "1939", "1938", "1937", "1936", "1935", "1934", "1933", "1932", "1931", "1930" }));
+        CBFechaAño.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CBFechaAñoActionPerformed(evt);
+            }
+        });
 
         BTNSorteo.setText("SORTEO!");
 
@@ -179,15 +190,14 @@ public class Registro extends javax.swing.JFrame {
                     .addComponent(TFNombre)
                     .addComponent(TFNac)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CBSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(CBFechaAño, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(CBFechaMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(CBFechaDia, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(CBSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(CBFechaAño, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(CBFechaMes, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(CBFechaDia, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(BTNVerificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -240,9 +250,9 @@ public class Registro extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
-                            .addComponent(CBFechaAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CBFechaDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(CBFechaMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CBFechaDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(CBFechaAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
@@ -275,7 +285,7 @@ public class Registro extends javax.swing.JFrame {
 
     private void BTNVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNVerificarActionPerformed
         // TODO add your handling code here:
-        frp = FormularioRegistroPax.getForm(TFRut, TFNombre, TFApellidoPat, TFApellidoMat, TFNac, CBFechaAño, CBFechaMes, CBFechaDia, CBSexo);
+        frp = FormularioRegistroPax.getForm(TFRut, TFNombre, TFApellidoPat, TFApellidoMat, TFNac, CBFechaDia, CBFechaMes, CBFechaAño, CBSexo);
         Pax.clearPax();
          if (Validacion.validarInt(TFRut.getText())){
             int rut = Integer.parseInt(TFRut.getText());
@@ -297,6 +307,20 @@ public class Registro extends javax.swing.JFrame {
         // TODO add your handling code here:
        
     }//GEN-LAST:event_TFRutComponentAdded
+
+    private void CBFechaAñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBFechaAñoActionPerformed
+        // TODO add your handling code here:
+        int mesSeleccionado = CBFechaMes.getSelectedIndex();
+        ControlComboBox.llenarCBFechaNacimientoRegistro(mesSeleccionado, Integer.valueOf(CBFechaAño.getSelectedItem().toString()),CBFechaDia);
+  
+        
+    }//GEN-LAST:event_CBFechaAñoActionPerformed
+
+    private void CBFechaMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CBFechaMesActionPerformed
+        // TODO add your handling code here:
+        int mesSeleccionado = CBFechaMes.getSelectedIndex();
+        ControlComboBox.llenarCBFechaNacimientoRegistro(mesSeleccionado, Integer.valueOf(CBFechaAño.getSelectedItem().toString()),CBFechaDia);
+    }//GEN-LAST:event_CBFechaMesActionPerformed
 
     /**
      * @param args the command line arguments

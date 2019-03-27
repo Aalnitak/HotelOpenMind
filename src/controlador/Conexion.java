@@ -23,9 +23,9 @@ public class Conexion {
 // commit comentario en conexion
     public static Connection getConnection() {
         
-        String url = "jdbc:mysql://localhost:3307/hotel?autoReconnect=true&useSSL=false";
+        String url = "jdbc:mysql://localhost:3306/hotel?autoReconnect=true&useSSL=false";
         String user = "root";
-        String pass = "system";
+        String pass = "Pass1234";
         System.out.println("Conectando..");  
 
         try {
