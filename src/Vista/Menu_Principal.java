@@ -177,7 +177,7 @@ public class Menu_Principal extends javax.swing.JFrame {
 
         jtxtReloj.setText("jLabel3");
         getContentPane().add(jtxtReloj);
-        jtxtReloj.setBounds(471, 19, 45, 16);
+        jtxtReloj.setBounds(400, 20, 80, 30);
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/menu_principal_bg.png"))); // NOI18N
         background.setSize(new java.awt.Dimension(584, 461));
