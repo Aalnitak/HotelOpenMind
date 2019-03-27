@@ -27,17 +27,21 @@ public class JDBCInformeDAO {
 
         try 
         {
-            String query = "SELECT h.nombre, r.num_pasajeros \"numero de pasajeros\", p.nombre \"nombre producto consumido\", r.limite_tiempo\n" +
-                        "FROM habitacion h\n" +
-                        "JOIN reserva r\n" +
-                        "ON (h.idhabitacion = r.habitacion_idhabitacion)\n" +
-                        "JOIN reserva_has_producto rhp\n" +
-                        "ON (r.idjornada = rhp.reserva_idjornada)\n" +
-                        "JOIN producto p\n" +
-                        "ON (rhp.producto_idproducto = p.idproducto)\n" +
-                        "WHERE h.ocupado = '1'\n" +
-                        "AND r.idjornada = (SELECT MAX(idjornada) )\n" +
-                        "ORDER BY r.idjornada DESC";
+            String query = "SELECT h.nombre, r.num_pasajeros \"numero de pasajeros\", p.nombre \"nombre producto consumido\", r.limite_tiempo \"limite de tiempo\"\n" +
+                    "FROM habitacion h\n" +
+                    "JOIN reserva r\n" +
+                    "ON (h.idhabitacion = r.habitacion_idhabitacion)\n" +
+                    "INNER JOIN (SELECT rr.habitacion_idhabitacion idhabitacion, MAX(idjornada) idjornada\n" +
+                    "FROM reserva rr\n" +
+                    "GROUP BY idhabitacion\n" +
+                    ") b ON h.idhabitacion = b.idhabitacion AND r.idjornada = b.idjornada\n" +
+                    "JOIN reserva_has_producto rhp\n" +
+                    "ON (r.idjornada = rhp.reserva_idjornada)\n" +
+                    "JOIN producto p\n" +
+                    "ON (rhp.producto_idproducto = p.idproducto)\n" +
+                    "WHERE h.ocupado = '1'\n" +
+                    "GROUP BY h.nombre\n" +
+                    "ORDER BY r.idjornada DESC\n";
             
             PreparedStatement ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
