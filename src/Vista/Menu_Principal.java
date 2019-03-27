@@ -31,6 +31,7 @@ public class Menu_Principal extends javax.swing.JFrame {
         
         ControlMenu_Principal.llenarTablaHabitacionesDisponibles(jtableHabitacionesLibres);
         ControlMenu_Principal.llenarTablaHabitacionesOcupadas(jtableHabitacionesOcupadas);
+//        ControlInfome
         // 
         
         // llenar tablas con habitaciones llenas y habitaciones vacías

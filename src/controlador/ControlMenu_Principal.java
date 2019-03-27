@@ -28,18 +28,21 @@ public class ControlMenu_Principal {
     public static void llenarTablaHabitacionesOcupadas (JTable tabla) {
         // llamar DAO habitaciones, retornar mapa <nombres,id> habitaciones ocupadas
         JDBCHabitacionDAO jdbcHabitacion = new JDBCHabitacionDAO();
+        JDBCInformeDAO jdbcInforme = new JDBCInformeDAO();
         
-        DefaultTableModel model = (DefaultTableModel) tabla.getModel();
-        System.out.println(model.getColumnCount());
+        jdbcInforme.llenarTablaHabitacionOcupada(tabla);
         
-        // 1. llenar nombres habitaciones ocupadas en la tabla
-
-        
-        jdbcHabitacion.mapHabitacionOcupada.keySet().forEach((name) -> {
-           // Falta cambiar los demás parámetros por info recuperada de queris
-           model.addRow(new Object[] {name, "2", "jasslkj", "123"});
-           
-        });
+//        DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+//        System.out.println(model.getColumnCount());
+//        
+//        // 1. llenar nombres habitaciones ocupadas en la tabla
+//
+//        
+//        jdbcHabitacion.mapHabitacionOcupada.keySet().forEach((name) -> {
+//           // Falta cambiar los demás parámetros por info recuperada de queris
+//           model.addRow(new Object[] {name, "2", "jasslkj", "123"});
+//           
+//        });
     
     }
         
