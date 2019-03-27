@@ -42,7 +42,7 @@ public class PedirProducto extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         LBTotal = new javax.swing.JLabel();
         BTNEliminar = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        background = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -58,6 +58,8 @@ public class PedirProducto extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(464, 491));
+        setSize(new java.awt.Dimension(464, 491));
         getContentPane().setLayout(null);
 
         TBLStock.setModel(new javax.swing.table.DefaultTableModel(
@@ -110,7 +112,7 @@ public class PedirProducto extends javax.swing.JFrame {
 
         BTNPagar.setText("Pagar");
         getContentPane().add(BTNPagar);
-        BTNPagar.setBounds(372, 456, 78, 29);
+        BTNPagar.setBounds(320, 420, 78, 29);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -137,10 +139,10 @@ public class PedirProducto extends javax.swing.JFrame {
         getContentPane().add(BTNEliminar);
         BTNEliminar.setBounds(292, 265, 158, 29);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/pedirproducto_bg.png"))); // NOI18N
-        jLabel4.setText("jLabel4");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, 0, 470, 490);
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/pedirproducto_bg.png"))); // NOI18N
+        background.setSize(new java.awt.Dimension(464, 491));
+        getContentPane().add(background);
+        background.setBounds(0, 0, 464, 491);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -186,12 +188,12 @@ public class PedirProducto extends javax.swing.JFrame {
     private javax.swing.JLabel LBAgregado;
     private javax.swing.JLabel LBTotal;
     private javax.swing.JTable TBLStock;
+    private javax.swing.JLabel background;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

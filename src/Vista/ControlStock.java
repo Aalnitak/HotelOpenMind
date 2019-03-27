@@ -43,9 +43,12 @@ public class ControlStock extends javax.swing.JFrame {
         TFStock = new javax.swing.JTextField();
         BTNAgregar = new javax.swing.JButton();
         BTNVolver = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
+        background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(598, 487));
+        setResizable(false);
+        setSize(new java.awt.Dimension(598, 487));
         getContentPane().setLayout(null);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -67,49 +70,49 @@ public class ControlStock extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(6, 6, 569, 201);
+        jScrollPane1.setBounds(10, 30, 569, 201);
 
         BTNActualizar.setText("Actualizar");
         getContentPane().add(BTNActualizar);
-        BTNActualizar.setBounds(468, 219, 107, 29);
+        BTNActualizar.setBounds(470, 250, 107, 29);
 
         jLabel1.setText("Agregar Nuevo");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(6, 276, 93, 16);
+        jLabel1.setBounds(30, 250, 93, 16);
 
         jLabel2.setText("Nombre:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(45, 315, 54, 16);
+        jLabel2.setBounds(70, 280, 54, 20);
 
         jLabel3.setText("Tipo:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(67, 347, 32, 16);
+        jLabel3.setBounds(90, 310, 32, 16);
 
         jLabel4.setText("Descripcion:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(20, 379, 79, 16);
+        jLabel4.setBounds(40, 340, 79, 16);
 
         jLabel5.setText("Precio:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(57, 411, 42, 16);
+        jLabel5.setBounds(80, 370, 42, 16);
 
         jLabel6.setText("Stock:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(60, 443, 39, 16);
+        jLabel6.setBounds(80, 410, 39, 16);
         getContentPane().add(TFNombre);
-        TFNombre.setBounds(111, 310, 200, 26);
+        TFNombre.setBounds(130, 280, 200, 26);
         getContentPane().add(TFTipo);
-        TFTipo.setBounds(111, 342, 200, 26);
+        TFTipo.setBounds(130, 310, 200, 26);
         getContentPane().add(TFDescripcion);
-        TFDescripcion.setBounds(111, 374, 200, 26);
+        TFDescripcion.setBounds(130, 340, 200, 26);
         getContentPane().add(TFPrecio);
-        TFPrecio.setBounds(111, 406, 200, 26);
+        TFPrecio.setBounds(130, 370, 200, 26);
         getContentPane().add(TFStock);
-        TFStock.setBounds(111, 438, 200, 26);
+        TFStock.setBounds(130, 410, 200, 26);
 
         BTNAgregar.setText("Agregar");
         getContentPane().add(BTNAgregar);
-        BTNAgregar.setBounds(351, 438, 93, 29);
+        BTNAgregar.setBounds(350, 410, 93, 29);
 
         BTNVolver.setText("Volver");
         BTNVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -118,12 +121,13 @@ public class ControlStock extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BTNVolver);
-        BTNVolver.setBounds(492, 438, 83, 29);
+        BTNVolver.setBounds(490, 410, 83, 29);
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/controlstock_bg.png"))); // NOI18N
-        jLabel8.setText("jLabel8");
-        getContentPane().add(jLabel8);
-        jLabel8.setBounds(-5, -4, 600, 490);
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/controlstock_bg.png"))); // NOI18N
+        background.setPreferredSize(new java.awt.Dimension(598, 487));
+        background.setSize(new java.awt.Dimension(598, 487));
+        getContentPane().add(background);
+        background.setBounds(0, 0, 598, 487);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -177,13 +181,13 @@ public class ControlStock extends javax.swing.JFrame {
     private javax.swing.JTextField TFPrecio;
     private javax.swing.JTextField TFStock;
     private javax.swing.JTextField TFTipo;
+    private javax.swing.JLabel background;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

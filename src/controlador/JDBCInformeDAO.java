@@ -54,6 +54,7 @@ public class JDBCInformeDAO {
 ////        }
 ////        
 //        return Al;
+    return null;
     }
 
 }

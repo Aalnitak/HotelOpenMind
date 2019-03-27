@@ -58,22 +58,25 @@ public class Ingreso extends javax.swing.JFrame {
         LBPreciopp = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         LBTotal = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(431, 348));
+        setResizable(false);
+        setSize(new java.awt.Dimension(431, 348));
         getContentPane().setLayout(null);
 
         jLabel1.setText("Ingreso");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(6, 6, 47, 16);
+        jLabel1.setBounds(30, 20, 47, 16);
 
         jLabel2.setText("Numero de personas");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(56, 71, 130, 16);
+        jLabel2.setBounds(50, 60, 130, 16);
 
         jLabel3.setText("Habitacion");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(118, 108, 68, 16);
+        jLabel3.setBounds(110, 100, 68, 16);
 
         BGModo.add(RBMomento);
         RBMomento.setText("Momento (3 hrs)");
@@ -83,7 +86,7 @@ public class Ingreso extends javax.swing.JFrame {
             }
         });
         getContentPane().add(RBMomento);
-        RBMomento.setBounds(56, 149, 135, 23);
+        RBMomento.setBounds(50, 160, 135, 23);
 
         BGModo.add(RBJornada);
         RBJornada.setText("Jornada (12 hrs)");
@@ -93,12 +96,12 @@ public class Ingreso extends javax.swing.JFrame {
             }
         });
         getContentPane().add(RBJornada);
-        RBJornada.setBounds(212, 149, 131, 23);
+        RBJornada.setBounds(210, 160, 131, 23);
         getContentPane().add(TFCantPax);
-        TFCantPax.setBounds(313, 66, 30, 26);
+        TFCantPax.setBounds(310, 60, 30, 26);
 
         getContentPane().add(CBHabDispo);
-        CBHabDispo.setBounds(223, 104, 120, 27);
+        CBHabDispo.setBounds(220, 90, 120, 27);
 
         BTNAceptar.setText("Aceptar");
         BTNAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -107,7 +110,7 @@ public class Ingreso extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BTNAceptar);
-        BTNAceptar.setBounds(333, 299, 92, 29);
+        BTNAceptar.setBounds(290, 280, 92, 29);
 
         BTNVolver.setText("Volver");
         BTNVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -116,28 +119,28 @@ public class Ingreso extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BTNVolver);
-        BTNVolver.setBounds(6, 299, 83, 29);
+        BTNVolver.setBounds(50, 280, 83, 29);
 
         jLabel4.setText("Precio Por Persona:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(174, 216, 119, 16);
+        jLabel4.setBounds(170, 210, 119, 16);
 
         LBPreciopp.setText("-");
         getContentPane().add(LBPreciopp);
-        LBPreciopp.setBounds(305, 216, 8, 16);
+        LBPreciopp.setBounds(300, 210, 8, 16);
 
         jLabel5.setText("Total");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(261, 244, 32, 16);
+        jLabel5.setBounds(260, 230, 32, 16);
 
         LBTotal.setText("-");
         getContentPane().add(LBTotal);
-        LBTotal.setBounds(305, 244, 8, 16);
+        LBTotal.setBounds(300, 230, 8, 16);
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/ingreso_bg.png"))); // NOI18N
-        jLabel6.setText("jLabel6");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(-5, 0, 440, 348);
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/ingreso_bg.png"))); // NOI18N
+        background.setSize(new java.awt.Dimension(431, 348));
+        getContentPane().add(background);
+        background.setBounds(0, 0, 431, 348);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -245,11 +248,11 @@ public class Ingreso extends javax.swing.JFrame {
     private javax.swing.JRadioButton RBJornada;
     private javax.swing.JRadioButton RBMomento;
     private javax.swing.JTextField TFCantPax;
+    private javax.swing.JLabel background;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     // End of variables declaration//GEN-END:variables
 }

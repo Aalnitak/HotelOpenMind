@@ -32,33 +32,37 @@ public class Informes extends javax.swing.JFrame {
         BTNGenerar = new javax.swing.JButton();
         LBIngreso = new javax.swing.JLabel();
         TFVariable = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(421, 128));
+        setResizable(false);
+        setSize(new java.awt.Dimension(421, 128));
         getContentPane().setLayout(null);
 
         jLabel1.setText("Generar Informes");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(35, 6, 108, 16);
+        jLabel1.setBounds(70, 10, 108, 16);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(35, 40, 179, 27);
+        jComboBox1.setBounds(70, 40, 179, 27);
 
         BTNGenerar.setText("Generar");
         getContentPane().add(BTNGenerar);
-        BTNGenerar.setBounds(232, 73, 92, 29);
+        BTNGenerar.setBounds(260, 70, 92, 29);
 
         LBIngreso.setText("variable");
         getContentPane().add(LBIngreso);
-        LBIngreso.setBounds(35, 78, 50, 16);
+        LBIngreso.setBounds(80, 70, 50, 20);
         getContentPane().add(TFVariable);
-        TFVariable.setBounds(93, 73, 121, 26);
+        TFVariable.setBounds(140, 70, 121, 26);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/informes_bg.png"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(-5, -4, 430, 140);
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/informes_bg.png"))); // NOI18N
+        background.setPreferredSize(new java.awt.Dimension(421, 128));
+        background.setSize(new java.awt.Dimension(421, 128));
+        getContentPane().add(background);
+        background.setBounds(0, 0, 421, 128);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -102,8 +106,8 @@ public class Informes extends javax.swing.JFrame {
     private javax.swing.JButton BTNGenerar;
     private javax.swing.JLabel LBIngreso;
     private javax.swing.JTextField TFVariable;
+    private javax.swing.JLabel background;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

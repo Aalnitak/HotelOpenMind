@@ -77,7 +77,7 @@ public class Menu_Principal extends javax.swing.JFrame {
         jtxtHeadHabitacionesOcupadas = new javax.swing.JLabel();
         jtxtHeadHabitacionesLibres = new javax.swing.JLabel();
         jtxtReloj = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        background = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
 
@@ -95,11 +95,14 @@ public class Menu_Principal extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(584, 461));
+        setResizable(false);
+        setSize(new java.awt.Dimension(584, 461));
         getContentPane().setLayout(null);
 
         jLabel2.setText("Hotel Open Mind");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(172, 6, 106, 16);
+        jLabel2.setBounds(200, 20, 106, 16);
 
         BTNControlStock.setText("Control Stock");
         BTNControlStock.addActionListener(new java.awt.event.ActionListener() {
@@ -148,7 +151,7 @@ public class Menu_Principal extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jtableHabitacionesOcupadas);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(6, 63, 356, 128);
+        jScrollPane1.setBounds(20, 70, 356, 128);
 
         jtableHabitacionesLibres.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -161,24 +164,24 @@ public class Menu_Principal extends javax.swing.JFrame {
         jScrollPane3.setViewportView(jtableHabitacionesLibres);
 
         getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(6, 233, 356, 205);
+        jScrollPane3.setBounds(20, 220, 356, 200);
 
         jtxtHeadHabitacionesOcupadas.setText("Información Habitaciones Ocupadas");
         getContentPane().add(jtxtHeadHabitacionesOcupadas);
-        jtxtHeadHabitacionesOcupadas.setBounds(6, 41, 228, 16);
+        jtxtHeadHabitacionesOcupadas.setBounds(20, 50, 228, 16);
 
         jtxtHeadHabitacionesLibres.setText("Información Habitaciones Libres");
         getContentPane().add(jtxtHeadHabitacionesLibres);
-        jtxtHeadHabitacionesLibres.setBounds(6, 211, 204, 16);
+        jtxtHeadHabitacionesLibres.setBounds(20, 200, 204, 16);
 
         jtxtReloj.setText("jLabel3");
         getContentPane().add(jtxtReloj);
         jtxtReloj.setBounds(471, 19, 45, 16);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/menu_principal_bg.png"))); // NOI18N
-        jLabel3.setText("jLabel3");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(-5, -4, 590, 470);
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/menu_principal_bg.png"))); // NOI18N
+        background.setSize(new java.awt.Dimension(584, 461));
+        getContentPane().add(background);
+        background.setBounds(0, 0, 584, 461);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -255,9 +258,9 @@ public class Menu_Principal extends javax.swing.JFrame {
     private javax.swing.JButton BTNHab;
     private javax.swing.JButton BTNInformes;
     private javax.swing.JButton BTNIngreso;
+    private javax.swing.JLabel background;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

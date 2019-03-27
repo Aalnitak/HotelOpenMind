@@ -38,9 +38,12 @@ public class Habitaciones extends javax.swing.JFrame {
         LBHab3 = new javax.swing.JLabel();
         LBHab4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(341, 389));
+        setResizable(false);
+        setSize(new java.awt.Dimension(341, 389));
         getContentPane().setLayout(null);
 
         BTNHab0.setText("Habitacion0");
@@ -55,9 +58,9 @@ public class Habitaciones extends javax.swing.JFrame {
         getContentPane().add(BTNHab2);
         BTNHab2.setBounds(84, 174, 120, 29);
 
-        BTNHab3.setText("Habiaciifon3");
+        BTNHab3.setText("Habitacion3");
         getContentPane().add(BTNHab3);
-        BTNHab3.setBounds(84, 221, 124, 29);
+        BTNHab3.setBounds(84, 221, 120, 29);
 
         BTNHab4.setText("Habitacion4");
         BTNHab4.addActionListener(new java.awt.event.ActionListener() {
@@ -90,12 +93,12 @@ public class Habitaciones extends javax.swing.JFrame {
 
         jLabel1.setText("Seleccione la habitacion");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(20, 52, 151, 16);
+        jLabel1.setBounds(90, 50, 151, 16);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/habitaciones_bg.png"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(-5, 0, 350, 390);
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/habitaciones_bg.png"))); // NOI18N
+        background.setSize(new java.awt.Dimension(341, 389));
+        getContentPane().add(background);
+        background.setBounds(0, 0, 341, 389);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -150,7 +153,7 @@ public class Habitaciones extends javax.swing.JFrame {
     private javax.swing.JLabel LBHab2;
     private javax.swing.JLabel LBHab3;
     private javax.swing.JLabel LBHab4;
+    private javax.swing.JLabel background;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
