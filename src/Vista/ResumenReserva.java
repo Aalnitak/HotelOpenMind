@@ -47,132 +47,94 @@ public class ResumenReserva extends javax.swing.JFrame {
         LBDesc = new javax.swing.JLabel();
         LBDescpp = new javax.swing.JLabel();
         LBTotal = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Resumen");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(31, 6, 64, 17);
 
         jLabel2.setText("Pasajero Principal:");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(54, 41, 114, 16);
 
         jLabel3.setText("Total de ocupantes:");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(44, 63, 124, 16);
 
         jLabel4.setText("Habitacion:");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(96, 85, 72, 16);
 
         jLabel5.setText("Precio por persona:");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(47, 107, 121, 16);
 
         jLabel6.setText("Descuento:");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(97, 193, 71, 16);
 
         jLabel7.setText("Descuento por persona:");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(18, 215, 150, 16);
 
         jLabel8.setText("Total:");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(132, 237, 36, 16);
 
         BTNCobrar.setText("Pagar");
+        getContentPane().add(BTNCobrar);
+        BTNCobrar.setBounds(203, 378, 78, 29);
 
         jLabel9.setText("Pago:");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(134, 276, 34, 16);
+        getContentPane().add(TFPago);
+        TFPago.setBounds(180, 271, 96, 26);
 
         jLabel10.setText("Vuelto:");
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(124, 303, 44, 16);
 
         LBVuelto.setText("-");
+        getContentPane().add(LBVuelto);
+        LBVuelto.setBounds(180, 303, 8, 16);
 
         LBPaxPpal.setText("-");
+        getContentPane().add(LBPaxPpal);
+        LBPaxPpal.setBounds(180, 41, 8, 16);
 
         LBOcupantes.setText("-");
+        getContentPane().add(LBOcupantes);
+        LBOcupantes.setBounds(180, 63, 8, 16);
 
         LBHab.setText("-");
+        getContentPane().add(LBHab);
+        LBHab.setBounds(180, 85, 8, 16);
 
         LBPreciopp.setText("-");
+        getContentPane().add(LBPreciopp);
+        LBPreciopp.setBounds(180, 107, 8, 16);
 
         LBDesc.setText("-");
+        getContentPane().add(LBDesc);
+        LBDesc.setBounds(180, 193, 8, 16);
 
         LBDescpp.setText("-");
+        getContentPane().add(LBDescpp);
+        LBDescpp.setBounds(180, 215, 8, 16);
 
         LBTotal.setText("-");
+        getContentPane().add(LBTotal);
+        LBTotal.setBounds(180, 237, 8, 16);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 203, Short.MAX_VALUE)
-                .addComponent(BTNCobrar)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(28, 28, 28)
-                            .addComponent(jLabel2))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TFPago, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LBVuelto)
-                    .addComponent(LBPaxPpal)
-                    .addComponent(LBOcupantes)
-                    .addComponent(LBHab)
-                    .addComponent(LBPreciopp)
-                    .addComponent(LBDesc)
-                    .addComponent(LBDescpp)
-                    .addComponent(LBTotal))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(LBPaxPpal))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(LBOcupantes))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(LBHab))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(LBPreciopp))
-                .addGap(70, 70, 70)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(LBDesc))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(LBDescpp))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(LBTotal))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(TFPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(LBVuelto))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                .addComponent(BTNCobrar)
-                .addGap(20, 20, 20))
-        );
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/resumen_reserva_bg.png"))); // NOI18N
+        jLabel11.setText("jLabel11");
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(0, -4, 290, 440);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -226,6 +188,7 @@ public class ResumenReserva extends javax.swing.JFrame {
     private javax.swing.JTextField TFPago;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

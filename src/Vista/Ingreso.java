@@ -58,14 +58,22 @@ public class Ingreso extends javax.swing.JFrame {
         LBPreciopp = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         LBTotal = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         jLabel1.setText("Ingreso");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(6, 6, 47, 16);
 
         jLabel2.setText("Numero de personas");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(56, 71, 130, 16);
 
         jLabel3.setText("Habitacion");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(118, 108, 68, 16);
 
         BGModo.add(RBMomento);
         RBMomento.setText("Momento (3 hrs)");
@@ -74,6 +82,8 @@ public class Ingreso extends javax.swing.JFrame {
                 RBMomentoActionPerformed(evt);
             }
         });
+        getContentPane().add(RBMomento);
+        RBMomento.setBounds(56, 149, 135, 23);
 
         BGModo.add(RBJornada);
         RBJornada.setText("Jornada (12 hrs)");
@@ -82,6 +92,13 @@ public class Ingreso extends javax.swing.JFrame {
                 RBJornadaActionPerformed(evt);
             }
         });
+        getContentPane().add(RBJornada);
+        RBJornada.setBounds(212, 149, 131, 23);
+        getContentPane().add(TFCantPax);
+        TFCantPax.setBounds(313, 66, 30, 26);
+
+        getContentPane().add(CBHabDispo);
+        CBHabDispo.setBounds(223, 104, 120, 27);
 
         BTNAceptar.setText("Aceptar");
         BTNAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -89,6 +106,8 @@ public class Ingreso extends javax.swing.JFrame {
                 BTNAceptarActionPerformed(evt);
             }
         });
+        getContentPane().add(BTNAceptar);
+        BTNAceptar.setBounds(333, 299, 92, 29);
 
         BTNVolver.setText("Volver");
         BTNVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -96,88 +115,29 @@ public class Ingreso extends javax.swing.JFrame {
                 BTNVolverActionPerformed(evt);
             }
         });
+        getContentPane().add(BTNVolver);
+        BTNVolver.setBounds(6, 299, 83, 29);
 
         jLabel4.setText("Precio Por Persona:");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(174, 216, 119, 16);
 
         LBPreciopp.setText("-");
+        getContentPane().add(LBPreciopp);
+        LBPreciopp.setBounds(305, 216, 8, 16);
 
         jLabel5.setText("Total");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(261, 244, 32, 16);
 
         LBTotal.setText("-");
+        getContentPane().add(LBTotal);
+        LBTotal.setBounds(305, 244, 8, 16);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(0, 343, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(BTNVolver)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BTNAceptar)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(RBMomento)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(RBJornada))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 37, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TFCantPax, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CBHabDispo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(88, 88, 88))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(LBPreciopp)
-                    .addComponent(LBTotal))
-                .addGap(118, 118, 118))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(44, 44, 44)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(TFCantPax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(CBHabDispo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(RBMomento)
-                    .addComponent(RBJornada))
-                .addGap(44, 44, 44)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(LBPreciopp))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(LBTotal))
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BTNAceptar)
-                    .addComponent(BTNVolver))
-                .addContainerGap(20, Short.MAX_VALUE))
-        );
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/ingreso_bg.png"))); // NOI18N
+        jLabel6.setText("jLabel6");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(-5, 0, 440, 348);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -290,5 +250,6 @@ public class Ingreso extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     // End of variables declaration//GEN-END:variables
 }

@@ -43,8 +43,10 @@ public class ControlStock extends javax.swing.JFrame {
         TFStock = new javax.swing.JTextField();
         BTNAgregar = new javax.swing.JButton();
         BTNVolver = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -64,21 +66,50 @@ public class ControlStock extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(6, 6, 569, 201);
+
         BTNActualizar.setText("Actualizar");
+        getContentPane().add(BTNActualizar);
+        BTNActualizar.setBounds(468, 219, 107, 29);
 
         jLabel1.setText("Agregar Nuevo");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(6, 276, 93, 16);
 
         jLabel2.setText("Nombre:");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(45, 315, 54, 16);
 
         jLabel3.setText("Tipo:");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(67, 347, 32, 16);
 
         jLabel4.setText("Descripcion:");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(20, 379, 79, 16);
 
         jLabel5.setText("Precio:");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(57, 411, 42, 16);
 
         jLabel6.setText("Stock:");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(60, 443, 39, 16);
+        getContentPane().add(TFNombre);
+        TFNombre.setBounds(111, 310, 200, 26);
+        getContentPane().add(TFTipo);
+        TFTipo.setBounds(111, 342, 200, 26);
+        getContentPane().add(TFDescripcion);
+        TFDescripcion.setBounds(111, 374, 200, 26);
+        getContentPane().add(TFPrecio);
+        TFPrecio.setBounds(111, 406, 200, 26);
+        getContentPane().add(TFStock);
+        TFStock.setBounds(111, 438, 200, 26);
 
         BTNAgregar.setText("Agregar");
+        getContentPane().add(BTNAgregar);
+        BTNAgregar.setBounds(351, 438, 93, 29);
 
         BTNVolver.setText("Volver");
         BTNVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -86,71 +117,13 @@ public class ControlStock extends javax.swing.JFrame {
                 BTNVolverActionPerformed(evt);
             }
         });
+        getContentPane().add(BTNVolver);
+        BTNVolver.setBounds(492, 438, 83, 29);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(TFNombre)
-                            .addComponent(TFTipo)
-                            .addComponent(TFDescripcion)
-                            .addComponent(TFPrecio)
-                            .addComponent(TFStock, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(40, 40, 40)
-                        .addComponent(BTNAgregar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BTNVolver))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(BTNActualizar)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(23, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(BTNActualizar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(TFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(TFTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(TFDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(TFPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(TFStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BTNAgregar)
-                    .addComponent(BTNVolver))
-                .addGap(20, 20, 20))
-        );
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/controlstock_bg.png"))); // NOI18N
+        jLabel8.setText("jLabel8");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(-5, -4, 600, 490);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -210,6 +183,7 @@ public class ControlStock extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

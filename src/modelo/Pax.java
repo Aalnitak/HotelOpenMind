@@ -24,7 +24,8 @@ public class Pax {
             nacionalidad;
     private LocalDate fechaNacimiento;
     private Boolean clienteFrec,
-            clientePpal;
+            clientePpal,
+            premiado;
 
     private static ArrayList<Pax> p;
     private static Pax pax;
@@ -36,8 +37,8 @@ public class Pax {
         return visitasComoPpal;
     }
 
-    public void setVisitasComoPpal(Integer visitasComoPpal) {
-        this.visitasComoPpal = visitasComoPpal;
+    public void agregarVisitaComoPpal() {
+        this.visitasComoPpal ++;
     }
 
     public static ArrayList<Pax> getPaxes() {
@@ -61,11 +62,31 @@ public class Pax {
         pax.setApellidoMat(null);
         pax.setNacionalidad(null);
         pax.setSexo(null);
-        pax.setVisitasComoPpal(null);
-        pax.setClientePpal(null);
+        pax.setVisitasComoPpal(0);
+        pax.setClientePpal(false);
         pax.setDigitoVerificador(null);
         pax.setFechaNacimiento(null);
         pax.setClienteFrecuente(null);
+    }
+
+    public Boolean getClienteFrec() {
+        return clienteFrec;
+    }
+
+    public void setClienteFrec(Boolean clienteFrec) {
+        this.clienteFrec = clienteFrec;
+    }
+
+    public Boolean getPremiado() {
+        return premiado;
+    }
+
+    public void setPremiado(Boolean premiado) {
+        this.premiado = premiado;
+    }
+
+    public void setVisitasComoPpal(Integer visitasComoPpal) {
+        this.visitasComoPpal = visitasComoPpal;
     }
     
     

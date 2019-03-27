@@ -38,16 +38,26 @@ public class Habitaciones extends javax.swing.JFrame {
         LBHab3 = new javax.swing.JLabel();
         LBHab4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         BTNHab0.setText("Habitacion0");
+        getContentPane().add(BTNHab0);
+        BTNHab0.setBounds(84, 80, 120, 29);
 
         BTNHab1.setText("Habitacion1");
+        getContentPane().add(BTNHab1);
+        BTNHab1.setBounds(84, 127, 120, 29);
 
         BTNHab2.setText("Habitacion2");
+        getContentPane().add(BTNHab2);
+        BTNHab2.setBounds(84, 174, 120, 29);
 
         BTNHab3.setText("Habiaciifon3");
+        getContentPane().add(BTNHab3);
+        BTNHab3.setBounds(84, 221, 124, 29);
 
         BTNHab4.setText("Habitacion4");
         BTNHab4.addActionListener(new java.awt.event.ActionListener() {
@@ -55,71 +65,37 @@ public class Habitaciones extends javax.swing.JFrame {
                 BTNHab4ActionPerformed(evt);
             }
         });
+        getContentPane().add(BTNHab4);
+        BTNHab4.setBounds(84, 268, 120, 29);
 
         LBHab0.setText("-");
+        getContentPane().add(LBHab0);
+        LBHab0.setBounds(239, 85, 8, 16);
 
         LBHab1.setText("-");
+        getContentPane().add(LBHab1);
+        LBHab1.setBounds(239, 132, 8, 16);
 
         LBHab2.setText("-");
+        getContentPane().add(LBHab2);
+        LBHab2.setBounds(239, 179, 8, 16);
 
         LBHab3.setText("-");
+        getContentPane().add(LBHab3);
+        LBHab3.setBounds(239, 226, 8, 16);
 
         LBHab4.setText("-");
+        getContentPane().add(LBHab4);
+        LBHab4.setBounds(239, 273, 8, 16);
 
         jLabel1.setText("Seleccione la habitacion");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(20, 52, 151, 16);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(BTNHab0)
-                            .addComponent(BTNHab1)
-                            .addComponent(BTNHab2)
-                            .addComponent(BTNHab3)
-                            .addComponent(BTNHab4))
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LBHab4)
-                            .addComponent(LBHab3)
-                            .addComponent(LBHab2)
-                            .addComponent(LBHab1)
-                            .addComponent(LBHab0)))
-                    .addComponent(jLabel1))
-                .addContainerGap(94, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BTNHab0)
-                    .addComponent(LBHab0))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BTNHab1)
-                    .addComponent(LBHab1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BTNHab2)
-                    .addComponent(LBHab2))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BTNHab3)
-                    .addComponent(LBHab3))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BTNHab4)
-                    .addComponent(LBHab4))
-                .addContainerGap(92, Short.MAX_VALUE))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/habitaciones_bg.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(-5, 0, 350, 390);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -175,5 +151,6 @@ public class Habitaciones extends javax.swing.JFrame {
     private javax.swing.JLabel LBHab3;
     private javax.swing.JLabel LBHab4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
