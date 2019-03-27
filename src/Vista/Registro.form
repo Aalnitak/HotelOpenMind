@@ -36,49 +36,6 @@
               <Component id="LBTotal" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
           </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel3" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel4" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel2" alignment="1" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="TFApellidoPat" max="32767" attributes="0"/>
-                  <Component id="TFApellidoMat" max="32767" attributes="0"/>
-                  <Component id="TFNombre" alignment="0" max="32767" attributes="0"/>
-                  <Component id="TFNac" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Component id="CBFechaAño" min="-2" pref="84" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="CBFechaMes" min="-2" pref="94" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="CBFechaDia" min="-2" pref="50" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="CBSexo" min="-2" pref="50" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="TFRut" min="-2" pref="180" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="TFDigitoVerificador" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="BTNVerificar" max="32767" attributes="0"/>
-                  <Component id="BTNSorteo" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-          </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="BTNCancelar" min="-2" max="-2" attributes="0"/>
@@ -87,6 +44,57 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="BTNIngresar" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="LBPremio" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel3" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel4" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel2" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="TFApellidoPat" max="32767" attributes="0"/>
+                          <Component id="TFApellidoMat" max="32767" attributes="0"/>
+                          <Component id="TFNombre" alignment="0" max="32767" attributes="0"/>
+                          <Component id="TFNac" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="CBFechaAño" min="-2" pref="84" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="CBFechaMes" min="-2" pref="94" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="CBFechaDia" min="-2" pref="50" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="CBSexo" min="-2" pref="50" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="TFRut" min="-2" pref="180" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="TFDigitoVerificador" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="BTNVerificar" max="32767" attributes="0"/>
+                          <Component id="BTNSorteo" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -150,7 +158,9 @@
                   </Group>
                   <Component id="BTNSorteo" min="-2" pref="125" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="97" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="LBPremio" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="72" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="BTNIngresar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="BTNCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -218,10 +228,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="TFRut">
-      <Events>
-        <EventHandler event="componentAdded" listener="java.awt.event.ContainerListener" parameters="java.awt.event.ContainerEvent" handler="TFRutComponentAdded"/>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TFRutActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="TFNombre">
     </Component>
@@ -232,7 +238,11 @@
     <Component class="javax.swing.JComboBox" name="CBSexo">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
+          <StringArray count="3">
+            <StringItem index="0" value="--"/>
+            <StringItem index="1" value="M"/>
+            <StringItem index="2" value="F"/>
+          </StringArray>
         </Property>
       </Properties>
       <AuxValues>
@@ -368,6 +378,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="SORTEO!"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTNSorteoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="BTNIngresar">
       <Properties>
@@ -409,6 +422,14 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="TFDigitoVerificador">
+    </Component>
+    <Component class="javax.swing.JLabel" name="LBPremio">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="11" style="3"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Has sido premiado!, este pasajero no pagara incorporaci&#xf3;n"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

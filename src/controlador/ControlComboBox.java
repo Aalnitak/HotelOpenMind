@@ -27,7 +27,7 @@ public class ControlComboBox {
     
     public static void llenarCBFechaNacimientoRegistro(int idMes, int año, JComboBox diaFechaComboBox) {
         
-        idMes +=1;
+        //idMes +=1;
         int i;
         boolean bisiesto;
         bisiesto = año % 4 == 0;
@@ -61,6 +61,7 @@ public class ControlComboBox {
         for(int j=0;j<i;j++){
             diaFechaComboBox.addItem(String.valueOf(j+1));
         }
+        
         
     }
 

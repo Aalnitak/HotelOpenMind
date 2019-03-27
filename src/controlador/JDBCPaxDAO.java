@@ -138,4 +138,21 @@ public class JDBCPaxDAO implements PaxDAO {
         return pase;
     }
 
+    @Override
+    public boolean isClienteFrecuente(Pax pax) {
+      boolean pase;
+      int rut=0;
+      try{
+          String sql ="select pasajero_rut , count(*) from reserva group by pasajero_rut limit 1";
+          PreparedStatement ps = conexion.prepareStatement(sql);
+          ResultSet rs = ps.executeQuery();
+          rs.next();
+          rut = rs.getInt("pasajero_rut");
+      }catch (SQLException e){
+          e.getMessage();
+      }
+      pase = pax.getRut() == rut;
+      return pase;
+    }
+
 }
