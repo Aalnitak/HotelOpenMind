@@ -77,6 +77,7 @@ public class Menu_Principal extends javax.swing.JFrame {
         jtxtHeadHabitacionesOcupadas = new javax.swing.JLabel();
         jtxtHeadHabitacionesLibres = new javax.swing.JLabel();
         jtxtReloj = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
 
@@ -94,8 +95,11 @@ public class Menu_Principal extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         jLabel2.setText("Hotel Open Mind");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(172, 6, 106, 16);
 
         BTNControlStock.setText("Control Stock");
         BTNControlStock.addActionListener(new java.awt.event.ActionListener() {
@@ -103,6 +107,8 @@ public class Menu_Principal extends javax.swing.JFrame {
                 BTNControlStockActionPerformed(evt);
             }
         });
+        getContentPane().add(BTNControlStock);
+        BTNControlStock.setBounds(400, 125, 120, 50);
 
         BTNInformes.setText("Informes");
         BTNInformes.addActionListener(new java.awt.event.ActionListener() {
@@ -110,6 +116,8 @@ public class Menu_Principal extends javax.swing.JFrame {
                 BTNInformesActionPerformed(evt);
             }
         });
+        getContentPane().add(BTNInformes);
+        BTNInformes.setBounds(400, 63, 120, 50);
 
         BTNHab.setText("Pedidos");
         BTNHab.addActionListener(new java.awt.event.ActionListener() {
@@ -117,6 +125,8 @@ public class Menu_Principal extends javax.swing.JFrame {
                 BTNHabActionPerformed(evt);
             }
         });
+        getContentPane().add(BTNHab);
+        BTNHab.setBounds(400, 191, 120, 50);
 
         BTNIngreso.setText("Ingreso");
         BTNIngreso.addActionListener(new java.awt.event.ActionListener() {
@@ -124,6 +134,8 @@ public class Menu_Principal extends javax.swing.JFrame {
                 BTNIngresoActionPerformed(evt);
             }
         });
+        getContentPane().add(BTNIngreso);
+        BTNIngreso.setBounds(400, 253, 120, 50);
 
         jtableHabitacionesOcupadas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -135,6 +147,9 @@ public class Menu_Principal extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jtableHabitacionesOcupadas);
 
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(6, 63, 356, 128);
+
         jtableHabitacionesLibres.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -145,70 +160,25 @@ public class Menu_Principal extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(jtableHabitacionesLibres);
 
+        getContentPane().add(jScrollPane3);
+        jScrollPane3.setBounds(6, 233, 356, 205);
+
         jtxtHeadHabitacionesOcupadas.setText("Información Habitaciones Ocupadas");
+        getContentPane().add(jtxtHeadHabitacionesOcupadas);
+        jtxtHeadHabitacionesOcupadas.setBounds(6, 41, 228, 16);
 
         jtxtHeadHabitacionesLibres.setText("Información Habitaciones Libres");
+        getContentPane().add(jtxtHeadHabitacionesLibres);
+        jtxtHeadHabitacionesLibres.setBounds(6, 211, 204, 16);
 
         jtxtReloj.setText("jLabel3");
+        getContentPane().add(jtxtReloj);
+        jtxtReloj.setBounds(471, 19, 45, 16);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(172, 172, 172)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 193, Short.MAX_VALUE)
-                .addComponent(jtxtReloj)
-                .addGap(68, 68, 68))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                            .addComponent(jtxtHeadHabitacionesLibres))
-                        .addGap(38, 38, 38)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(BTNIngreso, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BTNInformes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BTNHab, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BTNControlStock, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jtxtHeadHabitacionesOcupadas))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jtxtReloj)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jtxtHeadHabitacionesOcupadas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(BTNInformes, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(BTNControlStock, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(16, 16, 16)
-                        .addComponent(BTNHab, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(BTNIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
-                        .addComponent(jtxtHeadHabitacionesLibres)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(23, Short.MAX_VALUE))
-        );
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/menu_principal_bg.png"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(-5, -4, 590, 470);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -287,6 +257,7 @@ public class Menu_Principal extends javax.swing.JFrame {
     private javax.swing.JButton BTNIngreso;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

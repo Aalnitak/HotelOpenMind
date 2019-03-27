@@ -88,32 +88,69 @@ public class Registro extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         TFDigitoVerificador = new javax.swing.JTextField();
         LBPremio = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         jLabel1.setText("Registro de pasajeros");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(32, 6, 135, 16);
 
         jLabel2.setText("Rut:");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(97, 45, 25, 16);
 
         jLabel3.setText("Nombre:");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(68, 77, 54, 16);
 
         jLabel4.setText("Apellido Paterno:");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(15, 109, 107, 16);
 
         LBActual.setText("-");
+        getContentPane().add(LBActual);
+        LBActual.setBounds(454, 6, 8, 16);
 
         jLabel6.setText("/");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(468, 6, 7, 16);
 
         LBTotal.setText("-");
+        getContentPane().add(LBTotal);
+        LBTotal.setBounds(481, 6, 8, 16);
 
         jLabel5.setText("Sexo:");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(88, 170, 34, 16);
 
         jLabel7.setText("Fecha Nacimiento:");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(6, 203, 116, 16);
 
         jLabel8.setText("Nacionalidad:");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(36, 237, 86, 16);
 
         jLabel9.setText("Apellido Materno:");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(11, 139, 111, 16);
+        getContentPane().add(TFRut);
+        TFRut.setBounds(140, 40, 180, 26);
+        getContentPane().add(TFNombre);
+        TFNombre.setBounds(140, 72, 240, 26);
+        getContentPane().add(TFApellidoPat);
+        TFApellidoPat.setBounds(140, 104, 240, 26);
+        getContentPane().add(TFApellidoMat);
+        TFApellidoMat.setBounds(140, 134, 240, 26);
 
         CBSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--", "M", "F" }));
+        getContentPane().add(CBSexo);
+        CBSexo.setBounds(140, 166, 50, 27);
+
+        getContentPane().add(CBFechaDia);
+        CBFechaDia.setBounds(330, 199, 50, 27);
 
         CBFechaMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--seleccione--", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
         CBFechaMes.addActionListener(new java.awt.event.ActionListener() {
@@ -121,6 +158,8 @@ public class Registro extends javax.swing.JFrame {
                 CBFechaMesActionPerformed(evt);
             }
         });
+        getContentPane().add(CBFechaMes);
+        CBFechaMes.setBounds(230, 199, 94, 27);
 
         CBFechaAño.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2001", "2000", "1999", "1998", "1997", "1996", "1995", "1994", "1993", "1992", "1991", "1990", "1989", "1988", "1987", "1986", "1985", "1984", "1983", "1982", "1981", "1980", "1979", "1978", "1977", "1976", "1975", "1974", "1973", "1972", "1971", "1970", "1969", "1968", "1967", "1966", "1965", "1964", "1963", "1962", "1961", "1960", "1959", "1958", "1957", "1956", "1955", "1954", "1953", "1952", "1951", "1950", "1949", "1948", "1947", "1946", "1945", "1944", "1943", "1942", "1941", "1940", "1939", "1938", "1937", "1936", "1935", "1934", "1933", "1932", "1931", "1930" }));
         CBFechaAño.addActionListener(new java.awt.event.ActionListener() {
@@ -128,6 +167,10 @@ public class Registro extends javax.swing.JFrame {
                 CBFechaAñoActionPerformed(evt);
             }
         });
+        getContentPane().add(CBFechaAño);
+        CBFechaAño.setBounds(140, 199, 84, 27);
+        getContentPane().add(TFNac);
+        TFNac.setBounds(140, 232, 240, 26);
 
         BTNSorteo.setText("SORTEO!");
         BTNSorteo.addActionListener(new java.awt.event.ActionListener() {
@@ -135,6 +178,8 @@ public class Registro extends javax.swing.JFrame {
                 BTNSorteoActionPerformed(evt);
             }
         });
+        getContentPane().add(BTNSorteo);
+        BTNSorteo.setBounds(398, 104, 123, 125);
 
         BTNIngresar.setText("Ingresar");
         BTNIngresar.addActionListener(new java.awt.event.ActionListener() {
@@ -142,13 +187,21 @@ public class Registro extends javax.swing.JFrame {
                 BTNIngresarActionPerformed(evt);
             }
         });
+        getContentPane().add(BTNIngresar);
+        BTNIngresar.setBounds(432, 356, 95, 29);
 
         BTNCancelar.setText("Cancelar");
+        getContentPane().add(BTNCancelar);
+        BTNCancelar.setBounds(6, 356, 98, 29);
 
         BTNVolver.setText("Anterior");
+        getContentPane().add(BTNVolver);
+        BTNVolver.setBounds(331, 356, 95, 29);
 
         LBPasajeroPrincipal.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
         LBPasajeroPrincipal.setText("PASAJERO PRINCIPAL");
+        getContentPane().add(LBPasajeroPrincipal);
+        LBPasajeroPrincipal.setBounds(185, 8, 123, 14);
 
         BTNVerificar.setText("Verificar pax");
         BTNVerificar.addActionListener(new java.awt.event.ActionListener() {
@@ -156,135 +209,24 @@ public class Registro extends javax.swing.JFrame {
                 BTNVerificarActionPerformed(evt);
             }
         });
+        getContentPane().add(BTNVerificar);
+        BTNVerificar.setBounds(398, 49, 123, 49);
 
         jLabel10.setText("-");
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(326, 45, 8, 16);
+        getContentPane().add(TFDigitoVerificador);
+        TFDigitoVerificador.setBounds(340, 40, 40, 26);
 
         LBPremio.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
         LBPremio.setText("Has sido premiado!, este pasajero no pagara incorporación");
+        getContentPane().add(LBPremio);
+        LBPremio.setBounds(190, 270, 331, 14);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(LBPasajeroPrincipal)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(LBActual)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(LBTotal)
-                .addGap(44, 44, 44))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BTNCancelar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BTNVolver)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BTNIngresar)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(LBPremio))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel2))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TFApellidoPat)
-                            .addComponent(TFApellidoMat)
-                            .addComponent(TFNombre)
-                            .addComponent(TFNac)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(CBFechaAño, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(CBFechaMes, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(CBFechaDia, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(CBSexo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(TFRut, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(TFDigitoVerificador)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(BTNVerificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(BTNSorteo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(12, 12, 12))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(LBActual)
-                    .addComponent(jLabel6)
-                    .addComponent(LBTotal)
-                    .addComponent(LBPasajeroPrincipal))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(TFRut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10)
-                            .addComponent(TFDigitoVerificador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(TFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(BTNVerificar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(TFApellidoPat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(4, 4, 4)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(TFApellidoMat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(CBSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(CBFechaDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CBFechaMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CBFechaAño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(TFNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(BTNSorteo, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(LBPremio)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BTNIngresar)
-                    .addComponent(BTNCancelar)
-                    .addComponent(BTNVolver))
-                .addContainerGap())
-        );
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/registro_bg.png"))); // NOI18N
+        jLabel11.setText("jLabel11");
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(0, -4, 530, 400);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -425,6 +367,7 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JTextField TFRut;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
