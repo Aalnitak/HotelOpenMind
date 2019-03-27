@@ -127,7 +127,7 @@ public class Ingreso extends javax.swing.JFrame {
 
         LBPreciopp.setText("-");
         getContentPane().add(LBPreciopp);
-        LBPreciopp.setBounds(300, 210, 8, 16);
+        LBPreciopp.setBounds(300, 210, 60, 16);
 
         jLabel5.setText("Total");
         getContentPane().add(jLabel5);
@@ -135,7 +135,7 @@ public class Ingreso extends javax.swing.JFrame {
 
         LBTotal.setText("-");
         getContentPane().add(LBTotal);
-        LBTotal.setBounds(300, 230, 8, 16);
+        LBTotal.setBounds(300, 230, 70, 16);
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/ingreso_bg.png"))); // NOI18N
         background.setSize(new java.awt.Dimension(431, 348));
