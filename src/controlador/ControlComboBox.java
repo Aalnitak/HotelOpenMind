@@ -57,6 +57,7 @@ public class ControlComboBox {
        
         diaFechaComboBox.removeAllItems();
         
+        
         for(int j=0;j<i;j++){
             diaFechaComboBox.addItem(String.valueOf(j+1));
         }

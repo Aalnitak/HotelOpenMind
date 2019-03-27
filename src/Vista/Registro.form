@@ -51,19 +51,25 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="TFApellidoPat" max="32767" attributes="0"/>
                   <Component id="TFApellidoMat" max="32767" attributes="0"/>
-                  <Component id="TFRut" alignment="0" max="32767" attributes="0"/>
                   <Component id="TFNombre" alignment="0" max="32767" attributes="0"/>
                   <Component id="TFNac" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Component id="CBSexo" min="-2" pref="50" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                  </Group>
                   <Group type="102" attributes="0">
                       <Component id="CBFechaAño" min="-2" pref="84" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="CBFechaMes" min="-2" pref="94" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="CBFechaDia" min="-2" pref="50" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="CBSexo" min="-2" pref="50" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="TFRut" min="-2" pref="180" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="TFDigitoVerificador" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -101,6 +107,8 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="TFRut" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TFDigitoVerificador" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -244,19 +252,20 @@
     <Component class="javax.swing.JComboBox" name="CBFechaMes">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="12">
-            <StringItem index="0" value="Enero"/>
-            <StringItem index="1" value="Febrero"/>
-            <StringItem index="2" value="Marzo"/>
-            <StringItem index="3" value="Abril"/>
-            <StringItem index="4" value="Mayo"/>
-            <StringItem index="5" value="Junio"/>
-            <StringItem index="6" value="Julio"/>
-            <StringItem index="7" value="Agosto"/>
-            <StringItem index="8" value="Septiembre"/>
-            <StringItem index="9" value="Octubre"/>
-            <StringItem index="10" value="Noviembre"/>
-            <StringItem index="11" value="Diciembre"/>
+          <StringArray count="13">
+            <StringItem index="0" value="--seleccione--"/>
+            <StringItem index="1" value="Enero"/>
+            <StringItem index="2" value="Febrero"/>
+            <StringItem index="3" value="Marzo"/>
+            <StringItem index="4" value="Abril"/>
+            <StringItem index="5" value="Mayo"/>
+            <StringItem index="6" value="Junio"/>
+            <StringItem index="7" value="Julio"/>
+            <StringItem index="8" value="Agosto"/>
+            <StringItem index="9" value="Septiembre"/>
+            <StringItem index="10" value="Octubre"/>
+            <StringItem index="11" value="Noviembre"/>
+            <StringItem index="12" value="Diciembre"/>
           </StringArray>
         </Property>
       </Properties>
@@ -393,6 +402,13 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTNVerificarActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel10">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="-"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="TFDigitoVerificador">
     </Component>
   </SubComponents>
 </Form>
