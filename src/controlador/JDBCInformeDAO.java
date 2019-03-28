@@ -17,52 +17,48 @@ import javax.swing.table.DefaultTableModel;
  * @author duoc
  */
 public class JDBCInformeDAO {
-        
-    public static void llenarTablaHabitacionOcupada(JTable tabla) {
-        Connection con = Conexion.getConnection();
-        
-        
-        
-        DefaultTableModel model = (DefaultTableModel)tabla.getModel();
 
-        try 
-        {
-            String query = "SELECT h.nombre, r.num_pasajeros \"numero de pasajeros\", p.nombre \"nombre producto consumido\", r.limite_tiempo \"limite de tiempo\"\n" +
-                    "FROM habitacion h\n" +
-                    "JOIN reserva r\n" +
-                    "ON (h.idhabitacion = r.habitacion_idhabitacion)\n" +
-                    "INNER JOIN (SELECT rr.habitacion_idhabitacion idhabitacion, MAX(idjornada) idjornada\n" +
-                    "FROM reserva rr\n" +
-                    "GROUP BY idhabitacion\n" +
-                    ") b ON h.idhabitacion = b.idhabitacion AND r.idjornada = b.idjornada\n" +
-                    "JOIN reserva_has_producto rhp\n" +
-                    "ON (r.idjornada = rhp.reserva_idjornada)\n" +
-                    "JOIN producto p\n" +
-                    "ON (rhp.producto_idproducto = p.idproducto)\n" +
-                    "WHERE h.ocupado = '1'\n" +
-                    "GROUP BY h.nombre\n" +
-                    "ORDER BY r.idjornada DESC\n";
-            
-            PreparedStatement ps = con.prepareStatement(query);
+    private static Connection c = Conexion.getConnection();
+
+    public static void llenarTablaHabitacionOcupada(JTable tabla) {
+
+        DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+
+        try {
+            String query = "SELECT h.nombre, r.num_pasajeros \"numero de pasajeros\", p.nombre \"nombre producto consumido\", r.limite_tiempo \"limite de tiempo\"\n"
+                    + "FROM habitacion h\n"
+                    + "JOIN reserva r\n"
+                    + "ON (h.idhabitacion = r.habitacion_idhabitacion)\n"
+                    + "INNER JOIN (SELECT rr.habitacion_idhabitacion idhabitacion, MAX(idjornada) idjornada\n"
+                    + "FROM reserva rr\n"
+                    + "GROUP BY idhabitacion\n"
+                    + ") b ON h.idhabitacion = b.idhabitacion AND r.idjornada = b.idjornada\n"
+                    + "JOIN reserva_has_producto rhp\n"
+                    + "ON (r.idjornada = rhp.reserva_idjornada)\n"
+                    + "JOIN producto p\n"
+                    + "ON (rhp.producto_idproducto = p.idproducto)\n"
+                    + "WHERE h.ocupado = '1'\n"
+                    + "GROUP BY h.nombre\n"
+                    + "ORDER BY r.idjornada DESC\n";
+
+            PreparedStatement ps = c.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
-            
-            
-            
+
             while (rs.next()) {
-                
-                model.addRow(new Object[] {
+
+                model.addRow(new Object[]{
                     rs.getObject("nombre"),
                     rs.getObject("numero de pasajeros"),
                     rs.getObject("nombre producto consumido"),
                     rs.getObject("limite de tiempo")
                 });
-                
+
             }
-            
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        
+
     }
 
 }

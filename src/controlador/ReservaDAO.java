@@ -14,9 +14,10 @@ import modelo.Reserva;
  */
 public interface ReservaDAO {
     public void insert(Reserva habitacion);
-    public void update(Reserva habitacion);
-    public Reserva selectInformeMaxMin(int ID_reserva,boolean max);
+    public void update(Reserva habitacion, int idjornada);
     public Reserva select(int id_reserva);
+    public int getIdReserva(int rut);
+    public void updateMomentoEfectivoSalida(int rut);
 
     
 }

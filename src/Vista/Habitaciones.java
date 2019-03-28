@@ -50,19 +50,19 @@ public class Habitaciones extends javax.swing.JFrame {
 
         BTNHab0.setText("Habitacion0");
         getContentPane().add(BTNHab0);
-        BTNHab0.setBounds(84, 80, 120, 29);
+        BTNHab0.setBounds(84, 80, 89, 23);
 
         BTNHab1.setText("Habitacion1");
         getContentPane().add(BTNHab1);
-        BTNHab1.setBounds(84, 127, 120, 29);
+        BTNHab1.setBounds(84, 127, 89, 23);
 
         BTNHab2.setText("Habitacion2");
         getContentPane().add(BTNHab2);
-        BTNHab2.setBounds(84, 174, 120, 29);
+        BTNHab2.setBounds(84, 174, 89, 23);
 
         BTNHab3.setText("Habitacion3");
         getContentPane().add(BTNHab3);
-        BTNHab3.setBounds(84, 221, 120, 29);
+        BTNHab3.setBounds(84, 221, 89, 23);
 
         BTNHab4.setText("Habitacion4");
         BTNHab4.addActionListener(new java.awt.event.ActionListener() {
@@ -71,34 +71,33 @@ public class Habitaciones extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BTNHab4);
-        BTNHab4.setBounds(84, 268, 120, 29);
+        BTNHab4.setBounds(84, 268, 89, 23);
 
         LBHab0.setText("-");
         getContentPane().add(LBHab0);
-        LBHab0.setBounds(239, 85, 8, 16);
+        LBHab0.setBounds(239, 85, 4, 14);
 
         LBHab1.setText("-");
         getContentPane().add(LBHab1);
-        LBHab1.setBounds(239, 132, 8, 16);
+        LBHab1.setBounds(239, 132, 4, 14);
 
         LBHab2.setText("-");
         getContentPane().add(LBHab2);
-        LBHab2.setBounds(239, 179, 8, 16);
+        LBHab2.setBounds(239, 179, 4, 14);
 
         LBHab3.setText("-");
         getContentPane().add(LBHab3);
-        LBHab3.setBounds(239, 226, 8, 16);
+        LBHab3.setBounds(239, 226, 4, 14);
 
         LBHab4.setText("-");
         getContentPane().add(LBHab4);
-        LBHab4.setBounds(239, 273, 8, 16);
+        LBHab4.setBounds(239, 273, 4, 14);
 
         jLabel1.setText("Seleccione la habitacion");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(90, 50, 151, 16);
+        jLabel1.setBounds(90, 50, 113, 14);
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/habitaciones_bg.png"))); // NOI18N
-        background.setSize(new java.awt.Dimension(341, 389));
         getContentPane().add(background);
         background.setBounds(0, 0, 341, 389);
 

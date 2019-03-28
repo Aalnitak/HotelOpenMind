@@ -105,7 +105,7 @@ public class Menu_Principal extends javax.swing.JFrame {
 
         jLabel2.setText("Hotel Open Mind");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(200, 20, 106, 16);
+        jLabel2.setBounds(200, 20, 79, 14);
 
         BTNControlStock.setText("Control Stock");
         BTNControlStock.addActionListener(new java.awt.event.ActionListener() {
@@ -171,18 +171,17 @@ public class Menu_Principal extends javax.swing.JFrame {
 
         jtxtHeadHabitacionesOcupadas.setText("Información Habitaciones Ocupadas");
         getContentPane().add(jtxtHeadHabitacionesOcupadas);
-        jtxtHeadHabitacionesOcupadas.setBounds(20, 50, 228, 16);
+        jtxtHeadHabitacionesOcupadas.setBounds(20, 50, 172, 14);
 
         jtxtHeadHabitacionesLibres.setText("Información Habitaciones Libres");
         getContentPane().add(jtxtHeadHabitacionesLibres);
-        jtxtHeadHabitacionesLibres.setBounds(20, 200, 204, 16);
+        jtxtHeadHabitacionesLibres.setBounds(20, 200, 152, 14);
 
         jtxtReloj.setText("jLabel3");
         getContentPane().add(jtxtReloj);
         jtxtReloj.setBounds(400, 20, 80, 30);
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/menu_principal_bg.png"))); // NOI18N
-        background.setSize(new java.awt.Dimension(584, 461));
         getContentPane().add(background);
         background.setBounds(0, 0, 584, 461);
 

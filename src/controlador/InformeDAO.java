@@ -6,6 +6,7 @@
 package controlador;
 
 import java.util.ArrayList;
+import modelo.Reserva;
 
 /**
  *
@@ -15,4 +16,6 @@ public interface InformeDAO {
     // metodos de las querys para cada informe
     
     public ArrayList<Object[]> llenarTablaHabitacionOcupada();
+    public Reserva selectInformeMaxMin(int ID_reserva,boolean max);
+
 }
