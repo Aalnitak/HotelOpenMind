@@ -14,7 +14,8 @@ import java.util.ArrayList;
  */
 public class Pax {
 
-    private Integer rut;
+    private Integer rut,
+            cantidadVecesPremiado;
     private String digitoVerificador,
             nombre,
             apellidoPat,
@@ -23,8 +24,7 @@ public class Pax {
             nacionalidad;
     private LocalDate fechaNacimiento;
     private Boolean clienteFrec,
-            clientePpal,
-            premiado;
+            clientePpal;
 
     private static ArrayList<Pax> p;
     private static Pax pax;
@@ -32,17 +32,15 @@ public class Pax {
     private Pax() {
     }
 
- 
-
     public static ArrayList<Pax> getPaxes() {
         if (p == null) {
             p = new ArrayList<>();
         }
         return p;
     }
-    
+
     public static Pax getPax() {
-        if (pax==null) {
+        if (pax == null) {
             pax = new Pax();
         }
         return pax;
@@ -55,7 +53,7 @@ public class Pax {
         pax.setApellidoMat(null);
         pax.setNacionalidad(null);
         pax.setSexo(null);
-        
+        pax.setCantidadVecesPremiado(null);
         pax.setClientePpal(false);
         pax.setDigitoVerificador(null);
         pax.setFechaNacimiento(null);
@@ -70,17 +68,7 @@ public class Pax {
         this.clienteFrec = clienteFrec;
     }
 
-    public Boolean getPremiado() {
-        return premiado;
-    }
-
-    public void setPremiado(Boolean premiado) {
-        this.premiado = premiado;
-    }
-
-   
-    
-    
+ 
 
     public int getRut() {
         return rut;
@@ -90,13 +78,20 @@ public class Pax {
         this.rut = rut;
     }
 
-
     public String getDigitoVerificador() {
         return digitoVerificador;
     }
 
     public void setDigitoVerificador(String cv) {
         this.digitoVerificador = cv;
+    }
+
+    public Integer getCantidadVecesPremiado() {
+        return cantidadVecesPremiado;
+    }
+
+    public void setCantidadVecesPremiado(Integer cantidadVecesPremiado) {
+        this.cantidadVecesPremiado = cantidadVecesPremiado;
     }
 
     public String getNombre() {
@@ -173,8 +168,7 @@ public class Pax {
 
     @Override
     public String toString() {
-        return "Pax{" + "rut=" + rut +  ", digitoVerificador=" + digitoVerificador + ", nombre=" + nombre + ", apellidoPat=" + apellidoPat + ", apellidoMat=" + apellidoMat + ", sexo=" + sexo + ", nacionalidad=" + nacionalidad + ", fechaNacimiento=" + fechaNacimiento + ", clienteFrec=" + clienteFrec + ", clientePpal=" + clientePpal + '}';
+        return "Pax{" + "rut=" + rut + ", digitoVerificador=" + digitoVerificador + ", nombre=" + nombre + ", apellidoPat=" + apellidoPat + ", apellidoMat=" + apellidoMat + ", sexo=" + sexo + ", nacionalidad=" + nacionalidad + ", fechaNacimiento=" + fechaNacimiento + ", clienteFrec=" + clienteFrec + ", clientePpal=" + clientePpal + '}';
     }
-    
 
 }

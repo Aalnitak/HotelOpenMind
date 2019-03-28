@@ -114,12 +114,23 @@ public class ResumenReserva extends javax.swing.JFrame {
         jLabel8.setBounds(130, 260, 28, 14);
 
         BTNCobrar.setText("Pagar");
+        BTNCobrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTNCobrarActionPerformed(evt);
+            }
+        });
         getContentPane().add(BTNCobrar);
         BTNCobrar.setBounds(180, 370, 61, 23);
 
         jLabel9.setText("Pago:");
         getContentPane().add(jLabel9);
         jLabel9.setBounds(130, 300, 28, 14);
+
+        TFPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TFPagoActionPerformed(evt);
+            }
+        });
         getContentPane().add(TFPago);
         TFPago.setBounds(180, 300, 96, 20);
 
@@ -165,6 +176,20 @@ public class ResumenReserva extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void TFPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TFPagoActionPerformed
+        // TODO add your handling code here:
+        int total = Integer.parseInt(LBTotal.getText());
+        int pago = Integer.parseInt(TFPago.getText());
+        String vuelto = String.valueOf(pago-total);
+        LBVuelto.setText(vuelto);
+    }//GEN-LAST:event_TFPagoActionPerformed
+
+    private void BTNCobrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNCobrarActionPerformed
+        // TODO add your handling code here:
+        //hacer insert de la reservatotal.
+        //dispose
+    }//GEN-LAST:event_BTNCobrarActionPerformed
 
     /**
      * @param args the command line arguments
