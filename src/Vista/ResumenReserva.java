@@ -5,17 +5,40 @@
  */
 package Vista;
 
+import controlador.ControlDescuento;
+import controlador.ControlLabel;
+import controlador.JDBCHabitacionDAO;
+import controlador.JDBCPaxDAO;
+import modelo.Habitacion;
+import modelo.Pax;
+import modelo.Reserva;
+
 /**
  *
- * @author duoc
+ * @author proyetco
  */
 public class ResumenReserva extends javax.swing.JFrame {
+    Reserva res = Reserva.getRes();
+    Pax pasajero = Pax.getPax();
+    JDBCPaxDAO jdbcpax = new JDBCPaxDAO();
+    JDBCHabitacionDAO jdbchab = new JDBCHabitacionDAO();
+    Habitacion[] h;
 
     /**
      * Creates new form Cobro
      */
     public ResumenReserva() {
         initComponents();
+        Pax.clearPax();
+        h = Habitacion.getHab();
+        pasajero = jdbcpax.selectRead(res.getRut());
+        LBPaxPpal.setText(pasajero.getNombre()+" "+pasajero.getApellidoPat());
+        LBOcupantes.setText(res.getOcupantes().toString());
+        LBHab.setText(jdbchab.selectNombreHab(res.getIdhabitacion()));
+        ControlLabel.setLabelPrecioPorPersona(res, LBPreciopp);
+        LBDesc.setText(ControlDescuento.getDescuento(res.getOcupantes()));
+        
+        ControlLabel.setPrecioSubTotal(res, LBTotal);
     }
 
     /**
@@ -62,80 +85,79 @@ public class ResumenReserva extends javax.swing.JFrame {
 
         jLabel2.setText("Pasajero Principal:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(50, 70, 114, 16);
+        jLabel2.setBounds(50, 70, 88, 14);
 
         jLabel3.setText("Total de ocupantes:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(40, 90, 124, 16);
+        jLabel3.setBounds(40, 90, 96, 14);
 
         jLabel4.setText("Habitacion:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(90, 110, 72, 16);
+        jLabel4.setBounds(90, 110, 54, 14);
 
         jLabel5.setText("Precio por persona:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(40, 130, 121, 16);
+        jLabel5.setBounds(40, 130, 94, 14);
 
         jLabel6.setText("Descuento:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(90, 220, 71, 16);
+        jLabel6.setBounds(90, 220, 55, 14);
 
         jLabel7.setText("Descuento por persona:");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(20, 240, 150, 16);
+        jLabel7.setBounds(20, 240, 116, 14);
 
         jLabel8.setText("Total:");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(130, 260, 36, 16);
+        jLabel8.setBounds(130, 260, 28, 14);
 
         BTNCobrar.setText("Pagar");
         getContentPane().add(BTNCobrar);
-        BTNCobrar.setBounds(180, 370, 78, 29);
+        BTNCobrar.setBounds(180, 370, 61, 23);
 
         jLabel9.setText("Pago:");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(130, 300, 34, 16);
+        jLabel9.setBounds(130, 300, 28, 14);
         getContentPane().add(TFPago);
-        TFPago.setBounds(180, 300, 96, 26);
+        TFPago.setBounds(180, 300, 96, 20);
 
         jLabel10.setText("Vuelto:");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(120, 330, 44, 16);
+        jLabel10.setBounds(120, 330, 34, 14);
 
         LBVuelto.setText("-");
         getContentPane().add(LBVuelto);
-        LBVuelto.setBounds(180, 330, 8, 16);
+        LBVuelto.setBounds(180, 330, 4, 14);
 
         LBPaxPpal.setText("-");
         getContentPane().add(LBPaxPpal);
-        LBPaxPpal.setBounds(180, 70, 8, 16);
+        LBPaxPpal.setBounds(180, 70, 4, 14);
 
         LBOcupantes.setText("-");
         getContentPane().add(LBOcupantes);
-        LBOcupantes.setBounds(180, 90, 8, 16);
+        LBOcupantes.setBounds(180, 90, 4, 14);
 
         LBHab.setText("-");
         getContentPane().add(LBHab);
-        LBHab.setBounds(180, 110, 8, 16);
+        LBHab.setBounds(180, 110, 4, 14);
 
         LBPreciopp.setText("-");
         getContentPane().add(LBPreciopp);
-        LBPreciopp.setBounds(180, 130, 8, 16);
+        LBPreciopp.setBounds(180, 130, 4, 14);
 
         LBDesc.setText("-");
         getContentPane().add(LBDesc);
-        LBDesc.setBounds(180, 220, 8, 16);
+        LBDesc.setBounds(180, 220, 4, 14);
 
         LBDescpp.setText("-");
         getContentPane().add(LBDescpp);
-        LBDescpp.setBounds(180, 240, 8, 16);
+        LBDescpp.setBounds(180, 240, 4, 14);
 
         LBTotal.setText("-");
         getContentPane().add(LBTotal);
-        LBTotal.setBounds(180, 260, 8, 16);
+        LBTotal.setBounds(180, 260, 4, 14);
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/resumen_reserva_bg.png"))); // NOI18N
-        background.setSize(new java.awt.Dimension(314, 440));
         getContentPane().add(background);
         background.setBounds(0, 0, 314, 440);
 

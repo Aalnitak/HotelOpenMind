@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import modelo.Producto;
+import modelo.Reserva;
 
 /**
  *
@@ -26,6 +27,64 @@ public class ControlLabel {
         } else {
             JOptionPane.showMessageDialog(null, "Datos incorrectos");
         }
+    }
+    public static void setLabelPrecioPorPersona(Reserva res, JLabel LBPreciopp){
+        JDBCProductoDAO jdbcprod = new JDBCProductoDAO();
+        JDBCHabitacionDAO jdbchab = new JDBCHabitacionDAO();
+        String modo;
+        if(res.getMomento()){
+            modo="_momento";
+        }else{
+            modo="_jornada";
+        }
+        String nombreProd = jdbchab.selectNombreHab(res.getIdhabitacion()).concat(modo);
+        Producto prod = jdbcprod.select(nombreProd);
+        LBPreciopp.setText(String.valueOf(prod.getPrecio()));
+        
+    }
+    
+    /**
+     * la funcion setea el texto del label con el total sin descuento
+     * @param res
+     * @param LBSubTotal
+     */
+    public static void setPrecioSubTotal(Reserva res, JLabel LBSubTotal){
+        JDBCProductoDAO jdbcprod = new JDBCProductoDAO();
+        JDBCHabitacionDAO jdbchab = new JDBCHabitacionDAO();
+        String modo;
+        if(res.getMomento()){
+            modo="_momento";
+        }else{
+            modo="_jornada";
+        }
+        String nombreProd = jdbchab.selectNombreHab(res.getIdhabitacion()).concat(modo);
+        Producto prod = jdbcprod.select(nombreProd);
+        int total = prod.getPrecio()*res.getOcupantes();
+        LBSubTotal.setText(String.valueOf(total));
+        
+    }
+
+    /**
+     * la funcion setea el label con el total incluido el descuento
+     * @param res
+     * @param LBSubTotal
+     * @param descuento
+     */
+    public static void setPrecioTotal(Reserva res, JLabel LBSubTotal, double descuento){
+        JDBCProductoDAO jdbcprod = new JDBCProductoDAO();
+        JDBCHabitacionDAO jdbchab = new JDBCHabitacionDAO();
+        String modo;
+        if(res.getMomento()){
+            modo="_momento";
+        }else{
+            modo="_jornada";
+        }
+        String nombreProd = jdbchab.selectNombreHab(res.getIdhabitacion()).concat(modo);
+        Producto prod = jdbcprod.select(nombreProd);
+        double total = prod.getPrecio()*res.getOcupantes()*descuento;
+        total = Math.ceil(total);
+        LBSubTotal.setText(String.valueOf(total));
+        
     }
     
 }

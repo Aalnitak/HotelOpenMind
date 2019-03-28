@@ -18,6 +18,7 @@ public interface HabitacionDAO {
     public void updateOcupado(Habitacion habitacion);
     public Habitacion[] selectAll();
     public int selectCantidadHabitaciones();
+    public String selectNombreHab(int id);
     //public HashMap<String,Integer> getMap();
 
     

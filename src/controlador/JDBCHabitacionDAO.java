@@ -84,20 +84,17 @@ public class JDBCHabitacionDAO implements HabitacionDAO {
 
     }
 
- 
     public HashMap<String, Integer> getMap() {
-       
 
         try {
             String sql = "Select * from habitacion where ocupado = '0'";
             PreparedStatement ps = c.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            
 
             while (rs.next()) {
                 String clave = rs.getString("nombre");
                 Integer valor = rs.getInt("idhabitacion");
-                
+
                 mapHabitacionDisponible.put(clave, valor);
 
             }
@@ -107,15 +104,13 @@ public class JDBCHabitacionDAO implements HabitacionDAO {
         }
         return mapHabitacionDisponible;
     }
-    
+
     public HashMap<String, Integer> getMapOcupada() {
-       
 
         try {
             String sql = "Select * from habitacion where ocupado = '1'";
             PreparedStatement ps = c.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            
 
             while (rs.next()) {
                 String clave = rs.getString("nombre");
@@ -129,6 +124,18 @@ public class JDBCHabitacionDAO implements HabitacionDAO {
             e.getMessage();
         }
         return mapHabitacionOcupada;
+    }
+
+    @Override
+    public String selectNombreHab(int id) {
+        String nombre=null;
+        Habitacion[] h = selectAll();
+        for (Habitacion hab : h){
+            if (hab.getId()==id){
+                nombre = hab.getNombre(); 
+            }
+        }
+        return nombre;
     }
 
 }
