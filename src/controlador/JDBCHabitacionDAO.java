@@ -97,7 +97,7 @@ public class JDBCHabitacionDAO implements HabitacionDAO {
             while (rs.next()) {
                 String clave = rs.getString("nombre");
                 Integer valor = rs.getInt("idhabitacion");
-                System.out.println(clave + valor);
+                
                 mapHabitacionDisponible.put(clave, valor);
 
             }

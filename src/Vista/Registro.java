@@ -9,6 +9,7 @@ import controlador.ControlComboBox;
 import controlador.ControlFormulario;
 import controlador.JDBCPaxDAO;
 import controlador.Validacion;
+import java.time.LocalDateTime;
 import java.util.Random;
 import modelo.FormularioRegistroPax;
 import modelo.Pax;
@@ -19,7 +20,7 @@ import modelo.Reserva;
  * @author duoc
  */
 public class Registro extends javax.swing.JFrame {
-
+    
     int paxActual;
     JDBCPaxDAO jdbcpax = new JDBCPaxDAO();
     Pax pasajero = Pax.getPax();
@@ -34,7 +35,7 @@ public class Registro extends javax.swing.JFrame {
      *
      */
     public Registro(int paxActual) {
-
+        
         this.paxActual = paxActual;
         initComponents();
         LBPasajeroPrincipal.setVisible(false);
@@ -47,7 +48,7 @@ public class Registro extends javax.swing.JFrame {
         LBPremio.setVisible(false);
         Pax.clearPax();
         frp = FormularioRegistroPax.getForm(TFRut, TFDigitoVerificador, TFNombre, TFApellidoPat, TFApellidoMat, TFNac, CBFechaAño, CBFechaMes, CBFechaDia, CBSexo);
-
+        
     }
 
     /**
@@ -99,62 +100,62 @@ public class Registro extends javax.swing.JFrame {
 
         jLabel1.setText("Registro de pasajeros");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(30, 30, 135, 16);
+        jLabel1.setBounds(30, 30, 105, 14);
 
         jLabel2.setText("Rut:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(100, 70, 25, 16);
+        jLabel2.setBounds(100, 70, 21, 14);
 
         jLabel3.setText("Nombre:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(70, 100, 54, 16);
+        jLabel3.setBounds(70, 100, 41, 14);
 
         jLabel4.setText("Apellido Paterno:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(10, 130, 107, 16);
+        jLabel4.setBounds(10, 130, 82, 14);
 
         LBActual.setText("-");
         getContentPane().add(LBActual);
-        LBActual.setBounds(450, 30, 8, 16);
+        LBActual.setBounds(450, 30, 4, 14);
 
         jLabel6.setText("/");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(470, 30, 7, 16);
+        jLabel6.setBounds(470, 30, 4, 14);
 
         LBTotal.setText("-");
         getContentPane().add(LBTotal);
-        LBTotal.setBounds(480, 30, 8, 16);
+        LBTotal.setBounds(480, 30, 4, 14);
 
         jLabel5.setText("Sexo:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(90, 190, 34, 16);
+        jLabel5.setBounds(90, 190, 28, 14);
 
         jLabel7.setText("Fecha Nacimiento:");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(10, 230, 116, 16);
+        jLabel7.setBounds(10, 230, 88, 14);
 
         jLabel8.setText("Nacionalidad:");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(40, 260, 86, 16);
+        jLabel8.setBounds(40, 260, 64, 14);
 
         jLabel9.setText("Apellido Materno:");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(10, 160, 111, 16);
+        jLabel9.setBounds(10, 160, 84, 14);
         getContentPane().add(TFRut);
-        TFRut.setBounds(140, 60, 180, 26);
+        TFRut.setBounds(140, 60, 180, 20);
         getContentPane().add(TFNombre);
-        TFNombre.setBounds(140, 100, 240, 26);
+        TFNombre.setBounds(140, 100, 240, 20);
         getContentPane().add(TFApellidoPat);
-        TFApellidoPat.setBounds(140, 130, 240, 26);
+        TFApellidoPat.setBounds(140, 130, 240, 20);
         getContentPane().add(TFApellidoMat);
-        TFApellidoMat.setBounds(140, 160, 240, 26);
+        TFApellidoMat.setBounds(140, 160, 240, 20);
 
         CBSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--", "M", "F" }));
         getContentPane().add(CBSexo);
-        CBSexo.setBounds(140, 190, 50, 27);
+        CBSexo.setBounds(140, 190, 50, 20);
 
         getContentPane().add(CBFechaDia);
-        CBFechaDia.setBounds(330, 220, 50, 27);
+        CBFechaDia.setBounds(330, 220, 50, 20);
 
         CBFechaMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--seleccione--", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
         CBFechaMes.addActionListener(new java.awt.event.ActionListener() {
@@ -163,7 +164,7 @@ public class Registro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(CBFechaMes);
-        CBFechaMes.setBounds(230, 220, 94, 27);
+        CBFechaMes.setBounds(230, 220, 94, 20);
 
         CBFechaAño.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2001", "2000", "1999", "1998", "1997", "1996", "1995", "1994", "1993", "1992", "1991", "1990", "1989", "1988", "1987", "1986", "1985", "1984", "1983", "1982", "1981", "1980", "1979", "1978", "1977", "1976", "1975", "1974", "1973", "1972", "1971", "1970", "1969", "1968", "1967", "1966", "1965", "1964", "1963", "1962", "1961", "1960", "1959", "1958", "1957", "1956", "1955", "1954", "1953", "1952", "1951", "1950", "1949", "1948", "1947", "1946", "1945", "1944", "1943", "1942", "1941", "1940", "1939", "1938", "1937", "1936", "1935", "1934", "1933", "1932", "1931", "1930" }));
         CBFechaAño.addActionListener(new java.awt.event.ActionListener() {
@@ -172,9 +173,9 @@ public class Registro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(CBFechaAño);
-        CBFechaAño.setBounds(140, 220, 84, 27);
+        CBFechaAño.setBounds(140, 220, 84, 20);
         getContentPane().add(TFNac);
-        TFNac.setBounds(140, 260, 240, 26);
+        TFNac.setBounds(140, 260, 240, 20);
 
         BTNSorteo.setText("SORTEO!");
         BTNSorteo.addActionListener(new java.awt.event.ActionListener() {
@@ -192,20 +193,20 @@ public class Registro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BTNIngresar);
-        BTNIngresar.setBounds(432, 356, 95, 29);
+        BTNIngresar.setBounds(432, 356, 73, 23);
 
         BTNCancelar.setText("Cancelar");
         getContentPane().add(BTNCancelar);
-        BTNCancelar.setBounds(6, 356, 98, 29);
+        BTNCancelar.setBounds(6, 356, 75, 23);
 
         BTNVolver.setText("Anterior");
         getContentPane().add(BTNVolver);
-        BTNVolver.setBounds(331, 356, 95, 29);
+        BTNVolver.setBounds(331, 356, 71, 23);
 
         LBPasajeroPrincipal.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
         LBPasajeroPrincipal.setText("PASAJERO PRINCIPAL");
         getContentPane().add(LBPasajeroPrincipal);
-        LBPasajeroPrincipal.setBounds(180, 30, 123, 14);
+        LBPasajeroPrincipal.setBounds(180, 30, 121, 14);
 
         BTNVerificar.setText("Verificar pax");
         BTNVerificar.addActionListener(new java.awt.event.ActionListener() {
@@ -214,13 +215,13 @@ public class Registro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BTNVerificar);
-        BTNVerificar.setBounds(400, 70, 123, 49);
+        BTNVerificar.setBounds(400, 70, 93, 49);
 
         jLabel10.setText("-");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(330, 70, 8, 16);
+        jLabel10.setBounds(330, 70, 4, 14);
         getContentPane().add(TFDigitoVerificador);
-        TFDigitoVerificador.setBounds(340, 60, 40, 26);
+        TFDigitoVerificador.setBounds(340, 60, 40, 20);
 
         LBPremio.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
         LBPremio.setText("Has sido premiado!, este pasajero no pagara incorporación");
@@ -242,13 +243,20 @@ public class Registro extends javax.swing.JFrame {
         }
         if (paxActual == 1) {
             pasajero.setClientePpal(true);
-            pasajero.agregarVisitaComoPpal();
+            res.setRut(pasajero.getRut());
+            
         }
-
+        
         jdbcpax.insert(pasajero);
         paxActual++;
-
+        
         if (paxActual > res.getOcupantes()) {
+            res.setFechaEntrada(LocalDateTime.now());
+            if (res.getMomento()) {
+                res.setFechaSalida(LocalDateTime.now().plusHours(3));
+            } else {
+                res.setFechaSalida(LocalDateTime.now().plusHours(12));
+            }
             new ResumenReserva().setVisible(true);
             dispose();
         } else {
@@ -267,17 +275,16 @@ public class Registro extends javax.swing.JFrame {
                 pasajero = jdbcpax.selectRead(rut);
                 ControlFormulario.llenarFormularioRegistro(pasajero, frp);
                 paxNoExiste = false;
-
+                
             }
             
-            if (jdbcpax.isClienteFrecuente(pasajero)){
+            if (jdbcpax.isClienteFrecuente(pasajero)) {
                 pasajero.setClienteFrecuente(true);
                 BTNSorteo.setVisible(true);
             }
             
-
         }
-
+        
 
     }//GEN-LAST:event_BTNVerificarActionPerformed
 
@@ -286,7 +293,7 @@ public class Registro extends javax.swing.JFrame {
 
         int mesSeleccionado = CBFechaMes.getSelectedIndex();
         ControlComboBox.llenarCBFechaNacimientoRegistro(mesSeleccionado, Integer.valueOf(CBFechaAño.getSelectedItem().toString()), CBFechaDia);
-
+        
 
     }//GEN-LAST:event_CBFechaAñoActionPerformed
 
@@ -303,9 +310,9 @@ public class Registro extends javax.swing.JFrame {
         Random rd = new Random();
         boolean premiado = rd.nextBoolean();
         LBPremio.setVisible(true);
-        if (premiado){
+        if (premiado) {
             LBPremio.setText("HAS SIDO PREMIADO!, esta vez es gratis para ti");
-        }else{
+        } else {
             LBPremio.setText("esta vez no has ganado, mejor suerte para la proxima");
         }
         pasajero.setPremiado(premiado);

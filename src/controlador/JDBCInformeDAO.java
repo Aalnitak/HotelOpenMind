@@ -54,7 +54,7 @@ public class JDBCInformeDAO {
                     rs.getObject("nombre"),
                     rs.getObject("numero de pasajeros"),
                     rs.getObject("nombre producto consumido"),
-                    rs.getObject("limite_tiempo")
+                    rs.getObject("limite de tiempo")
                 });
                 
             }

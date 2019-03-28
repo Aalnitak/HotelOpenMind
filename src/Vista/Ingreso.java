@@ -25,12 +25,15 @@ public class Ingreso extends javax.swing.JFrame {
      * Creates new form Ingreso
      */
     static Reserva res = Reserva.getRes();
+    
     static JDBCHabitacionDAO jdbcHab;
 
     public Ingreso() {
         initComponents();
         ControlComboBox.llenarCBHabitacion(CBHabDispo);
         jdbcHab = new JDBCHabitacionDAO();
+        
+        Reserva.clearRes();
         //BGModo.setSelected(RBJornada.getModel(), true);
 
     }
@@ -68,15 +71,15 @@ public class Ingreso extends javax.swing.JFrame {
 
         jLabel1.setText("Ingreso");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(30, 20, 47, 16);
+        jLabel1.setBounds(30, 20, 37, 14);
 
         jLabel2.setText("Numero de personas");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(50, 60, 130, 16);
+        jLabel2.setBounds(50, 60, 99, 14);
 
         jLabel3.setText("Habitacion");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(110, 100, 68, 16);
+        jLabel3.setBounds(110, 100, 50, 14);
 
         BGModo.add(RBMomento);
         RBMomento.setText("Momento (3 hrs)");
@@ -86,7 +89,7 @@ public class Ingreso extends javax.swing.JFrame {
             }
         });
         getContentPane().add(RBMomento);
-        RBMomento.setBounds(50, 160, 135, 23);
+        RBMomento.setBounds(50, 160, 105, 23);
 
         BGModo.add(RBJornada);
         RBJornada.setText("Jornada (12 hrs)");
@@ -96,12 +99,12 @@ public class Ingreso extends javax.swing.JFrame {
             }
         });
         getContentPane().add(RBJornada);
-        RBJornada.setBounds(210, 160, 131, 23);
+        RBJornada.setBounds(210, 160, 105, 23);
         getContentPane().add(TFCantPax);
-        TFCantPax.setBounds(310, 60, 30, 26);
+        TFCantPax.setBounds(310, 60, 30, 20);
 
         getContentPane().add(CBHabDispo);
-        CBHabDispo.setBounds(220, 90, 120, 27);
+        CBHabDispo.setBounds(220, 90, 120, 20);
 
         BTNAceptar.setText("Aceptar");
         BTNAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -110,7 +113,7 @@ public class Ingreso extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BTNAceptar);
-        BTNAceptar.setBounds(290, 280, 92, 29);
+        BTNAceptar.setBounds(290, 280, 71, 23);
 
         BTNVolver.setText("Volver");
         BTNVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -119,26 +122,25 @@ public class Ingreso extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BTNVolver);
-        BTNVolver.setBounds(50, 280, 83, 29);
+        BTNVolver.setBounds(50, 280, 63, 23);
 
         jLabel4.setText("Precio Por Persona:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(170, 210, 119, 16);
+        jLabel4.setBounds(170, 210, 94, 14);
 
         LBPreciopp.setText("-");
         getContentPane().add(LBPreciopp);
-        LBPreciopp.setBounds(300, 210, 60, 16);
+        LBPreciopp.setBounds(300, 210, 60, 14);
 
         jLabel5.setText("Total");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(260, 230, 32, 16);
+        jLabel5.setBounds(260, 230, 24, 14);
 
         LBTotal.setText("-");
         getContentPane().add(LBTotal);
-        LBTotal.setBounds(300, 230, 70, 16);
+        LBTotal.setBounds(300, 230, 70, 14);
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/ingreso_bg.png"))); // NOI18N
-        background.setSize(new java.awt.Dimension(431, 348));
         getContentPane().add(background);
         background.setBounds(0, 0, 431, 348);
 
@@ -149,7 +151,7 @@ public class Ingreso extends javax.swing.JFrame {
     private void BTNAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNAceptarActionPerformed
         // TODO add your handling code here:
         boolean pase;
-        Reserva.clearRes();
+        
 
         if (Validacion.validarInt(TFCantPax.getText())
                 & CBHabDispo.getSelectedIndex() != 0

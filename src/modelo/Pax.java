@@ -14,8 +14,7 @@ import java.util.ArrayList;
  */
 public class Pax {
 
-    private Integer rut,
-            visitasComoPpal;
+    private Integer rut;
     private String digitoVerificador,
             nombre,
             apellidoPat,
@@ -33,13 +32,7 @@ public class Pax {
     private Pax() {
     }
 
-    public int getVisitasComoPpal() {
-        return visitasComoPpal;
-    }
-
-    public void agregarVisitaComoPpal() {
-        this.visitasComoPpal ++;
-    }
+ 
 
     public static ArrayList<Pax> getPaxes() {
         if (p == null) {
@@ -62,7 +55,7 @@ public class Pax {
         pax.setApellidoMat(null);
         pax.setNacionalidad(null);
         pax.setSexo(null);
-        pax.setVisitasComoPpal(0);
+        
         pax.setClientePpal(false);
         pax.setDigitoVerificador(null);
         pax.setFechaNacimiento(null);
@@ -85,9 +78,7 @@ public class Pax {
         this.premiado = premiado;
     }
 
-    public void setVisitasComoPpal(Integer visitasComoPpal) {
-        this.visitasComoPpal = visitasComoPpal;
-    }
+   
     
     
 
@@ -182,7 +173,7 @@ public class Pax {
 
     @Override
     public String toString() {
-        return "Pax{" + "rut=" + rut + ", visitasComoPpal=" + visitasComoPpal + ", digitoVerificador=" + digitoVerificador + ", nombre=" + nombre + ", apellidoPat=" + apellidoPat + ", apellidoMat=" + apellidoMat + ", sexo=" + sexo + ", nacionalidad=" + nacionalidad + ", fechaNacimiento=" + fechaNacimiento + ", clienteFrec=" + clienteFrec + ", clientePpal=" + clientePpal + '}';
+        return "Pax{" + "rut=" + rut +  ", digitoVerificador=" + digitoVerificador + ", nombre=" + nombre + ", apellidoPat=" + apellidoPat + ", apellidoMat=" + apellidoMat + ", sexo=" + sexo + ", nacionalidad=" + nacionalidad + ", fechaNacimiento=" + fechaNacimiento + ", clienteFrec=" + clienteFrec + ", clientePpal=" + clientePpal + '}';
     }
     
 
