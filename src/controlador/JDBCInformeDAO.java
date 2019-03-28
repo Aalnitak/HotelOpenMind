@@ -64,22 +64,76 @@ public class JDBCInformeDAO implements InformeDAO {
     }
     
     @Override
-    public ArrayList<Object[]> informeCliente(int rut) {return null;
+    public ArrayList<Object[]> informeCliente(int rut) {
+        // Retorna toda la información del cliente contenida en la clase
+        // Además de todos sus registros de entrada, habitaciones utilizadas y consumo por periodo
+        
+        // queri 
+        // UNION o Dos Tablas? 
+        // Puede que el primer elemento del arraylist de objeto sea un PAX
+        // del segundo en adelante
+        // informacion del registro 
+        // buscar rut en registro pasajeros
+        // recuperar idjornada
+        // campo "acompañante o principal""
+        // fecha, habitacion utilizada, consumo
+        // 
+        // tablas 
+        // PASAJERO (info del pasajero), 
+        // REGISTRO_PASAJEROS (buscar ocurrencias del rut, recuperar idjornada), 
+        // RESERVA (info de que habitacion uso y fecha), 
+        // HABITACION (nombre habitacion), 
+        // RESERVA_HAS_PRODUCTO (id productos comprados durante idjornada), 
+        // PRODUCTO(precio para los productos comprados)
+        
+        return null;
 }
     
     @Override
-    public ArrayList<Object[]> informeClienteDelAmor() {return null;
+    public ArrayList<Object[]> informeClienteDelAmor() {
+        // similar pero sin rut a busqueda cliente
+        
+        
+        return null;
+    
+    
 }
     @Override
-    public ArrayList<Object[]> informeHabitacion(boolean mayorUso){return null;
+    public ArrayList<Object[]> informeHabitacion(boolean mayorUso){
+        // Habitacion con mayor registro de utilizacion cuando mayourUso == True
+        // cuando False, menor registro de utilizacion
+        // clientes que la han utilizado, gasto por periodo, total gasto
+        // 
+        // JLabel: nombre de la habitacion
+        // Tabla 1:
+        // cliente X: total veces utilizada, como principal, como acompañante
+        // Tabla 2:
+        // Fecha jornada, gasto por periodo
+        // UNION total jornadas, gasto total
+        
+        
+        return null;
 }
     @Override
-    public ArrayList<Object[]> informeProducto(boolean mayorVenta){return null;
+    public ArrayList<Object[]> informeProducto(boolean mayorVenta){
+        // producto mas ventas (true) menos ventas (false)
+        // habitacion mayor ventas, numero ventas
+        // habitacion menor ventas, numero ventas
+        
+        
+        return null;
 }
     @Override
-    public ArrayList<Object[]> informeHabitacionMayorPromedioPasajeros(){return null;
+    public ArrayList<Object[]> informeHabitacionMayorPromedioPasajeros(){
+        // informe habitacion pero en vez de mayor uso mayor promedio pasajeros ingreso
+        
+        return null;
 }
     @Override
-    public ArrayList<Object[]> informeHabitaciones(){return null;
+    public ArrayList<Object[]> informeHabitaciones(){
+        
+        // nombre habitacion, promedio pasajeros
+        
+        return null;
 }
 }
