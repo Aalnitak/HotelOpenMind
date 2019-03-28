@@ -45,24 +45,23 @@ public class Informes extends javax.swing.JFrame {
 
         jLabel1.setText("Generar Informes");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(70, 10, 108, 16);
+        jLabel1.setBounds(70, 10, 109, 15);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(70, 40, 179, 27);
+        jComboBox1.setBounds(70, 40, 179, 25);
 
         BTNGenerar.setText("Generar");
         getContentPane().add(BTNGenerar);
-        BTNGenerar.setBounds(260, 70, 92, 29);
+        BTNGenerar.setBounds(260, 70, 79, 27);
 
         LBIngreso.setText("variable");
         getContentPane().add(LBIngreso);
         LBIngreso.setBounds(80, 70, 50, 20);
         getContentPane().add(TFVariable);
-        TFVariable.setBounds(140, 70, 121, 26);
+        TFVariable.setBounds(140, 70, 121, 27);
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/informes_bg.png"))); // NOI18N
-        background.setSize(new java.awt.Dimension(421, 128));
         getContentPane().add(background);
         background.setBounds(0, 0, 421, 128);
 

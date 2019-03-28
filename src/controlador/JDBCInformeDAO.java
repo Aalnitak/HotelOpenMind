@@ -9,20 +9,20 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import modelo.Reserva;
 
-/**
- *
- * @author duoc
- */
-public class JDBCInformeDAO {
+
+public class JDBCInformeDAO implements InformeDAO {
 
     private static Connection c = Conexion.getConnection();
+    
+    @Override
+    public ArrayList<Object[]> llenarTablaHabitacionOcupada() {
 
-    public static void llenarTablaHabitacionOcupada(JTable tabla) {
-
-        DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+        ArrayList<Object[]> elementosTabla = new ArrayList<Object[]>();
 
         try {
             String query = "SELECT h.nombre, r.num_pasajeros \"numero de pasajeros\", p.nombre \"nombre producto consumido\", r.limite_tiempo \"limite de tiempo\"\n"
@@ -46,7 +46,7 @@ public class JDBCInformeDAO {
 
             while (rs.next()) {
 
-                model.addRow(new Object[]{
+                elementosTabla.add(new Object[]{
                     rs.getObject("nombre"),
                     rs.getObject("numero de pasajeros"),
                     rs.getObject("nombre producto consumido"),
@@ -58,7 +58,28 @@ public class JDBCInformeDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        
+        return elementosTabla;
 
     }
-
+    
+    @Override
+    public ArrayList<Object[]> informeCliente(int rut) {return null;
+}
+    
+    @Override
+    public ArrayList<Object[]> informeClienteDelAmor() {return null;
+}
+    @Override
+    public ArrayList<Object[]> informeHabitacion(boolean mayorUso){return null;
+}
+    @Override
+    public ArrayList<Object[]> informeProducto(boolean mayorVenta){return null;
+}
+    @Override
+    public ArrayList<Object[]> informeHabitacionMayorPromedioPasajeros(){return null;
+}
+    @Override
+    public ArrayList<Object[]> informeHabitaciones(){return null;
+}
 }

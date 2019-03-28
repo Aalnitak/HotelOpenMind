@@ -6,6 +6,7 @@
 package controlador;
 
 import java.util.ArrayList;
+import javax.swing.JTable;
 import modelo.Reserva;
 
 /**
@@ -16,6 +17,11 @@ public interface InformeDAO {
     // metodos de las querys para cada informe
     
     public ArrayList<Object[]> llenarTablaHabitacionOcupada();
-    public Reserva selectInformeMaxMin(int ID_reserva,boolean max);
+    public ArrayList<Object[]> informeCliente(int rut);
+    public ArrayList<Object[]> informeClienteDelAmor();
+    public ArrayList<Object[]> informeHabitacion(boolean mayorUso);
+    public ArrayList<Object[]> informeProducto(boolean mayorVenta);
+    public ArrayList<Object[]> informeHabitacionMayorPromedioPasajeros();
+    public ArrayList<Object[]> informeHabitaciones();
 
 }

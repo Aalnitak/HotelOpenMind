@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import controlador.ControlInforme;
 import controlador.ControlMenu_Principal;
 import controlador.ControlTimer;
 import java.awt.event.ActionEvent;
@@ -27,10 +28,10 @@ public class Menu_Principal extends javax.swing.JFrame {
         
         //usar el constructor 
         initComponents();
-        LocalDateTime pruebaLDT = LocalDateTime.now().plusHours(1);
+//        LocalDateTime pruebaLDT = LocalDateTime.now().plusHours(1);
         
         ControlMenu_Principal.llenarTablaHabitacionesDisponibles(jtableHabitacionesLibres);
-        ControlMenu_Principal.llenarTablaHabitacionesOcupadas(jtableHabitacionesOcupadas);
+        ControlInforme.llenarTablaHabitacionesOcupadas(jtableHabitacionesOcupadas);
 //        ControlInfome
         // 
         
@@ -105,7 +106,7 @@ public class Menu_Principal extends javax.swing.JFrame {
 
         jLabel2.setText("Hotel Open Mind");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(200, 20, 79, 14);
+        jLabel2.setBounds(200, 20, 103, 15);
 
         BTNControlStock.setText("Control Stock");
         BTNControlStock.addActionListener(new java.awt.event.ActionListener() {
@@ -171,11 +172,11 @@ public class Menu_Principal extends javax.swing.JFrame {
 
         jtxtHeadHabitacionesOcupadas.setText("Información Habitaciones Ocupadas");
         getContentPane().add(jtxtHeadHabitacionesOcupadas);
-        jtxtHeadHabitacionesOcupadas.setBounds(20, 50, 172, 14);
+        jtxtHeadHabitacionesOcupadas.setBounds(20, 50, 226, 15);
 
         jtxtHeadHabitacionesLibres.setText("Información Habitaciones Libres");
         getContentPane().add(jtxtHeadHabitacionesLibres);
-        jtxtHeadHabitacionesLibres.setBounds(20, 200, 152, 14);
+        jtxtHeadHabitacionesLibres.setBounds(20, 200, 200, 15);
 
         jtxtReloj.setText("jLabel3");
         getContentPane().add(jtxtReloj);

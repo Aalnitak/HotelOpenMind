@@ -25,15 +25,15 @@ public class ControlMenu_Principal {
            
     }
     
-    public static void llenarTablaHabitacionesOcupadas (JTable tabla) {
-        // llamar DAO habitaciones, retornar mapa <nombres,id> habitaciones ocupadas
-        JDBCHabitacionDAO jdbcHabitacion = new JDBCHabitacionDAO();
-        JDBCInformeDAO jdbcInforme = new JDBCInformeDAO();
-        
-        jdbcInforme.llenarTablaHabitacionOcupada(tabla);
-        
-    
-    }
+//    public static void llenarTablaHabitacionesOcupadas (JTable tabla) {
+//        // llamar DAO habitaciones, retornar mapa <nombres,id> habitaciones ocupadas
+//        JDBCHabitacionDAO jdbcHabitacion = new JDBCHabitacionDAO();
+//        JDBCInformeDAO jdbcInforme = new JDBCInformeDAO();
+//        
+//        jdbcInforme.llenarTablaHabitacionOcupada(tabla);
+//        
+//    
+//    }
        
     
 }
