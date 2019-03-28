@@ -20,7 +20,8 @@ public class Reserva {
             ocupantes,
             idJornada,
             idhabitacion;   
-    private Boolean momento;
+    private Boolean momento,
+            principalPremiado;
     private static Reserva res;
 
     private Reserva() {
@@ -60,6 +61,14 @@ public class Reserva {
 
     public void setFechaEntrada(LocalDateTime fechaEntrada) {
         this.fechaEntrada = fechaEntrada;
+    }
+
+    public Boolean getPrincipalPremiado() {
+        return principalPremiado;
+    }
+
+    public void setPrincipalPremiado(Boolean principalPremiado) {
+        this.principalPremiado = principalPremiado;
     }
 
     public LocalDateTime getFechaSalidaEfectiva() {

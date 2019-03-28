@@ -10,7 +10,9 @@ import controlador.ControlFormulario;
 import controlador.JDBCPaxDAO;
 import controlador.Validacion;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Random;
+import modelo.ArrayRuts;
 import modelo.FormularioRegistroPax;
 import modelo.Pax;
 import modelo.Reserva;
@@ -27,6 +29,7 @@ public class Registro extends javax.swing.JFrame {
     FormularioRegistroPax frp;
     Reserva res = Reserva.getRes();
     boolean paxNoExiste = true;
+    ArrayList<Integer> ruts;
 
     /**
      * Creates new form Registro
@@ -48,7 +51,7 @@ public class Registro extends javax.swing.JFrame {
         LBPremio.setVisible(false);
         Pax.clearPax();
         frp = FormularioRegistroPax.getForm(TFRut, TFDigitoVerificador, TFNombre, TFApellidoPat, TFApellidoMat, TFNac, CBFechaAño, CBFechaMes, CBFechaDia, CBSexo);
-        
+        ruts = ArrayRuts.getArray();
     }
 
     /**
@@ -238,7 +241,7 @@ public class Registro extends javax.swing.JFrame {
 
     private void BTNIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNIngresarActionPerformed
         // TODO add your handling code here:
-
+        
         if (paxNoExiste) {
             ControlFormulario.llenarPasajeroCon(frp, pasajero);
         }
@@ -249,6 +252,7 @@ public class Registro extends javax.swing.JFrame {
         }
         
         jdbcpax.insert(pasajero);
+        ArrayRuts.setRut(pasajero.getRut());
         paxActual++;
         
         if (paxActual > res.getOcupantes()) {
@@ -316,8 +320,10 @@ public class Registro extends javax.swing.JFrame {
         } else {
             LBPremio.setText("esta vez no has ganado, mejor suerte para la proxima");
         }
-        pasajero.setPremiado(premiado);
+        pasajero.setCantidadVecesPremiado(pasajero.getCantidadVecesPremiado()+1);
+        res.setPrincipalPremiado(premiado);
         BTNSorteo.setEnabled(false);
+        
 
     }//GEN-LAST:event_BTNSorteoActionPerformed
 

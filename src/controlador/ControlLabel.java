@@ -83,8 +83,8 @@ public class ControlLabel {
         String nombreProd = jdbchab.selectNombreHab(res.getIdhabitacion()).concat(modo);
         Producto prod = jdbcprod.select(nombreProd);
         double total = prod.getPrecio()*res.getOcupantes()*descuento;
-        total = Math.ceil(total);
-        LBSubTotal.setText(String.valueOf(total));
+        total = Math.floor(total/100)*100;
+        LBSubTotal.setText(String.valueOf((int)total));
         
     }
     
