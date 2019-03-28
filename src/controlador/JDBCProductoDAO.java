@@ -21,13 +21,38 @@ public class JDBCProductoDAO implements ProductoDAO {
 
     @Override
     public void insert(Producto producto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try
+        {
+            String query = "INSERT INTO producto (nombre,descripcion,precio,stock,tipo) VALUES (?,?,?,?,?)";
+            PreparedStatement ps = c.prepareStatement(query);
+            ps.setString(1, producto.getNombre());
+            ps.setString(2, producto.getDescripcion());
+            ps.setInt(3, producto.getPrecio());
+            ps.setInt(4, producto.getStock());
+            ps.setString(5, producto.getDescripcion());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
     }
 
     @Override
     public void update(Producto producto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+ try
+        {
+            String query = "UPDATE producto SET nombre = ?, descripcion = ?, precio = ? ,stock = ?, tipo = ? WHERE idproducto = ?";
+            PreparedStatement ps = c.prepareStatement(query);
+            ps.setString(1, producto.getNombre());
+            ps.setString(2, producto.getDescripcion());
+            ps.setInt(3, producto.getPrecio());
+            ps.setInt(4, producto.getStock());
+            ps.setString(5, producto.getDescripcion());
+            ps.setInt(6, producto.getId());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }    }
 
     @Override
     public Producto select(String nombre) {
