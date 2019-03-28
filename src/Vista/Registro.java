@@ -92,6 +92,7 @@ public class Registro extends javax.swing.JFrame {
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(533, 420));
         setMinimumSize(new java.awt.Dimension(533, 420));
         setPreferredSize(new java.awt.Dimension(533, 420));
         setResizable(false);
@@ -230,7 +231,7 @@ public class Registro extends javax.swing.JFrame {
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/registro_bg.png"))); // NOI18N
         getContentPane().add(background);
-        background.setBounds(0, 0, 540, 400);
+        background.setBounds(0, 0, 530, 400);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

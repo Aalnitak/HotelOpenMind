@@ -35,6 +35,9 @@ public class Informes extends javax.swing.JFrame {
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAutoRequestFocus(false);
+        setMaximumSize(new java.awt.Dimension(421, 128));
+        setMinimumSize(new java.awt.Dimension(421, 128));
         setPreferredSize(new java.awt.Dimension(421, 128));
         setResizable(false);
         setSize(new java.awt.Dimension(421, 128));
@@ -59,7 +62,6 @@ public class Informes extends javax.swing.JFrame {
         TFVariable.setBounds(140, 70, 121, 26);
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/informes_bg.png"))); // NOI18N
-        background.setPreferredSize(new java.awt.Dimension(421, 128));
         background.setSize(new java.awt.Dimension(421, 128));
         getContentPane().add(background);
         background.setBounds(0, 0, 421, 128);

@@ -64,6 +64,9 @@ public class Ingreso extends javax.swing.JFrame {
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(431, 348));
+        setMinimumSize(new java.awt.Dimension(431, 348));
+        setPreferredSize(new java.awt.Dimension(431, 348));
         setResizable(false);
         setSize(new java.awt.Dimension(431, 348));
         getContentPane().setLayout(null);

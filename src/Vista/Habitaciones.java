@@ -41,6 +41,8 @@ public class Habitaciones extends javax.swing.JFrame {
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(341, 389));
+        setMinimumSize(new java.awt.Dimension(341, 389));
         setPreferredSize(new java.awt.Dimension(341, 389));
         setResizable(false);
         setSize(new java.awt.Dimension(341, 389));

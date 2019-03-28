@@ -96,6 +96,8 @@ public class Menu_Principal extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(584, 461));
+        setMinimumSize(new java.awt.Dimension(584, 461));
         setPreferredSize(new java.awt.Dimension(584, 461));
         setResizable(false);
         setSize(new java.awt.Dimension(584, 461));
