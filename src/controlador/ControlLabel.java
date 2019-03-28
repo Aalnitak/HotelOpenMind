@@ -37,7 +37,8 @@ public class ControlLabel {
         }else{
             modo="_jornada";
         }
-        String nombreProd = jdbchab.selectNombreHab(res.getIdhabitacion()).concat(modo);
+        String nombrehab = jdbchab.selectNombreHab(res.getIdhabitacion());
+        String nombreProd = nombrehab.concat(modo);
         Producto prod = jdbcprod.select(nombreProd);
         LBPreciopp.setText(String.valueOf(prod.getPrecio()));
         

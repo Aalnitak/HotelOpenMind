@@ -30,15 +30,15 @@ public class ResumenReserva extends javax.swing.JFrame {
     public ResumenReserva() {
         initComponents();
         Pax.clearPax();
-        h = Habitacion.getHab();
+        h = jdbchab.selectAll();
         pasajero = jdbcpax.selectRead(res.getRut());
         LBPaxPpal.setText(pasajero.getNombre()+" "+pasajero.getApellidoPat());
         LBOcupantes.setText(res.getOcupantes().toString());
         LBHab.setText(jdbchab.selectNombreHab(res.getIdhabitacion()));
         ControlLabel.setLabelPrecioPorPersona(res, LBPreciopp);
-        LBDesc.setText(ControlDescuento.getDescuento(res.getOcupantes()));
-        
-        ControlLabel.setPrecioSubTotal(res, LBTotal);
+        LBDesc.setText(ControlDescuento.getDescuento(res.getOcupantes()));        
+        ControlLabel.setPrecioSubTotal(res, LBDescpp);
+        ControlLabel.setPrecioTotal(res, LBTotal, ControlDescuento.getMultiplicadorDescuento(res.getOcupantes()));
     }
 
     /**
@@ -95,7 +95,7 @@ public class ResumenReserva extends javax.swing.JFrame {
 
         jLabel4.setText("Habitacion:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(90, 110, 54, 14);
+        jLabel4.setBounds(80, 110, 54, 14);
 
         jLabel5.setText("Precio por persona:");
         getContentPane().add(jLabel5);
@@ -129,35 +129,35 @@ public class ResumenReserva extends javax.swing.JFrame {
 
         LBVuelto.setText("-");
         getContentPane().add(LBVuelto);
-        LBVuelto.setBounds(180, 330, 4, 14);
+        LBVuelto.setBounds(180, 330, 80, 14);
 
         LBPaxPpal.setText("-");
         getContentPane().add(LBPaxPpal);
-        LBPaxPpal.setBounds(180, 70, 4, 14);
+        LBPaxPpal.setBounds(180, 70, 90, 14);
 
         LBOcupantes.setText("-");
         getContentPane().add(LBOcupantes);
-        LBOcupantes.setBounds(180, 90, 4, 14);
+        LBOcupantes.setBounds(180, 90, 100, 14);
 
         LBHab.setText("-");
         getContentPane().add(LBHab);
-        LBHab.setBounds(180, 110, 4, 14);
+        LBHab.setBounds(180, 110, 100, 14);
 
         LBPreciopp.setText("-");
         getContentPane().add(LBPreciopp);
-        LBPreciopp.setBounds(180, 130, 4, 14);
+        LBPreciopp.setBounds(180, 130, 100, 14);
 
         LBDesc.setText("-");
         getContentPane().add(LBDesc);
-        LBDesc.setBounds(180, 220, 4, 14);
+        LBDesc.setBounds(180, 220, 80, 14);
 
         LBDescpp.setText("-");
         getContentPane().add(LBDescpp);
-        LBDescpp.setBounds(180, 240, 4, 14);
+        LBDescpp.setBounds(180, 240, 90, 14);
 
         LBTotal.setText("-");
         getContentPane().add(LBTotal);
-        LBTotal.setBounds(180, 260, 4, 14);
+        LBTotal.setBounds(180, 260, 90, 14);
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/resumen_reserva_bg.png"))); // NOI18N
         getContentPane().add(background);

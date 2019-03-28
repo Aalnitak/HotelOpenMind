@@ -18,19 +18,17 @@ public class Habitacion {
     private boolean ocupado;
     private static Habitacion[] hab;
 
-    private Habitacion() {
-
+    public Habitacion() {
     }
 
     //el hotel tendra 5 habitaciones distintas
     public static Habitacion[] getHab() {
         JDBCHabitacionDAO jdbcHab = new JDBCHabitacionDAO();
+        int cant = jdbcHab.selectCantidadHabitaciones();
+        hab = new Habitacion[cant];
 
-        if (hab == null) {
-            int cant = jdbcHab.selectCantidadHabitaciones();
-            for (int i = 0; i < cant; i++) {
-                hab[i] = new Habitacion();
-            }
+        for (int i = 0; i < cant; i++) {
+            hab[i] = new Habitacion();
         }
 
         return hab;
