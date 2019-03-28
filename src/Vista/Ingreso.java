@@ -64,6 +64,8 @@ public class Ingreso extends javax.swing.JFrame {
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(431, 348));
+        setMinimumSize(new java.awt.Dimension(431, 348));
         setPreferredSize(new java.awt.Dimension(431, 348));
         setResizable(false);
         setSize(new java.awt.Dimension(431, 348));
@@ -71,15 +73,15 @@ public class Ingreso extends javax.swing.JFrame {
 
         jLabel1.setText("Ingreso");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(30, 20, 37, 14);
+        jLabel1.setBounds(30, 20, 120, 16);
 
         jLabel2.setText("Numero de personas");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(50, 60, 99, 14);
+        jLabel2.setBounds(50, 60, 170, 16);
 
         jLabel3.setText("Habitacion");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(110, 100, 50, 14);
+        jLabel3.setBounds(110, 100, 110, 16);
 
         BGModo.add(RBMomento);
         RBMomento.setText("Momento (3 hrs)");
@@ -89,7 +91,7 @@ public class Ingreso extends javax.swing.JFrame {
             }
         });
         getContentPane().add(RBMomento);
-        RBMomento.setBounds(50, 160, 105, 23);
+        RBMomento.setBounds(50, 160, 160, 23);
 
         BGModo.add(RBJornada);
         RBJornada.setText("Jornada (12 hrs)");
@@ -99,12 +101,12 @@ public class Ingreso extends javax.swing.JFrame {
             }
         });
         getContentPane().add(RBJornada);
-        RBJornada.setBounds(210, 160, 105, 23);
+        RBJornada.setBounds(210, 160, 170, 23);
         getContentPane().add(TFCantPax);
-        TFCantPax.setBounds(310, 60, 30, 20);
+        TFCantPax.setBounds(310, 60, 30, 26);
 
         getContentPane().add(CBHabDispo);
-        CBHabDispo.setBounds(220, 90, 120, 20);
+        CBHabDispo.setBounds(220, 90, 120, 27);
 
         BTNAceptar.setText("Aceptar");
         BTNAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -113,7 +115,7 @@ public class Ingreso extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BTNAceptar);
-        BTNAceptar.setBounds(290, 280, 71, 23);
+        BTNAceptar.setBounds(290, 280, 92, 29);
 
         BTNVolver.setText("Volver");
         BTNVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -122,23 +124,23 @@ public class Ingreso extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BTNVolver);
-        BTNVolver.setBounds(50, 280, 63, 23);
+        BTNVolver.setBounds(50, 280, 83, 29);
 
         jLabel4.setText("Precio Por Persona:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(170, 210, 94, 14);
+        jLabel4.setBounds(170, 210, 130, 16);
 
         LBPreciopp.setText("-");
         getContentPane().add(LBPreciopp);
-        LBPreciopp.setBounds(300, 210, 60, 14);
+        LBPreciopp.setBounds(310, 210, 70, 16);
 
         jLabel5.setText("Total");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(260, 230, 24, 14);
+        jLabel5.setBounds(260, 230, 50, 16);
 
         LBTotal.setText("-");
         getContentPane().add(LBTotal);
-        LBTotal.setBounds(300, 230, 70, 14);
+        LBTotal.setBounds(310, 230, 70, 16);
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/ingreso_bg.png"))); // NOI18N
         getContentPane().add(background);

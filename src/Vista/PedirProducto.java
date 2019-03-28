@@ -58,6 +58,8 @@ public class PedirProducto extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(464, 491));
+        setMinimumSize(new java.awt.Dimension(464, 491));
         setPreferredSize(new java.awt.Dimension(464, 491));
         setSize(new java.awt.Dimension(464, 491));
         getContentPane().setLayout(null);

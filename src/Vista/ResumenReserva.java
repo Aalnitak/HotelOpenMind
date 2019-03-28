@@ -73,6 +73,8 @@ public class ResumenReserva extends javax.swing.JFrame {
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(314, 440));
+        setMinimumSize(new java.awt.Dimension(314, 440));
         setPreferredSize(new java.awt.Dimension(314, 440));
         setResizable(false);
         setSize(new java.awt.Dimension(314, 440));

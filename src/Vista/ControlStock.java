@@ -46,6 +46,8 @@ public class ControlStock extends javax.swing.JFrame {
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(598, 487));
+        setMinimumSize(new java.awt.Dimension(598, 487));
         setPreferredSize(new java.awt.Dimension(598, 487));
         setResizable(false);
         setSize(new java.awt.Dimension(598, 487));
@@ -124,7 +126,6 @@ public class ControlStock extends javax.swing.JFrame {
         BTNVolver.setBounds(490, 410, 83, 29);
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/controlstock_bg.png"))); // NOI18N
-        background.setPreferredSize(new java.awt.Dimension(598, 487));
         background.setSize(new java.awt.Dimension(598, 487));
         getContentPane().add(background);
         background.setBounds(0, 0, 598, 487);
