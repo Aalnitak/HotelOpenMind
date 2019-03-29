@@ -97,16 +97,13 @@ public class Menu_Principal extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(584, 461));
         setMinimumSize(new java.awt.Dimension(584, 461));
-        setPreferredSize(new java.awt.Dimension(584, 461));
         setResizable(false);
         setSize(new java.awt.Dimension(584, 461));
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setText("Hotel Open Mind");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(200, 20, 103, 15);
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, -1, -1));
 
         BTNControlStock.setText("Control Stock");
         BTNControlStock.addActionListener(new java.awt.event.ActionListener() {
@@ -114,8 +111,7 @@ public class Menu_Principal extends javax.swing.JFrame {
                 BTNControlStockActionPerformed(evt);
             }
         });
-        getContentPane().add(BTNControlStock);
-        BTNControlStock.setBounds(400, 125, 120, 50);
+        getContentPane().add(BTNControlStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 125, 120, 50));
 
         BTNInformes.setText("Informes");
         BTNInformes.addActionListener(new java.awt.event.ActionListener() {
@@ -123,8 +119,7 @@ public class Menu_Principal extends javax.swing.JFrame {
                 BTNInformesActionPerformed(evt);
             }
         });
-        getContentPane().add(BTNInformes);
-        BTNInformes.setBounds(400, 63, 120, 50);
+        getContentPane().add(BTNInformes, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 63, 120, 50));
 
         BTNHab.setText("Pedidos");
         BTNHab.addActionListener(new java.awt.event.ActionListener() {
@@ -132,8 +127,7 @@ public class Menu_Principal extends javax.swing.JFrame {
                 BTNHabActionPerformed(evt);
             }
         });
-        getContentPane().add(BTNHab);
-        BTNHab.setBounds(400, 191, 120, 50);
+        getContentPane().add(BTNHab, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 191, 120, 50));
 
         BTNIngreso.setText("Ingreso");
         BTNIngreso.addActionListener(new java.awt.event.ActionListener() {
@@ -141,8 +135,7 @@ public class Menu_Principal extends javax.swing.JFrame {
                 BTNIngresoActionPerformed(evt);
             }
         });
-        getContentPane().add(BTNIngreso);
-        BTNIngreso.setBounds(400, 253, 120, 50);
+        getContentPane().add(BTNIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 253, 120, 50));
 
         jtableHabitacionesOcupadas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -154,8 +147,7 @@ public class Menu_Principal extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jtableHabitacionesOcupadas);
 
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(20, 70, 356, 128);
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 356, 128));
 
         jtableHabitacionesLibres.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -167,48 +159,43 @@ public class Menu_Principal extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(jtableHabitacionesLibres);
 
-        getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(20, 220, 356, 200);
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 356, 200));
 
         jtxtHeadHabitacionesOcupadas.setText("Información Habitaciones Ocupadas");
-        getContentPane().add(jtxtHeadHabitacionesOcupadas);
-        jtxtHeadHabitacionesOcupadas.setBounds(20, 50, 226, 15);
+        getContentPane().add(jtxtHeadHabitacionesOcupadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
 
         jtxtHeadHabitacionesLibres.setText("Información Habitaciones Libres");
-        getContentPane().add(jtxtHeadHabitacionesLibres);
-        jtxtHeadHabitacionesLibres.setBounds(20, 200, 200, 15);
+        getContentPane().add(jtxtHeadHabitacionesLibres, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
 
         jtxtReloj.setText("jLabel3");
-        getContentPane().add(jtxtReloj);
-        jtxtReloj.setBounds(400, 20, 80, 30);
+        getContentPane().add(jtxtReloj, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 80, 30));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/menu_principal_bg.png"))); // NOI18N
-        getContentPane().add(background);
-        background.setBounds(0, 0, 584, 461);
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BTNIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNIngresoActionPerformed
+        // TODO add your handling code here:
+        new Ingreso().setVisible(true);
+    }//GEN-LAST:event_BTNIngresoActionPerformed
 
     private void BTNHabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNHabActionPerformed
         // TODO add your handling code here:
         new Habitaciones().setVisible(true);
     }//GEN-LAST:event_BTNHabActionPerformed
 
-    private void BTNControlStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNControlStockActionPerformed
-        // TODO add your handling code here:
-        new ControlStock().setVisible(true);
-        
-    }//GEN-LAST:event_BTNControlStockActionPerformed
-
     private void BTNInformesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNInformesActionPerformed
         // TODO add your handling code here:
         new Informes().setVisible(true);
     }//GEN-LAST:event_BTNInformesActionPerformed
 
-    private void BTNIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNIngresoActionPerformed
+    private void BTNControlStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNControlStockActionPerformed
         // TODO add your handling code here:
-        new Ingreso().setVisible(true);
-    }//GEN-LAST:event_BTNIngresoActionPerformed
+        new ControlStock().setVisible(true);
+
+    }//GEN-LAST:event_BTNControlStockActionPerformed
 
     /**
      * @param args the command line arguments
@@ -272,6 +259,6 @@ public class Menu_Principal extends javax.swing.JFrame {
     private javax.swing.JTable jtableHabitacionesOcupadas;
     private javax.swing.JLabel jtxtHeadHabitacionesLibres;
     private javax.swing.JLabel jtxtHeadHabitacionesOcupadas;
-    private static javax.swing.JLabel jtxtReloj;
+    private javax.swing.JLabel jtxtReloj;
     // End of variables declaration//GEN-END:variables
 }

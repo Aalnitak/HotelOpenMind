@@ -41,29 +41,23 @@ public class Informes extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(421, 128));
         setResizable(false);
         setSize(new java.awt.Dimension(421, 128));
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Generar Informes");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(70, 10, 109, 15);
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, -1));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(70, 40, 179, 25);
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 179, -1));
 
         BTNGenerar.setText("Generar");
-        getContentPane().add(BTNGenerar);
-        BTNGenerar.setBounds(260, 70, 79, 27);
+        getContentPane().add(BTNGenerar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, -1, -1));
 
         LBIngreso.setText("variable");
-        getContentPane().add(LBIngreso);
-        LBIngreso.setBounds(80, 70, 50, 20);
-        getContentPane().add(TFVariable);
-        TFVariable.setBounds(140, 70, 121, 27);
+        getContentPane().add(LBIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 50, 20));
+        getContentPane().add(TFVariable, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 121, -1));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/informes_bg.png"))); // NOI18N
-        getContentPane().add(background);
-        background.setBounds(0, 0, 421, 128);
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

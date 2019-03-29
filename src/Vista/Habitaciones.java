@@ -46,23 +46,19 @@ public class Habitaciones extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(341, 389));
         setResizable(false);
         setSize(new java.awt.Dimension(341, 389));
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BTNHab0.setText("Habitacion0");
-        getContentPane().add(BTNHab0);
-        BTNHab0.setBounds(84, 80, 89, 23);
+        getContentPane().add(BTNHab0, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 80, -1, -1));
 
         BTNHab1.setText("Habitacion1");
-        getContentPane().add(BTNHab1);
-        BTNHab1.setBounds(84, 127, 89, 23);
+        getContentPane().add(BTNHab1, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 127, -1, -1));
 
         BTNHab2.setText("Habitacion2");
-        getContentPane().add(BTNHab2);
-        BTNHab2.setBounds(84, 174, 89, 23);
+        getContentPane().add(BTNHab2, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 174, -1, -1));
 
         BTNHab3.setText("Habitacion3");
-        getContentPane().add(BTNHab3);
-        BTNHab3.setBounds(84, 221, 89, 23);
+        getContentPane().add(BTNHab3, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 221, -1, -1));
 
         BTNHab4.setText("Habitacion4");
         BTNHab4.addActionListener(new java.awt.event.ActionListener() {
@@ -70,36 +66,28 @@ public class Habitaciones extends javax.swing.JFrame {
                 BTNHab4ActionPerformed(evt);
             }
         });
-        getContentPane().add(BTNHab4);
-        BTNHab4.setBounds(84, 268, 89, 23);
+        getContentPane().add(BTNHab4, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 268, -1, -1));
 
         LBHab0.setText("-");
-        getContentPane().add(LBHab0);
-        LBHab0.setBounds(239, 85, 4, 14);
+        getContentPane().add(LBHab0, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 85, -1, -1));
 
         LBHab1.setText("-");
-        getContentPane().add(LBHab1);
-        LBHab1.setBounds(239, 132, 4, 14);
+        getContentPane().add(LBHab1, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 132, -1, -1));
 
         LBHab2.setText("-");
-        getContentPane().add(LBHab2);
-        LBHab2.setBounds(239, 179, 4, 14);
+        getContentPane().add(LBHab2, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 179, -1, -1));
 
         LBHab3.setText("-");
-        getContentPane().add(LBHab3);
-        LBHab3.setBounds(239, 226, 4, 14);
+        getContentPane().add(LBHab3, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 226, -1, -1));
 
         LBHab4.setText("-");
-        getContentPane().add(LBHab4);
-        LBHab4.setBounds(239, 273, 4, 14);
+        getContentPane().add(LBHab4, new org.netbeans.lib.awtextra.AbsoluteConstraints(239, 273, -1, -1));
 
         jLabel1.setText("Seleccione la habitacion");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(90, 50, 113, 14);
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, -1, -1));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/habitaciones_bg.png"))); // NOI18N
-        getContentPane().add(background);
-        background.setBounds(0, 0, 341, 389);
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -51,7 +51,7 @@ public class ControlStock extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(598, 487));
         setResizable(false);
         setSize(new java.awt.Dimension(598, 487));
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -71,50 +71,36 @@ public class ControlStock extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(10, 30, 569, 201);
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 569, 201));
 
         BTNActualizar.setText("Actualizar");
-        getContentPane().add(BTNActualizar);
-        BTNActualizar.setBounds(470, 250, 107, 29);
+        getContentPane().add(BTNActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 250, -1, -1));
 
         jLabel1.setText("Agregar Nuevo");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(30, 250, 93, 16);
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
 
         jLabel2.setText("Nombre:");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(70, 280, 54, 20);
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, -1, 20));
 
         jLabel3.setText("Tipo:");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(90, 310, 32, 16);
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, -1, -1));
 
         jLabel4.setText("Descripcion:");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(40, 340, 79, 16);
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, -1, -1));
 
         jLabel5.setText("Precio:");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(80, 370, 42, 16);
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, -1, -1));
 
         jLabel6.setText("Stock:");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(80, 410, 39, 16);
-        getContentPane().add(TFNombre);
-        TFNombre.setBounds(130, 280, 200, 26);
-        getContentPane().add(TFTipo);
-        TFTipo.setBounds(130, 310, 200, 26);
-        getContentPane().add(TFDescripcion);
-        TFDescripcion.setBounds(130, 340, 200, 26);
-        getContentPane().add(TFPrecio);
-        TFPrecio.setBounds(130, 370, 200, 26);
-        getContentPane().add(TFStock);
-        TFStock.setBounds(130, 410, 200, 26);
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 410, -1, -1));
+        getContentPane().add(TFNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 200, -1));
+        getContentPane().add(TFTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, 200, -1));
+        getContentPane().add(TFDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 200, -1));
+        getContentPane().add(TFPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 370, 200, -1));
+        getContentPane().add(TFStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 410, 200, -1));
 
         BTNAgregar.setText("Agregar");
-        getContentPane().add(BTNAgregar);
-        BTNAgregar.setBounds(350, 410, 93, 29);
+        getContentPane().add(BTNAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 410, -1, -1));
 
         BTNVolver.setText("Volver");
         BTNVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -122,13 +108,10 @@ public class ControlStock extends javax.swing.JFrame {
                 BTNVolverActionPerformed(evt);
             }
         });
-        getContentPane().add(BTNVolver);
-        BTNVolver.setBounds(490, 410, 83, 29);
+        getContentPane().add(BTNVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 410, -1, -1));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/controlstock_bg.png"))); // NOI18N
-        background.setSize(new java.awt.Dimension(598, 487));
-        getContentPane().add(background);
-        background.setBounds(0, 0, 598, 487);
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -62,7 +62,7 @@ public class PedirProducto extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(464, 491));
         setPreferredSize(new java.awt.Dimension(464, 491));
         setSize(new java.awt.Dimension(464, 491));
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         TBLStock.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -89,32 +89,25 @@ public class PedirProducto extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(TBLStock);
 
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(6, 28, 268, 189);
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 28, 268, 189));
 
         jLabel1.setText("Elija el producto");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(6, 6, 102, 16);
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
 
         jLabel2.setText("Carrito de pedido");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(6, 227, 109, 16);
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 227, -1, -1));
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---cantidad---", " " }));
-        getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(292, 50, 158, 27);
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 50, -1, -1));
 
         jButton1.setText("Agregar");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(292, 95, 158, 29);
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 95, 158, -1));
 
         LBAgregado.setText("-");
-        getContentPane().add(LBAgregado);
-        LBAgregado.setBounds(292, 142, 8, 16);
+        getContentPane().add(LBAgregado, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 142, -1, -1));
 
         BTNPagar.setText("Pagar");
-        getContentPane().add(BTNPagar);
-        BTNPagar.setBounds(320, 420, 78, 29);
+        getContentPane().add(BTNPagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 420, -1, -1));
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -126,25 +119,19 @@ public class PedirProducto extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(jTable2);
 
-        getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(6, 249, 268, 149);
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 249, 268, 149));
 
         jLabel3.setText("Total a pagar");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(292, 352, 82, 16);
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 352, -1, -1));
 
         LBTotal.setText("-");
-        getContentPane().add(LBTotal);
-        LBTotal.setBounds(292, 382, 8, 16);
+        getContentPane().add(LBTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 382, -1, -1));
 
         BTNEliminar.setText("Eliminar");
-        getContentPane().add(BTNEliminar);
-        BTNEliminar.setBounds(292, 265, 158, 29);
+        getContentPane().add(BTNEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 265, 158, -1));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/pedirproducto_bg.png"))); // NOI18N
-        background.setSize(new java.awt.Dimension(464, 491));
-        getContentPane().add(background);
-        background.setBounds(0, 0, 464, 491);
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
