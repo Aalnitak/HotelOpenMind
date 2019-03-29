@@ -40,4 +40,11 @@ public class ControlInforme {
     }
     
     
+    public static void llenarTablaProductosControlStock(JTable TBLStock) {
+        
+        // implementar llenado de datos en controlstock
+        
+    }
+    
+    
 }

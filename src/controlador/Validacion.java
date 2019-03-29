@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import modelo.Pax;
 import modelo.Producto;
@@ -118,6 +119,12 @@ public class Validacion {
         if(isNull == false) {
             JDBCProductoDAO jdbcProductoDAO = new JDBCProductoDAO();
             jdbcProductoDAO.insert(producto);
+            JOptionPane.showMessageDialog(null, "Producto agregado exitosamente");
+            TFNombre.setText("");                                                    
+            TFDescripcion.setText("");
+            TFPrecio.setText("");
+            TFStock.setText("");
+            TFTipo.setText("");
         }
 
         return !isNull;
