@@ -116,13 +116,13 @@ public class Registro extends javax.swing.JFrame {
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 170, -1));
 
         LBActual.setText("-");
-        getContentPane().add(LBActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 30, -1, -1));
+        getContentPane().add(LBActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(434, 30, 20, -1));
 
         jLabel6.setText("/");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 30, -1, -1));
 
         LBTotal.setText("-");
-        getContentPane().add(LBTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 30, -1, -1));
+        getContentPane().add(LBTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 30, 20, -1));
 
         jLabel5.setText("Sexo:");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 90, -1));

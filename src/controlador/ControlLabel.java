@@ -67,6 +67,8 @@ public class ControlLabel {
 
     /**
      * la funcion setea el label con el total incluido el descuento
+     * calcula tambien si el pasajero principal salio o no premiado
+     * si salio premiado entonces descuenta un pasajero
      * @param res
      * @param LBSubTotal
      * @param descuento
@@ -82,7 +84,14 @@ public class ControlLabel {
         }
         String nombreProd = jdbchab.selectNombreHab(res.getIdhabitacion()).concat(modo);
         Producto prod = jdbcprod.select(nombreProd);
-        double total = prod.getPrecio()*res.getOcupantes()*descuento;
+        int ocupantes;
+        if (res.getPrincipalPremiado()){
+            ocupantes = res.getOcupantes()-1;
+        }else{
+            ocupantes = res.getOcupantes();
+        }
+        
+        double total = prod.getPrecio()*ocupantes*descuento;
         total = Math.floor(total/100)*100;
         LBSubTotal.setText(String.valueOf((int)total));
         
