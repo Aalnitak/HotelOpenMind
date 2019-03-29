@@ -66,22 +66,18 @@ public class Ingreso extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(431, 348));
         setMinimumSize(new java.awt.Dimension(431, 348));
-        setPreferredSize(new java.awt.Dimension(431, 348));
         setResizable(false);
         setSize(new java.awt.Dimension(431, 348));
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Ingreso");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(30, 20, 120, 14);
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 120, -1));
 
         jLabel2.setText("Numero de personas");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(50, 60, 170, 14);
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 170, -1));
 
         jLabel3.setText("Habitacion");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(110, 100, 110, 14);
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 110, -1));
 
         BGModo.add(RBMomento);
         RBMomento.setText("Momento (3 hrs)");
@@ -90,8 +86,7 @@ public class Ingreso extends javax.swing.JFrame {
                 RBMomentoActionPerformed(evt);
             }
         });
-        getContentPane().add(RBMomento);
-        RBMomento.setBounds(50, 160, 160, 23);
+        getContentPane().add(RBMomento, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 160, -1));
 
         BGModo.add(RBJornada);
         RBJornada.setText("Jornada (12 hrs)");
@@ -100,13 +95,10 @@ public class Ingreso extends javax.swing.JFrame {
                 RBJornadaActionPerformed(evt);
             }
         });
-        getContentPane().add(RBJornada);
-        RBJornada.setBounds(210, 160, 170, 23);
-        getContentPane().add(TFCantPax);
-        TFCantPax.setBounds(310, 60, 30, 20);
+        getContentPane().add(RBJornada, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 170, -1));
+        getContentPane().add(TFCantPax, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 30, -1));
 
-        getContentPane().add(CBHabDispo);
-        CBHabDispo.setBounds(220, 90, 120, 20);
+        getContentPane().add(CBHabDispo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 120, -1));
 
         BTNAceptar.setText("Aceptar");
         BTNAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -114,8 +106,7 @@ public class Ingreso extends javax.swing.JFrame {
                 BTNAceptarActionPerformed(evt);
             }
         });
-        getContentPane().add(BTNAceptar);
-        BTNAceptar.setBounds(290, 280, 71, 23);
+        getContentPane().add(BTNAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 280, -1, -1));
 
         BTNVolver.setText("Volver");
         BTNVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -123,28 +114,22 @@ public class Ingreso extends javax.swing.JFrame {
                 BTNVolverActionPerformed(evt);
             }
         });
-        getContentPane().add(BTNVolver);
-        BTNVolver.setBounds(50, 280, 63, 23);
+        getContentPane().add(BTNVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, -1, -1));
 
         jLabel4.setText("Precio Por Persona:");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(170, 210, 130, 14);
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 130, -1));
 
         LBPreciopp.setText("-");
-        getContentPane().add(LBPreciopp);
-        LBPreciopp.setBounds(310, 210, 70, 14);
+        getContentPane().add(LBPreciopp, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 70, -1));
 
         jLabel5.setText("Total");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(260, 230, 50, 14);
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 50, -1));
 
         LBTotal.setText("-");
-        getContentPane().add(LBTotal);
-        LBTotal.setBounds(310, 230, 70, 14);
+        getContentPane().add(LBTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, 70, -1));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/ingreso_bg.png"))); // NOI18N
-        getContentPane().add(background);
-        background.setBounds(0, 0, 431, 348);
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

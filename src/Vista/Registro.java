@@ -100,66 +100,49 @@ public class Registro extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(533, 420));
         setResizable(false);
         setSize(new java.awt.Dimension(533, 420));
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Registro de pasajeros");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(30, 30, 180, 14);
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 180, -1));
 
         jLabel2.setText("Rut:");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(130, 70, 80, 14);
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 80, -1));
 
         jLabel3.setText("Nombre:");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(100, 100, 110, 14);
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 110, -1));
 
         jLabel4.setText("Apellido Paterno:");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(50, 130, 170, 14);
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 170, -1));
 
         LBActual.setText("-");
-        getContentPane().add(LBActual);
-        LBActual.setBounds(434, 30, 20, 14);
+        getContentPane().add(LBActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(434, 30, 20, -1));
 
         jLabel6.setText("/");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(470, 30, 4, 14);
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 30, -1, -1));
 
         LBTotal.setText("-");
-        getContentPane().add(LBTotal);
-        LBTotal.setBounds(480, 30, 20, 14);
+        getContentPane().add(LBTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 30, 20, -1));
 
         jLabel5.setText("Sexo:");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(130, 190, 90, 14);
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 90, -1));
 
         jLabel7.setText("Fecha Nacimiento:");
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(50, 220, 170, 14);
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 170, -1));
 
         jLabel8.setText("Nacionalidad:");
-        getContentPane().add(jLabel8);
-        jLabel8.setBounds(80, 260, 140, 14);
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 140, -1));
 
         jLabel9.setText("Apellido Materno:");
-        getContentPane().add(jLabel9);
-        jLabel9.setBounds(50, 160, 170, 14);
-        getContentPane().add(TFRut);
-        TFRut.setBounds(190, 60, 140, 20);
-        getContentPane().add(TFNombre);
-        TFNombre.setBounds(190, 100, 190, 20);
-        getContentPane().add(TFApellidoPat);
-        TFApellidoPat.setBounds(190, 130, 190, 20);
-        getContentPane().add(TFApellidoMat);
-        TFApellidoMat.setBounds(190, 160, 190, 20);
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 170, -1));
+        getContentPane().add(TFRut, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 140, -1));
+        getContentPane().add(TFNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 190, -1));
+        getContentPane().add(TFApellidoPat, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 190, -1));
+        getContentPane().add(TFApellidoMat, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 190, -1));
 
         CBSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--", "M", "F" }));
-        getContentPane().add(CBSexo);
-        CBSexo.setBounds(190, 190, 50, 20);
+        getContentPane().add(CBSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 50, -1));
 
-        getContentPane().add(CBFechaDia);
-        CBFechaDia.setBounds(360, 220, 50, 20);
+        getContentPane().add(CBFechaDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, 50, -1));
 
         CBFechaMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--seleccione--", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
         CBFechaMes.addActionListener(new java.awt.event.ActionListener() {
@@ -167,8 +150,7 @@ public class Registro extends javax.swing.JFrame {
                 CBFechaMesActionPerformed(evt);
             }
         });
-        getContentPane().add(CBFechaMes);
-        CBFechaMes.setBounds(270, 220, 94, 20);
+        getContentPane().add(CBFechaMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 94, -1));
 
         CBFechaAño.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2001", "2000", "1999", "1998", "1997", "1996", "1995", "1994", "1993", "1992", "1991", "1990", "1989", "1988", "1987", "1986", "1985", "1984", "1983", "1982", "1981", "1980", "1979", "1978", "1977", "1976", "1975", "1974", "1973", "1972", "1971", "1970", "1969", "1968", "1967", "1966", "1965", "1964", "1963", "1962", "1961", "1960", "1959", "1958", "1957", "1956", "1955", "1954", "1953", "1952", "1951", "1950", "1949", "1948", "1947", "1946", "1945", "1944", "1943", "1942", "1941", "1940", "1939", "1938", "1937", "1936", "1935", "1934", "1933", "1932", "1931", "1930" }));
         CBFechaAño.addActionListener(new java.awt.event.ActionListener() {
@@ -176,10 +158,8 @@ public class Registro extends javax.swing.JFrame {
                 CBFechaAñoActionPerformed(evt);
             }
         });
-        getContentPane().add(CBFechaAño);
-        CBFechaAño.setBounds(190, 220, 84, 20);
-        getContentPane().add(TFNac);
-        TFNac.setBounds(190, 260, 190, 20);
+        getContentPane().add(CBFechaAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 84, -1));
+        getContentPane().add(TFNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 190, -1));
 
         BTNSorteo.setText("SORTEO!");
         BTNSorteo.addActionListener(new java.awt.event.ActionListener() {
@@ -187,8 +167,7 @@ public class Registro extends javax.swing.JFrame {
                 BTNSorteoActionPerformed(evt);
             }
         });
-        getContentPane().add(BTNSorteo);
-        BTNSorteo.setBounds(400, 90, 110, 125);
+        getContentPane().add(BTNSorteo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 90, 110, 125));
 
         BTNIngresar.setText("Ingresar");
         BTNIngresar.addActionListener(new java.awt.event.ActionListener() {
@@ -196,21 +175,17 @@ public class Registro extends javax.swing.JFrame {
                 BTNIngresarActionPerformed(evt);
             }
         });
-        getContentPane().add(BTNIngresar);
-        BTNIngresar.setBounds(432, 356, 73, 23);
+        getContentPane().add(BTNIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 356, -1, -1));
 
         BTNCancelar.setText("Cancelar");
-        getContentPane().add(BTNCancelar);
-        BTNCancelar.setBounds(6, 356, 75, 23);
+        getContentPane().add(BTNCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 356, -1, -1));
 
         BTNVolver.setText("Anterior");
-        getContentPane().add(BTNVolver);
-        BTNVolver.setBounds(331, 356, 71, 23);
+        getContentPane().add(BTNVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(331, 356, -1, -1));
 
         LBPasajeroPrincipal.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
         LBPasajeroPrincipal.setText("PASAJERO PRINCIPAL");
-        getContentPane().add(LBPasajeroPrincipal);
-        LBPasajeroPrincipal.setBounds(220, 30, 160, 14);
+        getContentPane().add(LBPasajeroPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 160, -1));
 
         BTNVerificar.setText("Verificar pax");
         BTNVerificar.addActionListener(new java.awt.event.ActionListener() {
@@ -218,23 +193,18 @@ public class Registro extends javax.swing.JFrame {
                 BTNVerificarActionPerformed(evt);
             }
         });
-        getContentPane().add(BTNVerificar);
-        BTNVerificar.setBounds(390, 60, 140, 30);
+        getContentPane().add(BTNVerificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 60, 140, 30));
 
         jLabel10.setText("-");
-        getContentPane().add(jLabel10);
-        jLabel10.setBounds(330, 70, 20, 10);
-        getContentPane().add(TFDigitoVerificador);
-        TFDigitoVerificador.setBounds(340, 60, 40, 20);
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, 20, 10));
+        getContentPane().add(TFDigitoVerificador, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 40, -1));
 
         LBPremio.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
         LBPremio.setText("Has sido premiado!, este pasajero no pagara incorporación");
-        getContentPane().add(LBPremio);
-        LBPremio.setBounds(190, 290, 331, 14);
+        getContentPane().add(LBPremio, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, -1, -1));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/registro_bg.png"))); // NOI18N
-        getContentPane().add(background);
-        background.setBounds(0, 0, 530, 400);
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 400));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

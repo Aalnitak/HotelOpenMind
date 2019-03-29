@@ -78,40 +78,32 @@ public class ResumenReserva extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(314, 440));
         setResizable(false);
         setSize(new java.awt.Dimension(314, 440));
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Resumen");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(30, 30, 64, 17);
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
         jLabel2.setText("Pasajero Principal:");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(50, 70, 88, 14);
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, -1));
 
         jLabel3.setText("Total de ocupantes:");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(40, 90, 96, 14);
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
 
         jLabel4.setText("Habitacion:");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(80, 110, 54, 14);
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, -1, -1));
 
         jLabel5.setText("Precio por persona:");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(40, 130, 94, 14);
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
 
         jLabel6.setText("Descuento:");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(90, 220, 55, 14);
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, -1, -1));
 
         jLabel7.setText("Descuento por persona:");
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(20, 240, 116, 14);
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
 
         jLabel8.setText("Total:");
-        getContentPane().add(jLabel8);
-        jLabel8.setBounds(130, 260, 28, 14);
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, -1, -1));
 
         BTNCobrar.setText("Pagar");
         BTNCobrar.addActionListener(new java.awt.event.ActionListener() {
@@ -119,60 +111,47 @@ public class ResumenReserva extends javax.swing.JFrame {
                 BTNCobrarActionPerformed(evt);
             }
         });
-        getContentPane().add(BTNCobrar);
-        BTNCobrar.setBounds(180, 370, 61, 23);
+        getContentPane().add(BTNCobrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, -1, -1));
 
         jLabel9.setText("Pago:");
-        getContentPane().add(jLabel9);
-        jLabel9.setBounds(130, 300, 28, 14);
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, -1, -1));
 
         TFPago.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TFPagoActionPerformed(evt);
             }
         });
-        getContentPane().add(TFPago);
-        TFPago.setBounds(180, 300, 96, 20);
+        getContentPane().add(TFPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, 96, -1));
 
         jLabel10.setText("Vuelto:");
-        getContentPane().add(jLabel10);
-        jLabel10.setBounds(120, 330, 34, 14);
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 330, -1, -1));
 
         LBVuelto.setText("-");
-        getContentPane().add(LBVuelto);
-        LBVuelto.setBounds(180, 330, 80, 14);
+        getContentPane().add(LBVuelto, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 80, -1));
 
         LBPaxPpal.setText("-");
-        getContentPane().add(LBPaxPpal);
-        LBPaxPpal.setBounds(180, 70, 90, 14);
+        getContentPane().add(LBPaxPpal, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 90, -1));
 
         LBOcupantes.setText("-");
-        getContentPane().add(LBOcupantes);
-        LBOcupantes.setBounds(180, 90, 100, 14);
+        getContentPane().add(LBOcupantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 100, -1));
 
         LBHab.setText("-");
-        getContentPane().add(LBHab);
-        LBHab.setBounds(180, 110, 100, 14);
+        getContentPane().add(LBHab, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 100, -1));
 
         LBPreciopp.setText("-");
-        getContentPane().add(LBPreciopp);
-        LBPreciopp.setBounds(180, 130, 100, 14);
+        getContentPane().add(LBPreciopp, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 100, -1));
 
         LBDesc.setText("-");
-        getContentPane().add(LBDesc);
-        LBDesc.setBounds(180, 220, 80, 14);
+        getContentPane().add(LBDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 80, -1));
 
         LBDescpp.setText("-");
-        getContentPane().add(LBDescpp);
-        LBDescpp.setBounds(180, 240, 90, 14);
+        getContentPane().add(LBDescpp, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, 90, -1));
 
         LBTotal.setText("-");
-        getContentPane().add(LBTotal);
-        LBTotal.setBounds(180, 260, 90, 14);
+        getContentPane().add(LBTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 90, -1));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/resumen_reserva_bg.png"))); // NOI18N
-        getContentPane().add(background);
-        background.setBounds(0, 0, 314, 440);
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
