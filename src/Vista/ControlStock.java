@@ -5,6 +5,9 @@
  */
 package Vista;
 
+import controlador.Validacion;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author duoc
@@ -46,9 +49,7 @@ public class ControlStock extends javax.swing.JFrame {
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(598, 487));
         setMinimumSize(new java.awt.Dimension(598, 487));
-        setPreferredSize(new java.awt.Dimension(598, 487));
         setResizable(false);
         setSize(new java.awt.Dimension(598, 487));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -100,6 +101,11 @@ public class ControlStock extends javax.swing.JFrame {
         getContentPane().add(TFStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 410, 200, -1));
 
         BTNAgregar.setText("Agregar");
+        BTNAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTNAgregarActionPerformed(evt);
+            }
+        });
         getContentPane().add(BTNAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 410, -1, -1));
 
         BTNVolver.setText("Volver");
@@ -120,6 +126,13 @@ public class ControlStock extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_BTNVolverActionPerformed
+
+    private void BTNAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNAgregarActionPerformed
+        // TODO add your handling code here:
+        if(!Validacion.deFormularioControlStock(TFNombre, TFDescripcion, TFPrecio, TFStock, TFTipo)) {
+            JOptionPane.showMessageDialog(null, "Faltan datos para agregar el producto al Stock del hotel");
+        }
+    }//GEN-LAST:event_BTNAgregarActionPerformed
 
     /**
      * @param args the command line arguments

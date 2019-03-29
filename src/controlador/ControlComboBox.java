@@ -7,6 +7,8 @@ package controlador;
 
 
 import javax.swing.JComboBox;
+import javax.swing.JTable;
+
 
 /**
  *
@@ -20,9 +22,10 @@ public class ControlComboBox {
             jdbcHab.mapHabitacionDisponible.keySet().forEach((name) -> {
                 cb.addItem(name);
         });
-            
-
-
+    }
+    
+    public static void llenarCBCantidadProducto(JComboBox CBCantidad, JTable tabla){
+                
     }
     
     public static void llenarCBFechaNacimientoRegistro(int idMes, int año, JComboBox diaFechaComboBox) {

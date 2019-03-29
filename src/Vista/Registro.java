@@ -12,6 +12,7 @@ import controlador.Validacion;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Random;
+import javax.swing.JOptionPane;
 import modelo.ArrayRuts;
 import modelo.FormularioRegistroPax;
 import modelo.Pax;
@@ -22,7 +23,7 @@ import modelo.Reserva;
  * @author duoc
  */
 public class Registro extends javax.swing.JFrame {
-    
+
     int paxActual;
     JDBCPaxDAO jdbcpax = new JDBCPaxDAO();
     Pax pasajero = Pax.getPax();
@@ -38,7 +39,7 @@ public class Registro extends javax.swing.JFrame {
      *
      */
     public Registro(int paxActual) {
-        
+
         this.paxActual = paxActual;
         initComponents();
         LBPasajeroPrincipal.setVisible(false);
@@ -211,33 +212,39 @@ public class Registro extends javax.swing.JFrame {
 
     private void BTNIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNIngresarActionPerformed
         // TODO add your handling code here:
-        
-        if (paxNoExiste) {
-            ControlFormulario.llenarPasajeroCon(frp, pasajero);
-        }
-        if (paxActual == 1) {
-            pasajero.setClientePpal(true);
-            res.setRut(pasajero.getRut());
-            
-        }
-        
-        jdbcpax.insert(pasajero);
-        ArrayRuts.setRut(pasajero.getRut());
-        paxActual++;
-        
-        if (paxActual > res.getOcupantes()) {
-            res.setFechaEntrada(LocalDateTime.now());
-            if (res.getMomento()) {
-                res.setFechaSalida(LocalDateTime.now().plusHours(3));
-            } else {
-                res.setFechaSalida(LocalDateTime.now().plusHours(12));
+
+        if (Validacion.deRegistro(TFRut, TFNombre, TFApellidoPat, TFApellidoMat, TFNac)) {
+
+            if (paxNoExiste) {
+                ControlFormulario.llenarPasajeroCon(frp, pasajero);
             }
-            new ResumenReserva().setVisible(true);
-            dispose();
+            if (paxActual == 1) {
+                pasajero.setClientePpal(true);
+                res.setRut(pasajero.getRut());
+
+            }
+
+            jdbcpax.insert(pasajero);
+            ArrayRuts.setRut(pasajero.getRut());
+            paxActual++;
+
+            if (paxActual > res.getOcupantes()) {
+                res.setFechaEntrada(LocalDateTime.now());
+                if (res.getMomento()) {
+                    res.setFechaSalida(LocalDateTime.now().plusHours(3));
+                } else {
+                    res.setFechaSalida(LocalDateTime.now().plusHours(12));
+                }
+                new ResumenReserva().setVisible(true);
+                dispose();
+            } else {
+                new Registro(paxActual).setVisible(true);
+                dispose();
+            }
         } else {
-            new Registro(paxActual).setVisible(true);
-            dispose();
+            JOptionPane.showMessageDialog(null, "Faltan datos para agregar al pasajero");
         }
+
     }//GEN-LAST:event_BTNIngresarActionPerformed
 
     private void BTNVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNVerificarActionPerformed
@@ -250,16 +257,16 @@ public class Registro extends javax.swing.JFrame {
                 pasajero = jdbcpax.selectRead(rut);
                 ControlFormulario.llenarFormularioRegistro(pasajero, frp);
                 paxNoExiste = false;
-                
+
             }
-            
+
             if (jdbcpax.isClienteFrecuente(pasajero)) {
                 pasajero.setClienteFrecuente(true);
                 BTNSorteo.setVisible(true);
             }
-            
+
         }
-        
+
 
     }//GEN-LAST:event_BTNVerificarActionPerformed
 
@@ -268,7 +275,7 @@ public class Registro extends javax.swing.JFrame {
 
         int mesSeleccionado = CBFechaMes.getSelectedIndex();
         ControlComboBox.llenarCBFechaNacimientoRegistro(mesSeleccionado, Integer.valueOf(CBFechaAño.getSelectedItem().toString()), CBFechaDia);
-        
+
 
     }//GEN-LAST:event_CBFechaAñoActionPerformed
 
@@ -290,10 +297,10 @@ public class Registro extends javax.swing.JFrame {
         } else {
             LBPremio.setText("esta vez no has ganado, mejor suerte para la proxima");
         }
-        pasajero.setCantidadVecesPremiado(pasajero.getCantidadVecesPremiado()+1);
+        pasajero.setCantidadVecesPremiado(pasajero.getCantidadVecesPremiado() + 1);
         res.setPrincipalPremiado(premiado);
         BTNSorteo.setEnabled(false);
-        
+
 
     }//GEN-LAST:event_BTNSorteoActionPerformed
 

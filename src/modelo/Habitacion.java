@@ -37,6 +37,7 @@ public class Habitacion {
         for (int i = 0; i < cant; i++) {
             hab[i] = new Habitacion();
         }
+        jdbcHab.selectAll();
 
         return hab;
     }
@@ -48,6 +49,24 @@ public class Habitacion {
      */
     public static Habitacion[] getHab(){
         return hab;
+    }
+    
+    /**
+     * retorna el indice de la habitacion 
+     * lo busca por su nombre
+     * @param nombre
+     * nombre de la habitacion
+     * @return
+     * el indice de la habitacion
+     */
+    public static int getIDporNombre(String nombre){
+        int indice=-1;
+        for (Habitacion h : hab){
+            if (h.getNombre().equals(nombre)){
+                indice = h.getId();
+            }
+        }
+        return indice;
     }
 
     public String getNombre() {

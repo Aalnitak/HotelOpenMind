@@ -10,8 +10,9 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
- * @author ljrojas
+ *  clase de controlador
+ * para llenar objetos del tipo JTable
+ * @author proyetco
  */
 public class ControlInforme {
     
@@ -24,5 +25,19 @@ public class ControlInforme {
         elementosTabla.forEach((elemento) -> { model.addRow(elemento);});
         
     }
+    
+    public static void llenarTablaProductosHabitacion(JTable TBLStock){
+        DefaultTableModel model = (DefaultTableModel) TBLStock.getModel();
+        JDBCProductoDAO jdbcprod = new JDBCProductoDAO();
+        ArrayList<Object[]> productos = jdbcprod.selectProductos();
+        for (Object obj[] : productos){
+                    Object[] objetosTabla = { obj[1],obj[3],obj[4] };
+                    model.addRow(objetosTabla);
+
+        }
+        
+        
+    }
+    
     
 }

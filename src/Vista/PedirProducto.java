@@ -5,17 +5,26 @@
  */
 package Vista;
 
+import controlador.ControlInforme;
+import modelo.Habitacion;
+
 /**
  *
  * @author duoc
  */
 public class PedirProducto extends javax.swing.JFrame {
-
+    Habitacion[] h;
+    int indiceHab;
     /**
      * Creates new form PedirProducto
      */
-    public PedirProducto() {
+    public PedirProducto(String nombreHabitacion) {
         initComponents();
+        LBNombreHab.setText(nombreHabitacion);
+        //h=Habitacion.getHab();
+        //indiceHab = Habitacion.getIDporNombre(nombreHabitacion);
+        ControlInforme.llenarTablaProductosHabitacion(TBLStock);
+        
     }
 
     /**
@@ -33,7 +42,7 @@ public class PedirProducto extends javax.swing.JFrame {
         TBLStock = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        CBCantidad = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         LBAgregado = new javax.swing.JLabel();
         BTNPagar = new javax.swing.JButton();
@@ -42,6 +51,8 @@ public class PedirProducto extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         LBTotal = new javax.swing.JLabel();
         BTNEliminar = new javax.swing.JButton();
+        LBNombreHab = new javax.swing.JLabel();
+        BTNVolver = new javax.swing.JButton();
         background = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -60,7 +71,6 @@ public class PedirProducto extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(464, 491));
         setMinimumSize(new java.awt.Dimension(464, 491));
-        setPreferredSize(new java.awt.Dimension(464, 491));
         setSize(new java.awt.Dimension(464, 491));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -69,14 +79,14 @@ public class PedirProducto extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Producto", "Precio"
+                "Producto", "Precio", "Stock"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -97,8 +107,8 @@ public class PedirProducto extends javax.swing.JFrame {
         jLabel2.setText("Carrito de pedido");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 227, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---cantidad---", " " }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 50, -1, -1));
+        CBCantidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---cantidad---" }));
+        getContentPane().add(CBCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 50, -1, -1));
 
         jButton1.setText("Agregar");
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 95, 158, -1));
@@ -114,9 +124,17 @@ public class PedirProducto extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Producto", "Precio"
+                "Producto", "Precio", "cantidad"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane3.setViewportView(jTable2);
 
         getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 249, 268, 149));
@@ -130,11 +148,28 @@ public class PedirProducto extends javax.swing.JFrame {
         BTNEliminar.setText("Eliminar");
         getContentPane().add(BTNEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 265, 158, -1));
 
+        LBNombreHab.setText("-");
+        getContentPane().add(LBNombreHab, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, -1, -1));
+
+        BTNVolver.setText("Volver");
+        BTNVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTNVolverActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BTNVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, -1, -1));
+
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/pedirproducto_bg.png"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BTNVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNVolverActionPerformed
+        // TODO add your handling code here:
+        new Habitaciones().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_BTNVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -164,22 +199,24 @@ public class PedirProducto extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PedirProducto().setVisible(true);
-            }
-        });
+        /*java.awt.EventQueue.invokeLater(new Runnable() {
+        public void run() {
+        new PedirProducto().setVisible(true);
+        }
+        });*/
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTNEliminar;
     private javax.swing.JButton BTNPagar;
+    private javax.swing.JButton BTNVolver;
+    private javax.swing.JComboBox<String> CBCantidad;
     private javax.swing.JLabel LBAgregado;
+    private javax.swing.JLabel LBNombreHab;
     private javax.swing.JLabel LBTotal;
     private javax.swing.JTable TBLStock;
     private javax.swing.JLabel background;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
