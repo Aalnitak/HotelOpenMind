@@ -5,7 +5,10 @@
  */
 package Vista;
 
+import controlador.ControlComboBox;
 import controlador.ControlInforme;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import modelo.Habitacion;
 
 /**
@@ -24,6 +27,14 @@ public class PedirProducto extends javax.swing.JFrame {
         //h=Habitacion.getHab();
         //indiceHab = Habitacion.getIDporNombre(nombreHabitacion);
         ControlInforme.llenarTablaProductosHabitacion(TBLStock);
+        
+        TBLStock.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                int stock = (int) TBLStock.getValueAt(TBLStock.getSelectedRow(), 2);
+                ControlComboBox.llenarCBCantidadProducto(CBCantidad, stock);
+            }
+        });
         
     }
 

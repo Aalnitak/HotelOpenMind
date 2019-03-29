@@ -24,7 +24,12 @@ public class ControlComboBox {
         });
     }
     
-    public static void llenarCBCantidadProducto(JComboBox CBCantidad, JTable tabla){
+    public static void llenarCBCantidadProducto(JComboBox CBCantidad, int stock){
+        CBCantidad.removeAllItems();
+        CBCantidad.addItem("--seleccione--");
+        for (int i =1;i<=stock;i++){
+            CBCantidad.addItem(i);
+        }
                 
     }
     
