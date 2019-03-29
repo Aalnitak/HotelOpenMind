@@ -20,8 +20,8 @@ public class ControlStock extends javax.swing.JFrame {
      */
     public ControlStock() {
         initComponents();
-       ControlInforme.llenarTablaProductosControlStock(jTableProductos);
-       
+        ControlInforme.llenarTablaProductosControlStock(jTableProductos);
+
     }
 
     /**
@@ -144,18 +144,22 @@ public class ControlStock extends javax.swing.JFrame {
 
     private void BTNAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNAgregarActionPerformed
         // TODO add your handling code here:
-        if(!Validacion.deFormularioControlStock(TFNombre, TFDescripcion, TFPrecio, TFStock, TFTipo)) {
+        if (!Validacion.deFormularioControlStock(TFNombre, TFDescripcion, TFPrecio, TFStock, TFTipo)) {
             JOptionPane.showMessageDialog(null, "Faltan datos para agregar el producto al Stock del hotel");
         } else {
-        new ControlStock().setVisible(true);
-        dispose();
+            actualizarVista();
         }
     }//GEN-LAST:event_BTNAgregarActionPerformed
 
-    private void BTNActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNActualizarActionPerformed
-        // TODO add your handling code here:
+    private void actualizarVista() {
         new ControlStock().setVisible(true);
         dispose();
+    }
+
+
+    private void BTNActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNActualizarActionPerformed
+        // TODO add your handling code here:
+        actualizarVista();
     }//GEN-LAST:event_BTNActualizarActionPerformed
 
     /**
