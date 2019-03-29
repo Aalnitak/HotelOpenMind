@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import controlador.ControlInforme;
 import controlador.Validacion;
 import javax.swing.JOptionPane;
 
@@ -19,6 +20,8 @@ public class ControlStock extends javax.swing.JFrame {
      */
     public ControlStock() {
         initComponents();
+       ControlInforme.llenarTablaProductosControlStock(jTableProductos);
+       
     }
 
     /**
@@ -31,7 +34,7 @@ public class ControlStock extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableProductos = new javax.swing.JTable();
         BTNActualizar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -54,27 +57,39 @@ public class ControlStock extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(598, 487));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Nombre", "Tipo", "Descripcion", "Precio", "Stock"
+                "ID", "Nombre", "Descripcion", "Precio", "Stock", "Tipo"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableProductos);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 569, 201));
 
         BTNActualizar.setText("Actualizar");
+        BTNActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTNActualizarActionPerformed(evt);
+            }
+        });
         getContentPane().add(BTNActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 250, -1, -1));
 
         jLabel1.setText("Agregar Nuevo");
@@ -131,8 +146,17 @@ public class ControlStock extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(!Validacion.deFormularioControlStock(TFNombre, TFDescripcion, TFPrecio, TFStock, TFTipo)) {
             JOptionPane.showMessageDialog(null, "Faltan datos para agregar el producto al Stock del hotel");
+        } else {
+        new ControlStock().setVisible(true);
+        dispose();
         }
     }//GEN-LAST:event_BTNAgregarActionPerformed
+
+    private void BTNActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNActualizarActionPerformed
+        // TODO add your handling code here:
+        new ControlStock().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_BTNActualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -186,6 +210,6 @@ public class ControlStock extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableProductos;
     // End of variables declaration//GEN-END:variables
 }

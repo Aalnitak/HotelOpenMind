@@ -107,7 +107,7 @@ public class Menu_Principal extends javax.swing.JFrame {
                 BTNControlStockActionPerformed(evt);
             }
         });
-        getContentPane().add(BTNControlStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 125, 120, 50));
+        getContentPane().add(BTNControlStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, 120, 50));
 
         BTNInformes.setText("Informes");
         BTNInformes.addActionListener(new java.awt.event.ActionListener() {
@@ -255,6 +255,6 @@ public class Menu_Principal extends javax.swing.JFrame {
     private javax.swing.JTable jtableHabitacionesOcupadas;
     private javax.swing.JLabel jtxtHeadHabitacionesLibres;
     private javax.swing.JLabel jtxtHeadHabitacionesOcupadas;
-    private javax.swing.JLabel jtxtReloj;
+    private static javax.swing.JLabel jtxtReloj;
     // End of variables declaration//GEN-END:variables
 }

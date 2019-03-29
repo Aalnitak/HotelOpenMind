@@ -41,8 +41,12 @@ public class ControlInforme {
     
     
     public static void llenarTablaProductosControlStock(JTable TBLStock) {
+        DefaultTableModel model = (DefaultTableModel) TBLStock.getModel();
+        JDBCProductoDAO jdbcProductDAO = new JDBCProductoDAO();
         
-        // implementar llenado de datos en controlstock
+        ArrayList<Object[]> productos = jdbcProductDAO.selectProductos();
+        
+        productos.forEach((elemento) -> { model.addRow(elemento);});
         
     }
     
