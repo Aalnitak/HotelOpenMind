@@ -67,34 +67,75 @@ public class JDBCInformeDAO implements InformeDAO {
     public ArrayList<Object[]> informeCliente(int rut) {
         // Retorna toda la información del cliente contenida en la clase
         // Además de todos sus registros de entrada, habitaciones utilizadas y consumo por periodo
+       ArrayList<Object[]> elementosTabla = new ArrayList<Object[]>(); 
+          
+        try 
+        {
+            String query = "SELECT \n" +
+                        "    r.inicio 'Fecha y hora de ingreso',\n" +
+                        "    CASE r.pasajero_rut\n" +
+                        "        WHEN '?' THEN 'Pasajero Principal'\n" +
+                        "        ELSE 'Acompañante'\n" +
+                        "    END AS 'Visita como',\n" +
+                        "    h.nombre AS 'Nombre Habitación',\n" +
+                        "    SUM(p.precio) AS 'Consumo Total'\n" +
+                        "FROM\n" +
+                        "    registro_pasajeros rp\n" +
+                        "        JOIN\n" +
+                        "    reserva r ON r.idjornada = rp.reserva_idjornada\n" +
+                        "        JOIN\n" +
+                        "    habitacion h ON r.habitacion_idhabitacion = h.idhabitacion\n" +
+                        "        JOIN\n" +
+                        "    reserva_has_producto rhp ON r.idjornada = rhp.reserva_idjornada\n" +
+                        "        JOIN\n" +
+                        "    producto p ON rhp.producto_idproducto = p.idproducto\n" +
+                        "WHERE\n" +
+                        "    rp.pasajero_rut = ?\n" +
+                        "GROUP BY r.idjornada";
+            PreparedStatement ps = c.prepareStatement(query);
+            ps.setInt(1, rut);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next() ) {
+                elementosTabla.add(new Object[] {
+                    rs.getObject("Fecha y hora de ingreso"),
+                    rs.getObject("Visita como"),
+                    rs.getObject("Nombre Habitación"),
+                    rs.getObject("Consumo Total")
+                });
+            }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         
-        // queri 
-        // UNION o Dos Tablas? 
-        // Puede que el primer elemento del arraylist de objeto sea un PAX
-        // del segundo en adelante
-        // informacion del registro 
-        // buscar rut en registro pasajeros
-        // recuperar idjornada
-        // campo "acompañante o principal""
-        // fecha, habitacion utilizada, consumo
-        // 
-        // tablas 
-        // PASAJERO (info del pasajero), 
-        // REGISTRO_PASAJEROS (buscar ocurrencias del rut, recuperar idjornada), 
-        // RESERVA (info de que habitacion uso y fecha), 
-        // HABITACION (nombre habitacion), 
-        // RESERVA_HAS_PRODUCTO (id productos comprados durante idjornada), 
-        // PRODUCTO(precio para los productos comprados)
+        return elementosTabla;
         
-        return null;
 }
     
     @Override
     public ArrayList<Object[]> informeClienteDelAmor() {
         // similar pero sin rut a busqueda cliente
+        // recuperar RUT del cliente del amor
+        ArrayList<Object[]> elementosTabla = new ArrayList<Object[]>(); 
+        int rut = 0;
+        try {
+            String query1 = "SELECT r.pasajero_rut , COUNT(r.pasajero_rut) cuenta\n" +
+                            "FROM reserva r\n" +
+                            "GROUP BY r.pasajero_rut\n" +
+                            "ORDER BY cuenta DESC\n" +
+                            "LIMIT 1";
+            PreparedStatement ps = c.prepareStatement(query1);
+            ResultSet rs1 = ps.executeQuery();
+            rs1.next();
+            rut = rs1.getInt("pasajero_rut");
+            
+            elementosTabla = informeCliente(rut);
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         
-        
-        return null;
+        return elementosTabla;
     
     
 }
