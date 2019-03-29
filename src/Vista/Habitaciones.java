@@ -5,6 +5,9 @@
  */
 package Vista;
 
+import controlador.ControlLabel;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import modelo.Habitacion;
 
 /**
@@ -21,6 +24,13 @@ public class Habitaciones extends javax.swing.JFrame {
     public Habitaciones() {
         initComponents();
         h = Habitacion.getHab();
+        //setear label de ocupado o no
+        JLabel[] labels = {LBHab0,LBHab1,LBHab2,LBHab3,LBHab4};
+        ControlLabel.setLabelHabitacionOcupada(h, labels);
+        //setear nombre de habitacion en boton
+        JButton[] buttons = {BTNHab0,BTNHab1,BTNHab2,BTNHab3,BTNHab4};
+        ControlLabel.setButtonNombreHabitacion(h, buttons);
+        
 
     }
 
@@ -44,26 +54,46 @@ public class Habitaciones extends javax.swing.JFrame {
         LBHab3 = new javax.swing.JLabel();
         LBHab4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        BTNVolver = new javax.swing.JButton();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(341, 389));
         setMinimumSize(new java.awt.Dimension(341, 389));
-        setPreferredSize(new java.awt.Dimension(341, 389));
         setResizable(false);
         setSize(new java.awt.Dimension(341, 389));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BTNHab0.setText("Habitacion0");
+        BTNHab0.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTNHab0ActionPerformed(evt);
+            }
+        });
         getContentPane().add(BTNHab0, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 80, -1, -1));
 
         BTNHab1.setText("Habitacion1");
+        BTNHab1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTNHab1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(BTNHab1, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 127, -1, -1));
 
         BTNHab2.setText("Habitacion2");
+        BTNHab2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTNHab2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(BTNHab2, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 174, -1, -1));
 
         BTNHab3.setText("Habitacion3");
+        BTNHab3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTNHab3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(BTNHab3, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 221, -1, -1));
 
         BTNHab4.setText("Habitacion4");
@@ -92,6 +122,14 @@ public class Habitaciones extends javax.swing.JFrame {
         jLabel1.setText("Seleccione la habitacion");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, -1, -1));
 
+        BTNVolver.setText("Volver");
+        BTNVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTNVolverActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BTNVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, -1, -1));
+
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/habitaciones_bg.png"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -100,7 +138,39 @@ public class Habitaciones extends javax.swing.JFrame {
 
     private void BTNHab4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNHab4ActionPerformed
         // TODO add your handling code here:
+        new PedirProducto(h[4].getNombre()).setVisible(true);
+        dispose();
+        
     }//GEN-LAST:event_BTNHab4ActionPerformed
+
+    private void BTNHab0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNHab0ActionPerformed
+        // TODO add your handling code here:
+        new PedirProducto(h[0].getNombre()).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_BTNHab0ActionPerformed
+
+    private void BTNHab1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNHab1ActionPerformed
+        // TODO add your handling code here:
+        new PedirProducto(h[1].getNombre()).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_BTNHab1ActionPerformed
+
+    private void BTNHab2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNHab2ActionPerformed
+        // TODO add your handling code here:
+        new PedirProducto(h[2].getNombre()).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_BTNHab2ActionPerformed
+
+    private void BTNHab3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNHab3ActionPerformed
+        // TODO add your handling code here:
+        new PedirProducto(h[3].getNombre()).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_BTNHab3ActionPerformed
+
+    private void BTNVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNVolverActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_BTNVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,6 +213,7 @@ public class Habitaciones extends javax.swing.JFrame {
     private javax.swing.JButton BTNHab2;
     private javax.swing.JButton BTNHab3;
     private javax.swing.JButton BTNHab4;
+    private javax.swing.JButton BTNVolver;
     private javax.swing.JLabel LBHab0;
     private javax.swing.JLabel LBHab1;
     private javax.swing.JLabel LBHab2;

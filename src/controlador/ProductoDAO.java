@@ -18,4 +18,5 @@ public interface ProductoDAO {
     public void insert(Producto producto);
     public void update(Producto producto);
     public Producto select(String nombre);
+    public ArrayList<Object[]> selectProductos();
 }
