@@ -13,13 +13,14 @@ import java.awt.event.ActionListener;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javax.swing.Timer;
+import modelo.Habitacion;
 
 /**
  *
  * @author duoc
  */
 public class Menu_Principal extends javax.swing.JFrame {
-
+    Habitacion[] h;
     /**
      * Creates new form Menu_Principal
      */
@@ -28,16 +29,11 @@ public class Menu_Principal extends javax.swing.JFrame {
         
         //usar el constructor 
         initComponents();
-//        LocalDateTime pruebaLDT = LocalDateTime.now().plusHours(1);
+        h = Habitacion.setHab();
         
         ControlMenu_Principal.llenarTablaHabitacionesDisponibles(jtableHabitacionesLibres);
         ControlInforme.llenarTablaHabitacionesOcupadas(jtableHabitacionesOcupadas);
-//        ControlInfome
-        // 
-        
-        // llenar tablas con habitaciones llenas y habitaciones vacías
-        
-        // habitaciones disponibles, usar 
+
         
         new Timer (1000, new ActionListener() {
             @Override

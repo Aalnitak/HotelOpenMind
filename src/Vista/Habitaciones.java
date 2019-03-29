@@ -5,17 +5,23 @@
  */
 package Vista;
 
+import modelo.Habitacion;
+
 /**
  *
  * @author duoc
  */
 public class Habitaciones extends javax.swing.JFrame {
 
+    Habitacion[] h;
+
     /**
      * Creates new form Habitaciones
      */
     public Habitaciones() {
         initComponents();
+        h = Habitacion.getHab();
+
     }
 
     /**

@@ -6,11 +6,10 @@
 package modelo;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 
 /**
  *
- * @author duoc
+ * @author proyetco Modelo del pasajero singleton
  */
 public class Pax {
 
@@ -26,17 +25,9 @@ public class Pax {
     private Boolean clienteFrec,
             clientePpal;
 
-    private static ArrayList<Pax> p;
     private static Pax pax;
 
     private Pax() {
-    }
-
-    public static ArrayList<Pax> getPaxes() {
-        if (p == null) {
-            p = new ArrayList<>();
-        }
-        return p;
     }
 
     public static Pax getPax() {
@@ -53,7 +44,7 @@ public class Pax {
         pax.setApellidoMat(null);
         pax.setNacionalidad(null);
         pax.setSexo(null);
-        pax.setCantidadVecesPremiado(null);
+        pax.setCantidadVecesPremiado(0);
         pax.setClientePpal(false);
         pax.setDigitoVerificador(null);
         pax.setFechaNacimiento(null);
@@ -67,8 +58,6 @@ public class Pax {
     public void setClienteFrec(Boolean clienteFrec) {
         this.clienteFrec = clienteFrec;
     }
-
- 
 
     public int getRut() {
         return rut;
@@ -148,14 +137,6 @@ public class Pax {
 
     public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
-    }
-
-    public static ArrayList<Pax> getP() {
-        return p;
-    }
-
-    public static void setP(ArrayList<Pax> p) {
-        Pax.p = p;
     }
 
     public Boolean isClientePpal() {

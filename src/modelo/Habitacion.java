@@ -22,7 +22,14 @@ public class Habitacion {
     }
 
     //el hotel tendra 5 habitaciones distintas
-    public static Habitacion[] getHab() {
+
+    /**
+     * esta funcion setea el array singleton de habitaciones
+     * desde la base de datos
+     * @return
+     * 
+     */
+    public static Habitacion[] setHab() {
         JDBCHabitacionDAO jdbcHab = new JDBCHabitacionDAO();
         int cant = jdbcHab.selectCantidadHabitaciones();
         hab = new Habitacion[cant];
@@ -31,6 +38,15 @@ public class Habitacion {
             hab[i] = new Habitacion();
         }
 
+        return hab;
+    }
+    
+    /**
+     *  esta funcion nos devuelve el singleton ya seteado
+     * @return
+     * array de habitaciones
+     */
+    public static Habitacion[] getHab(){
         return hab;
     }
 

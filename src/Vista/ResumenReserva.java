@@ -188,6 +188,7 @@ public class ResumenReserva extends javax.swing.JFrame {
     private void BTNCobrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNCobrarActionPerformed
         // TODO add your handling code here:
         //hacer insert de la reservatotal.
+        
         //dispose
     }//GEN-LAST:event_BTNCobrarActionPerformed
 
