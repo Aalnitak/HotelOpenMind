@@ -96,9 +96,7 @@ public class Registro extends javax.swing.JFrame {
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(533, 420));
         setMinimumSize(new java.awt.Dimension(533, 420));
-        setPreferredSize(new java.awt.Dimension(533, 420));
         setResizable(false);
         setSize(new java.awt.Dimension(533, 420));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -141,17 +139,17 @@ public class Registro extends javax.swing.JFrame {
         getContentPane().add(TFApellidoMat, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 190, -1));
 
         CBSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--", "M", "F" }));
-        getContentPane().add(CBSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 50, -1));
+        getContentPane().add(CBSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 90, -1));
 
-        getContentPane().add(CBFechaDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 220, 50, -1));
+        getContentPane().add(CBFechaDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 220, 80, -1));
 
-        CBFechaMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--seleccione--", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
+        CBFechaMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-seleccione-", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
         CBFechaMes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CBFechaMesActionPerformed(evt);
             }
         });
-        getContentPane().add(CBFechaMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 94, -1));
+        getContentPane().add(CBFechaMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 140, -1));
 
         CBFechaAño.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2001", "2000", "1999", "1998", "1997", "1996", "1995", "1994", "1993", "1992", "1991", "1990", "1989", "1988", "1987", "1986", "1985", "1984", "1983", "1982", "1981", "1980", "1979", "1978", "1977", "1976", "1975", "1974", "1973", "1972", "1971", "1970", "1969", "1968", "1967", "1966", "1965", "1964", "1963", "1962", "1961", "1960", "1959", "1958", "1957", "1956", "1955", "1954", "1953", "1952", "1951", "1950", "1949", "1948", "1947", "1946", "1945", "1944", "1943", "1942", "1941", "1940", "1939", "1938", "1937", "1936", "1935", "1934", "1933", "1932", "1931", "1930" }));
         CBFechaAño.addActionListener(new java.awt.event.ActionListener() {
@@ -179,6 +177,11 @@ public class Registro extends javax.swing.JFrame {
         getContentPane().add(BTNIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 356, -1, -1));
 
         BTNCancelar.setText("Cancelar");
+        BTNCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTNCancelarActionPerformed(evt);
+            }
+        });
         getContentPane().add(BTNCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 356, -1, -1));
 
         BTNVolver.setText("Anterior");
@@ -205,7 +208,7 @@ public class Registro extends javax.swing.JFrame {
         getContentPane().add(LBPremio, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, -1, -1));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/registro_bg.png"))); // NOI18N
-        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 530, 400));
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 533, 400));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -303,6 +306,11 @@ public class Registro extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_BTNSorteoActionPerformed
+
+    private void BTNCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNCancelarActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_BTNCancelarActionPerformed
 
     /**
      * @param args the command line arguments

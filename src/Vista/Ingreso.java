@@ -71,13 +71,13 @@ public class Ingreso extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Ingreso");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 120, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 30, 120, -1));
 
         jLabel2.setText("Numero de personas");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 170, -1));
 
         jLabel3.setText("Habitacion");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 110, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 110, -1));
 
         BGModo.add(RBMomento);
         RBMomento.setText("Momento (3 hrs)");
@@ -96,9 +96,9 @@ public class Ingreso extends javax.swing.JFrame {
             }
         });
         getContentPane().add(RBJornada, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 170, -1));
-        getContentPane().add(TFCantPax, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 30, -1));
+        getContentPane().add(TFCantPax, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 30, -1));
 
-        getContentPane().add(CBHabDispo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 120, -1));
+        getContentPane().add(CBHabDispo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 150, 40));
 
         BTNAceptar.setText("Aceptar");
         BTNAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -117,16 +117,16 @@ public class Ingreso extends javax.swing.JFrame {
         getContentPane().add(BTNVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, -1, -1));
 
         jLabel4.setText("Precio Por Persona:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 130, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 130, -1));
 
         LBPreciopp.setText("-");
-        getContentPane().add(LBPreciopp, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 70, -1));
+        getContentPane().add(LBPreciopp, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 220, 70, -1));
 
         jLabel5.setText("Total");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 50, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 50, -1));
 
         LBTotal.setText("-");
-        getContentPane().add(LBTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, 70, -1));
+        getContentPane().add(LBTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, 70, -1));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/ingreso_bg.png"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
