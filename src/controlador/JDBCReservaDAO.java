@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import javax.swing.JOptionPane;
 import modelo.Reserva;
 
 
@@ -36,9 +37,10 @@ public class JDBCReservaDAO implements ReservaDAO {
         
         ps.executeUpdate();
         
-        
+        JOptionPane.showMessageDialog(null, "Reserva ingresada exitosamente");
         }catch (SQLException e){
         e.getMessage();
+        JOptionPane.showMessageDialog(null, "Error al ingresar reserva");
         }
     }
 

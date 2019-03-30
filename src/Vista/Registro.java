@@ -266,6 +266,8 @@ public class Registro extends javax.swing.JFrame {
             if (jdbcpax.isClienteFrecuente(pasajero)) {
                 pasajero.setClienteFrecuente(true);
                 BTNSorteo.setVisible(true);
+            } else {
+                res.setPrincipalPremiado(false);
             }
 
         }

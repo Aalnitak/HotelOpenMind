@@ -7,6 +7,7 @@ package Vista;
 
 import controlador.ControlDescuento;
 import controlador.ControlLabel;
+import controlador.JDBCReservaDAO;
 import controlador.JDBCHabitacionDAO;
 import controlador.JDBCPaxDAO;
 import modelo.Habitacion;
@@ -73,28 +74,26 @@ public class ResumenReserva extends javax.swing.JFrame {
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(314, 440));
         setMinimumSize(new java.awt.Dimension(314, 440));
-        setPreferredSize(new java.awt.Dimension(314, 440));
         setResizable(false);
         setSize(new java.awt.Dimension(314, 440));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Resumen");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, -1, -1));
 
         jLabel2.setText("Pasajero Principal:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
 
         jLabel3.setText("Total de ocupantes:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
         jLabel4.setText("Habitacion:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, -1));
 
         jLabel5.setText("Precio por persona:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
 
         jLabel6.setText("Descuento:");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, -1, -1));
@@ -130,16 +129,16 @@ public class ResumenReserva extends javax.swing.JFrame {
         getContentPane().add(LBVuelto, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 80, -1));
 
         LBPaxPpal.setText("-");
-        getContentPane().add(LBPaxPpal, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 90, -1));
+        getContentPane().add(LBPaxPpal, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 120, -1));
 
         LBOcupantes.setText("-");
-        getContentPane().add(LBOcupantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 100, -1));
+        getContentPane().add(LBOcupantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 100, -1));
 
         LBHab.setText("-");
-        getContentPane().add(LBHab, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 100, -1));
+        getContentPane().add(LBHab, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 100, -1));
 
         LBPreciopp.setText("-");
-        getContentPane().add(LBPreciopp, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 100, -1));
+        getContentPane().add(LBPreciopp, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 100, -1));
 
         LBDesc.setText("-");
         getContentPane().add(LBDesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 80, -1));
@@ -168,6 +167,11 @@ public class ResumenReserva extends javax.swing.JFrame {
         // TODO add your handling code here:
         //hacer insert de la reservatotal.
         
+        JDBCReservaDAO jdbcReservaDAO = new JDBCReservaDAO();
+        jdbcReservaDAO.insert(res);
+        dispose();
+        
+        //falta cambiar estado de habitacion seleccionada además de agregar el insert en la reserva
         //dispose
     }//GEN-LAST:event_BTNCobrarActionPerformed
 
