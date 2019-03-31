@@ -26,7 +26,7 @@ public class JDBCReservaDAO implements ReservaDAO {
     public void insert(Reserva res) {
         
         try{
-        String query = "INSERT INTO reserva (pasajero_rut, habitacion_idhabitacion, inicio, limite_tiempo, num_pasajeros, momento)  VALUES ?,?,?,?,?,?";
+        String query = "INSERT INTO reserva (pasajero_rut, habitacion_idhabitacion, inicio, limite_tiempo, num_pasajeros, momento)  VALUES (?,?,?,?,?,?)";
         PreparedStatement ps = c.prepareStatement(query);
         ps.setInt(1, res.getRut());
         ps.setInt(2, res.getIdhabitacion());
