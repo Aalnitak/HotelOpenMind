@@ -61,6 +61,11 @@ public class InformeCliente extends javax.swing.JFrame {
         jlbNacionalidad.setText("Nacionalidad");
 
         jcbRuts.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcbRuts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbRutsActionPerformed(evt);
+            }
+        });
 
         jlblNombreCliente.setText("jLabel7");
 
@@ -161,14 +166,13 @@ public class InformeCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-     private void CBRutActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void jcbRutsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbRutsActionPerformed
         // TODO add your handling code here:
-
-        int rut = jcbRuts.getSelectedIndex();
+        int rut = (Integer)jcbRuts.getSelectedItem();
         ControlInforme.llenarInformacionPaxInformeCliente(rut, jlblNombreCliente, jlbSexoCliente, jlbFechaCliente, jlbNacionalidadCliente, jtRegistroVisitas);
+    }//GEN-LAST:event_jcbRutsActionPerformed
 
-
-    }                
+   
     
     /**
      * @param args the command line arguments
