@@ -103,4 +103,19 @@ public class JDBCProductoDAO implements ProductoDAO {
         return productos;
     }
 
+    @Override
+    public void updateStock(String nombreProducto, int stock, int cantidadPedido) {
+        try{
+            int stocknuevo = stock - cantidadPedido;
+            String sql = "UPDATE producto set stock = ? where nombre = ?";
+            PreparedStatement ps = c.prepareStatement(sql);
+            ps.setInt(1, stocknuevo);
+            ps.setString(2, nombreProducto);
+            ps.executeUpdate();
+            
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
+    }
+
 }

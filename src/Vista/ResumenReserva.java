@@ -24,6 +24,7 @@ public class ResumenReserva extends javax.swing.JFrame {
     JDBCPaxDAO jdbcpax = new JDBCPaxDAO();
     JDBCHabitacionDAO jdbchab = new JDBCHabitacionDAO();
     Habitacion[] h;
+    JDBCReservaDAO jdbcReservaDAO = new JDBCReservaDAO();
 
     /**
      * Creates new form Cobro
@@ -165,11 +166,11 @@ public class ResumenReserva extends javax.swing.JFrame {
 
     private void BTNCobrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNCobrarActionPerformed
         // TODO add your handling code here:
-        //hacer insert de la reservatotal.
         
-        JDBCReservaDAO jdbcReservaDAO = new JDBCReservaDAO();
+        jdbchab.updateOcupado(h[res.getIdhabitacion()]);
         jdbcReservaDAO.insert(res);
         dispose();
+        
         
         //falta cambiar estado de habitacion seleccionada además de agregar el insert en la reserva
         //dispose

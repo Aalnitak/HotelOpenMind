@@ -39,7 +39,7 @@ public class JDBCReservaDAO implements ReservaDAO {
         
         JOptionPane.showMessageDialog(null, "Reserva ingresada exitosamente");
         }catch (SQLException e){
-        e.getMessage();
+        System.out.println(e.getMessage());
         JOptionPane.showMessageDialog(null, "Error al ingresar reserva");
         }
     }

@@ -7,8 +7,10 @@ package Vista;
 
 import controlador.ControlComboBox;
 import controlador.ControlInforme;
+import controlador.JDBCProductoDAO;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
 import modelo.Habitacion;
 
 /**
@@ -18,6 +20,7 @@ import modelo.Habitacion;
 public class PedirProducto extends javax.swing.JFrame {
     Habitacion[] h;
     int indiceHab;
+    JDBCProductoDAO jdbcprod = new JDBCProductoDAO();
     /**
      * Creates new form PedirProducto
      */
@@ -54,11 +57,11 @@ public class PedirProducto extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         CBCantidad = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        javax.swing.JButton BTNAgregar = new javax.swing.JButton();
         LBAgregado = new javax.swing.JLabel();
         BTNPagar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        TBLCarrito = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         LBTotal = new javax.swing.JLabel();
         BTNEliminar = new javax.swing.JButton();
@@ -121,16 +124,26 @@ public class PedirProducto extends javax.swing.JFrame {
         CBCantidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---cantidad---" }));
         getContentPane().add(CBCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 50, -1, -1));
 
-        jButton1.setText("Agregar");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 95, 158, -1));
+        BTNAgregar.setText("Agregar");
+        BTNAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTNAgregarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BTNAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 95, 158, -1));
 
         LBAgregado.setText("-");
         getContentPane().add(LBAgregado, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 142, -1, -1));
 
         BTNPagar.setText("Pagar");
+        BTNPagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTNPagarActionPerformed(evt);
+            }
+        });
         getContentPane().add(BTNPagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 420, -1, -1));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        TBLCarrito.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -146,7 +159,7 @@ public class PedirProducto extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(jTable2);
+        jScrollPane3.setViewportView(TBLCarrito);
 
         getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 249, 268, 149));
 
@@ -157,6 +170,11 @@ public class PedirProducto extends javax.swing.JFrame {
         getContentPane().add(LBTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 382, -1, -1));
 
         BTNEliminar.setText("Eliminar");
+        BTNEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTNEliminarActionPerformed(evt);
+            }
+        });
         getContentPane().add(BTNEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 265, 158, -1));
 
         LBNombreHab.setText("-");
@@ -181,6 +199,31 @@ public class PedirProducto extends javax.swing.JFrame {
         new Habitaciones().setVisible(true);
         dispose();
     }//GEN-LAST:event_BTNVolverActionPerformed
+
+    private void BTNAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNAgregarActionPerformed
+        // TODO add your handling code here:
+        ControlInforme.transferirProductoATablaPedido(TBLStock, TBLStock.getSelectedRow(), TBLCarrito,CBCantidad.getSelectedIndex());
+        ControlInforme.restarProductoStock(TBLStock, CBCantidad.getSelectedIndex());
+        
+        
+    }//GEN-LAST:event_BTNAgregarActionPerformed
+
+    private void BTNPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNPagarActionPerformed
+        // TODO add your handling code here:
+        String nombreProd = TBLStock.getValueAt(TBLStock.getSelectedRow(), 0).toString();
+        int stock = (int)TBLStock.getValueAt(TBLStock.getSelectedRow(), 2);
+        int cantidadPedido =  CBCantidad.getSelectedIndex();
+        jdbcprod.updateStock(nombreProd, stock, cantidadPedido);
+    }//GEN-LAST:event_BTNPagarActionPerformed
+
+    private void BTNEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNEliminarActionPerformed
+        // TODO add your handling code here:
+        
+        DefaultTableModel carrito = (DefaultTableModel)TBLCarrito.getModel();
+        int cantidad = (int)carrito.getValueAt(TBLCarrito.getSelectedRow(), TBLCarrito.getColumnCount()-1);
+        ControlInforme.sumarProductoStock(TBLStock,cantidad );
+        ControlInforme.eliminarProductoCarrito(TBLCarrito, TBLCarrito.getSelectedRow());
+    }//GEN-LAST:event_BTNEliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -225,9 +268,9 @@ public class PedirProducto extends javax.swing.JFrame {
     private javax.swing.JLabel LBAgregado;
     private javax.swing.JLabel LBNombreHab;
     private javax.swing.JLabel LBTotal;
+    private javax.swing.JTable TBLCarrito;
     private javax.swing.JTable TBLStock;
     private javax.swing.JLabel background;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -235,6 +278,5 @@ public class PedirProducto extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 }
