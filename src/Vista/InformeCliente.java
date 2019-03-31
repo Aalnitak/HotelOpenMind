@@ -38,7 +38,7 @@ public class InformeCliente extends javax.swing.JFrame {
         jlbFecha = new javax.swing.JLabel();
         jlbNacionalidad = new javax.swing.JLabel();
         jcbRuts = new javax.swing.JComboBox<>();
-        jlblNombreClliente = new javax.swing.JLabel();
+        jlblNombreCliente = new javax.swing.JLabel();
         jlbSexoCliente = new javax.swing.JLabel();
         jlbFechaCliente = new javax.swing.JLabel();
         jlbNacionalidadCliente = new javax.swing.JLabel();
@@ -62,7 +62,7 @@ public class InformeCliente extends javax.swing.JFrame {
 
         jcbRuts.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jlblNombreClliente.setText("jLabel7");
+        jlblNombreCliente.setText("jLabel7");
 
         jlbSexoCliente.setText("jLabel8");
 
@@ -102,7 +102,7 @@ public class InformeCliente extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addComponent(jlbNombre)
                                 .addGap(18, 18, 18)
-                                .addComponent(jlblNombreClliente, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jlblNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jlbSexo)
@@ -138,7 +138,7 @@ public class InformeCliente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlbNombre)
-                    .addComponent(jlblNombreClliente))
+                    .addComponent(jlblNombreCliente))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlbSexo)
@@ -165,7 +165,7 @@ public class InformeCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         int rut = jcbRuts.getSelectedIndex();
-        ControlInforme.llenarInformacionPaxInformeCliente(rut, jlbNombre, jlbSexo, jlbFechaCliente, jlbNacionalidad, jtRegistroVisitas);
+        ControlInforme.llenarInformacionPaxInformeCliente(rut, jlblNombreCliente, jlbSexoCliente, jlbFechaCliente, jlbNacionalidadCliente, jtRegistroVisitas);
 
 
     }                
@@ -218,7 +218,7 @@ public class InformeCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jlbSexoCliente;
     private javax.swing.JLabel jlbTitulo;
     private javax.swing.JLabel jlbTituloTabla;
-    private javax.swing.JLabel jlblNombreClliente;
+    private javax.swing.JLabel jlblNombreCliente;
     private javax.swing.JTable jtRegistroVisitas;
     // End of variables declaration//GEN-END:variables
 }

@@ -41,7 +41,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jlbNombre" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jlblNombreClliente" min="-2" pref="245" max="-2" attributes="0"/>
+                              <Component id="jlblNombreCliente" min="-2" pref="245" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
@@ -88,7 +88,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jlbNombre" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jlblNombreClliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jlblNombreCliente" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -160,7 +160,7 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JLabel" name="jlblNombreClliente">
+    <Component class="javax.swing.JLabel" name="jlblNombreCliente">
       <Properties>
         <Property name="text" type="java.lang.String" value="jLabel7"/>
       </Properties>
