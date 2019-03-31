@@ -68,13 +68,24 @@ public class ControlInforme {
         
     }
     
-    public static void sumarProductoStock(JTable TBLStock, int cantidad) {
+    public static void sumarProductoStock(JTable TBLStock, int cantidad, String nombreProd) {
         //restar cantidad del stock en tabla.
         DefaultTableModel model = (DefaultTableModel) TBLStock.getModel();
-        int stock = (int) TBLStock.getValueAt(TBLStock.getSelectedRow(), 2);
+        int index = getIndexfromNombre(TBLStock,nombreProd);
+        int stock = (int) TBLStock.getValueAt(index, 2);
         stock += cantidad;
-        model.setValueAt(stock, TBLStock.getSelectedRow(), 2);
+        model.setValueAt(stock, index, 2);
 
+    }
+    
+    public static int getIndexfromNombre(JTable TBLStock, String nombreProd){
+        DefaultTableModel model = (DefaultTableModel) TBLStock.getModel();
+        int index = -1;
+        for (int i = 0; i<TBLStock.getRowCount();i++){
+            if (TBLStock.getValueAt(i, 0).equals((Object)nombreProd))
+                index= i;
+        }
+        return index;
     }
 
     public static void restarProductoStock(JTable TBLStock, int cantidad) {
