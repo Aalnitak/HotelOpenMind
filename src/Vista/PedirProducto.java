@@ -210,6 +210,7 @@ public class PedirProducto extends javax.swing.JFrame {
 
     private void BTNPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNPagarActionPerformed
         // TODO add your handling code here:
+        // 
         String nombreProd = TBLStock.getValueAt(TBLStock.getSelectedRow(), 0).toString();
         int stock = (int)TBLStock.getValueAt(TBLStock.getSelectedRow(), 2);
         int cantidadPedido =  CBCantidad.getSelectedIndex();
@@ -218,10 +219,13 @@ public class PedirProducto extends javax.swing.JFrame {
 
     private void BTNEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNEliminarActionPerformed
         // TODO add your handling code here:
+        //al eliminar se vuelve a sumar el producto al stock pero el que esta selccionado
+        //deberia buscar el producto por su nombre y ahi restar a ese indice de la TBLStock
         
         DefaultTableModel carrito = (DefaultTableModel)TBLCarrito.getModel();
+        String nombreProd = carrito.getValueAt(TBLCarrito.getSelectedRow(), 0).toString();
         int cantidad = (int)carrito.getValueAt(TBLCarrito.getSelectedRow(), TBLCarrito.getColumnCount()-1);
-        ControlInforme.sumarProductoStock(TBLStock,cantidad );
+        ControlInforme.sumarProductoStock(TBLStock,cantidad,nombreProd );
         ControlInforme.eliminarProductoCarrito(TBLCarrito, TBLCarrito.getSelectedRow());
     }//GEN-LAST:event_BTNEliminarActionPerformed
 
