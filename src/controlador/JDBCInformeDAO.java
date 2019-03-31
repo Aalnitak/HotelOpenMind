@@ -237,12 +237,12 @@ public class JDBCInformeDAO implements InformeDAO {
        return elementosTabla;
 }
     @Override
-    public ArrayList<Object[]> informeProducto(boolean mayorVenta){
+    public Object[] informeProducto(boolean mayorVenta){
         // producto mas ventas (true) menos ventas (false)
         // habitacion mayor ventas, numero ventas
         // habitacion menor ventas, numero ventas
         
-        ArrayList<Object[]> elementosTabla = new ArrayList<Object[]>(); 
+        Object[] elementos = new Object[3];
 
         // 1 recuperar producto mayor o menor venta
         
@@ -349,24 +349,23 @@ public class JDBCInformeDAO implements InformeDAO {
             
             nombreHabitacionMenosVentas = rs3.getObject("Nombre Habitacion Menos Ventas");
             
-            elementosTabla.add(new Object[] {
-                nombreProducto,
-                nombreHabitacionMasVentas,
-                nombreHabitacionMenosVentas
-            });
+            elementos[0] = nombreProducto;
+            elementos[1] = nombreHabitacionMasVentas;
+            elementos[2] = nombreHabitacionMenosVentas;
+            
             
             
         } catch (SQLException e) {
             e.printStackTrace();
         }
         
-        return elementosTabla;
+        return elementos;
 }
     @Override
-    public ArrayList<Object[]> informeHabitacionMayorPromedioPasajeros(){
+    public Object[] informeHabitacionMayorPromedioPasajeros(){
         // informe habitacion pero en vez de mayor uso mayor promedio pasajeros ingreso
         
-        ArrayList<Object[]> elementosTabla = new ArrayList<Object[]>(); 
+        Object[] elementos = new Object[2]; 
         String query = "SELECT \n" +
                         "    h.nombre, AVG(r.num_pasajeros) AS 'promedio pasajeros'\n" +
                         "FROM\n" +
@@ -383,16 +382,16 @@ public class JDBCInformeDAO implements InformeDAO {
             ResultSet rs = ps.executeQuery();
             rs.next();
             
-            elementosTabla.add(new Object[] {
-                rs.getObject("nombre"),
-                rs.getObject("promedio pasajeros")
-            });
+            
+            elementos[0]=rs.getObject("nombre");
+            elementos[1]=rs.getObject("promedio pasajeros");
+            
             
         } catch (SQLException e) {
             e.printStackTrace();
         }
         
-        return elementosTabla;
+        return elementos;
 }
     @Override
     public ArrayList<Object[]> informeHabitaciones(){
@@ -433,5 +432,44 @@ public class JDBCInformeDAO implements InformeDAO {
             e.printStackTrace();
         }
         return elementosTabla;
+    }
+    
+    @Override
+    public Object nombreHabitacion(boolean mayorUso) {
+        Object nombre = new Object();
+        String query = "";
+        try
+        {
+            if (mayorUso) {
+                query = "SELECT \n" +
+                                "    h.nombre, h.idhabitacion, COUNT(r.idjornada) AS 'visitas'\n" +
+                                "FROM\n" +
+                                "    reserva r\n" +
+                                "        JOIN\n" +
+                                "    habitacion h ON r.habitacion_idhabitacion = h.idhabitacion\n" +
+                                "GROUP BY idhabitacion\n" +
+                                "ORDER BY COUNT(r.idjornada) DESC\n" +
+                                "LIMIT 1";
+            } else {
+                query =  "SELECT \n" +
+                                "    h.nombre, h.idhabitacion, COUNT(r.idjornada) AS 'visitas'\n" +
+                                "FROM\n" +
+                                "    reserva r\n" +
+                                "        JOIN\n" +
+                                "    habitacion h ON r.habitacion_idhabitacion = h.idhabitacion\n" +
+                                "GROUP BY idhabitacion\n" +
+                                "ORDER BY COUNT(r.idjornada) ASC\n" +
+                                "LIMIT 1";
+            }
+            PreparedStatement ps = c.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            nombre = rs.getObject("nombre");
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return nombre;
     }
 }

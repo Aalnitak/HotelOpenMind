@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -28,36 +28,14 @@
                   <Component id="jbVolver" min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
-                          <Component id="jlbTituloInforme" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jlblRut" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="jlblRutCliente" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
+                          <Component id="jlblTItulo" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jlblNombre" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jlblNombreCliente" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jljbFecha" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jlblFechaCliente" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jlblNacionalidad" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jlblNacionalidadCliente" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="135" max="-2" attributes="0"/>
-                          <Component id="jlblTituloTabla" min="-2" max="-2" attributes="0"/>
+                          <Component id="jlblNombreHabitacion" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
@@ -72,88 +50,35 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jlbTituloInforme" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jlblRut" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jlblRutCliente" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="jlblTItulo" min="-2" pref="21" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jlblNombre" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jlblNombreCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jlblNombreHabitacion" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jljbFecha" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jlblFechaCliente" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jlblNacionalidad" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jlblNacionalidadCliente" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jlblTituloTabla" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="275" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="jbVolver" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="10" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="8" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jlbTituloInforme">
+    <Component class="javax.swing.JLabel" name="jlblTItulo">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Infome Cliente del Amor"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jlblRut">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Rut"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jlblRutCliente">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="RutClienteAmor"/>
+        <Property name="text" type="java.lang.String" value="Informe Habitacion M&#xe1;s Utilizada"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jlblNombre">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Nombre:"/>
+        <Property name="text" type="java.lang.String" value="Nombre Habitacion: "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jlblNombreCliente">
+    <Component class="javax.swing.JLabel" name="jlblNombreHabitacion">
       <Properties>
-        <Property name="text" type="java.lang.String" value="NombreClienteAmor"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jljbFecha">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Fecha Nacimiento:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jlblFechaCliente">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="FechaClienteAmor"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jlblNacionalidad">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Nacionalidad:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jlblNacionalidadCliente">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="NacionalidadClienteAmor"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jlblTituloTabla">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Registro Visitas"/>
+        <Property name="text" type="java.lang.String" value="nombreHabitacion"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -167,9 +92,9 @@
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="4" rowCount="0">
-                <Column editable="true" title="Fecha y hora ingreso" type="java.lang.Object"/>
-                <Column editable="true" title="Visita como" type="java.lang.Object"/>
-                <Column editable="true" title="Nombre Habitacion" type="java.lang.Object"/>
+                <Column editable="true" title="Inicio" type="java.lang.Object"/>
+                <Column editable="true" title="TIpo de estad&#xed;a" type="java.lang.Object"/>
+                <Column editable="true" title="Nombre Cliente" type="java.lang.Object"/>
                 <Column editable="true" title="Consumo Total" type="java.lang.Object"/>
               </Table>
             </Property>

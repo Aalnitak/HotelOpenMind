@@ -20,8 +20,9 @@ public interface InformeDAO {
     public ArrayList<Object[]> informeCliente(int rut);
     public ArrayList<Object[]> informeClienteDelAmor();
     public ArrayList<Object[]> informeHabitacion(boolean mayorUso);
-    public ArrayList<Object[]> informeProducto(boolean mayorVenta);
-    public ArrayList<Object[]> informeHabitacionMayorPromedioPasajeros();
+    public Object[] informeProducto(boolean mayorVenta);
+    public Object[] informeHabitacionMayorPromedioPasajeros();
     public ArrayList<Object[]> informeHabitaciones();
+    public Object nombreHabitacion(boolean mayorUso);
 
 }

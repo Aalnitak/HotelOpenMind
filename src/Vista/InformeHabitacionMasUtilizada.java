@@ -11,17 +11,17 @@ import controlador.ControlInforme;
  *
  * @author ljrojas
  */
-public class InformeClienteAmor extends javax.swing.JFrame {
+public class InformeHabitacionMasUtilizada extends javax.swing.JFrame {
 
     /**
-     * Creates new form InformeClienteAmor
+     * Creates new form InformeHabitacionMasUtilizada
      */
-    public InformeClienteAmor() {
+    public InformeHabitacionMasUtilizada() {
         initComponents();
-        ControlInforme.llenarInformeClienteAmor(jlblNombreCliente, jlblRutCliente, jlblFechaCliente, jlblNacionalidadCliente, jtRegistroVisitas);
+        ControlInforme.llenarInformeHabitacionMasUsada(jlblNombreHabitacion, jtRegistroVisitas);
+        
     }
 
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,48 +31,27 @@ public class InformeClienteAmor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jlbTituloInforme = new javax.swing.JLabel();
-        jlblRut = new javax.swing.JLabel();
-        jlblRutCliente = new javax.swing.JLabel();
+        jlblTItulo = new javax.swing.JLabel();
         jlblNombre = new javax.swing.JLabel();
-        jlblNombreCliente = new javax.swing.JLabel();
-        jljbFecha = new javax.swing.JLabel();
-        jlblFechaCliente = new javax.swing.JLabel();
-        jlblNacionalidad = new javax.swing.JLabel();
-        jlblNacionalidadCliente = new javax.swing.JLabel();
-        jlblTituloTabla = new javax.swing.JLabel();
+        jlblNombreHabitacion = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtRegistroVisitas = new javax.swing.JTable();
         jbVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jlbTituloInforme.setText("Infome Cliente del Amor");
+        jlblTItulo.setText("Informe Habitacion Más Utilizada");
 
-        jlblRut.setText("Rut");
+        jlblNombre.setText("Nombre Habitacion: ");
 
-        jlblRutCliente.setText("RutClienteAmor");
-
-        jlblNombre.setText("Nombre:");
-
-        jlblNombreCliente.setText("NombreClienteAmor");
-
-        jljbFecha.setText("Fecha Nacimiento:");
-
-        jlblFechaCliente.setText("FechaClienteAmor");
-
-        jlblNacionalidad.setText("Nacionalidad:");
-
-        jlblNacionalidadCliente.setText("NacionalidadClienteAmor");
-
-        jlblTituloTabla.setText("Registro Visitas");
+        jlblNombreHabitacion.setText("nombreHabitacion");
 
         jtRegistroVisitas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Fecha y hora ingreso", "Visita como", "Nombre Habitacion", "Consumo Total"
+                "Inicio", "TIpo de estadía", "Nombre Cliente", "Consumo Total"
             }
         ));
         jScrollPane1.setViewportView(jtRegistroVisitas);
@@ -93,31 +72,13 @@ public class InformeClienteAmor extends javax.swing.JFrame {
                     .addComponent(jbVolver)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(127, 127, 127)
-                            .addComponent(jlbTituloInforme))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jlblRut)
-                            .addGap(35, 35, 35)
-                            .addComponent(jlblRutCliente))
+                            .addGap(95, 95, 95)
+                            .addComponent(jlblTItulo))
                         .addGroup(layout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(jlblNombre)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jlblNombreCliente))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jljbFecha)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jlblFechaCliente))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jlblNacionalidad)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jlblNacionalidadCliente))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(135, 135, 135)
-                            .addComponent(jlblTituloTabla))
+                            .addComponent(jlblNombreHabitacion))
                         .addGroup(layout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -126,31 +87,16 @@ public class InformeClienteAmor extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jlbTituloInforme)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlblRut)
-                    .addComponent(jlblRutCliente))
+                .addComponent(jlblTItulo, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlblNombre)
-                    .addComponent(jlblNombreCliente))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jljbFecha)
-                    .addComponent(jlblFechaCliente))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jlblNacionalidad)
-                    .addComponent(jlblNacionalidadCliente))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jlblTituloTabla)
+                    .addComponent(jlblNombreHabitacion))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jbVolver)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addGap(0, 8, Short.MAX_VALUE))
         );
 
         pack();
@@ -178,20 +124,20 @@ public class InformeClienteAmor extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InformeClienteAmor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InformeHabitacionMasUtilizada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InformeClienteAmor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InformeHabitacionMasUtilizada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InformeClienteAmor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InformeHabitacionMasUtilizada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InformeClienteAmor.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InformeHabitacionMasUtilizada.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InformeClienteAmor().setVisible(true);
+                new InformeHabitacionMasUtilizada().setVisible(true);
             }
         });
     }
@@ -199,16 +145,9 @@ public class InformeClienteAmor extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbVolver;
-    private javax.swing.JLabel jlbTituloInforme;
-    private javax.swing.JLabel jlblFechaCliente;
-    private javax.swing.JLabel jlblNacionalidad;
-    private javax.swing.JLabel jlblNacionalidadCliente;
     private javax.swing.JLabel jlblNombre;
-    private javax.swing.JLabel jlblNombreCliente;
-    private javax.swing.JLabel jlblRut;
-    private javax.swing.JLabel jlblRutCliente;
-    private javax.swing.JLabel jlblTituloTabla;
-    private javax.swing.JLabel jljbFecha;
+    private javax.swing.JLabel jlblNombreHabitacion;
+    private javax.swing.JLabel jlblTItulo;
     private javax.swing.JTable jtRegistroVisitas;
     // End of variables declaration//GEN-END:variables
 }

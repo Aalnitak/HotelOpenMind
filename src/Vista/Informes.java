@@ -73,31 +73,31 @@ public class Informes extends javax.swing.JFrame {
         }
         
         if (eleccion.equalsIgnoreCase("informe cliente del amor")) {
-            
+            new InformeClienteAmor().setVisible(true);
         }
         
         if (eleccion.equalsIgnoreCase("habitación más visitada")) {
-            
+            new InformeHabitacionMasUtilizada().setVisible(true);
         }
         
         if (eleccion.equalsIgnoreCase("habitación menos visitada")) {
-            
+            new InformeHabitacionMenosUtilizada().setVisible(true);
         }
         
         if (eleccion.equalsIgnoreCase("producto más vendido")) {
-            
+            new InformeProductoMasVendido().setVisible(true);
         }
         
         if (eleccion.equalsIgnoreCase("producto menos vendido")) {
-            
+            new InformeProductoMenosVendido().setVisible(true);
         }
         
         if (eleccion.equalsIgnoreCase("habitacion grupos más grandes")) {
-            
+            new InformeHabitacionGrupos().setVisible(true);
         }
         
         if (eleccion.equalsIgnoreCase("informe todas las habitaciones")) {
-            
+            new InformeTodasHabitaciones().setVisible(true);
         }
     }//GEN-LAST:event_BTNGenerarActionPerformed
 

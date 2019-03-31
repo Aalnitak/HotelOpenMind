@@ -169,4 +169,74 @@ public class ControlInforme {
         
         elementosTabla.forEach((elemento) -> {model.addRow(elemento);});
     }
+    
+    public static void llenarInformeHabitacionMasUsada(JLabel nombreHabitacion, JTable tabla) {
+        JDBCInformeDAO jdbcinforme = new JDBCInformeDAO();
+        
+        nombreHabitacion.setText(jdbcinforme.nombreHabitacion(true).toString());
+        
+        ArrayList<Object[]> elementos = jdbcinforme.informeHabitacion(true);
+        
+        DefaultTableModel model = (DefaultTableModel)tabla.getModel();
+        
+        elementos.forEach((elemento) -> {model.addRow(elemento);});
+        
+        
+    }
+    
+    public static void llenarInformeHabitacionMenosUsada(JLabel nombreHabitacion, JTable tabla) {
+        JDBCInformeDAO jdbcinforme = new JDBCInformeDAO();
+        
+        nombreHabitacion.setText(jdbcinforme.nombreHabitacion(false).toString());
+        
+        ArrayList<Object[]> elementos = jdbcinforme.informeHabitacion(false);
+        
+        DefaultTableModel model = (DefaultTableModel)tabla.getModel();
+        
+        elementos.forEach((elemento) -> {model.addRow(elemento);});
+        
+        
+    }
+    
+    public static void llenarInformeProductoMasVendido(JLabel nombreProducto, JLabel habitacionMas, JLabel habitacionMenos) {
+        JDBCInformeDAO jdbcinforme = new JDBCInformeDAO();
+        
+        Object[] elementos = jdbcinforme.informeProducto(true);
+        
+        nombreProducto.setText(elementos[0].toString());
+        habitacionMas.setText(elementos[1].toString());
+        habitacionMenos.setText(elementos[2].toString());            
+    }
+    
+    public static void llenarInformeProductoMenisVendido(JLabel nombreProducto, JLabel habitacionMas, JLabel habitacionMenos) {
+        JDBCInformeDAO jdbcinforme = new JDBCInformeDAO();
+        
+        Object[] elementos = jdbcinforme.informeProducto(false);
+        
+        nombreProducto.setText(elementos[0].toString());
+        habitacionMas.setText(elementos[1].toString());
+        habitacionMenos.setText(elementos[2].toString());            
+    }
+    
+    public static void llenarInformeHabitacionGrupos(JLabel nombre, JLabel promedio) {
+        JDBCInformeDAO jdbcinforme = new JDBCInformeDAO();
+        
+        Object[] elementos = jdbcinforme.informeHabitacionMayorPromedioPasajeros();
+        
+        nombre.setText(elementos[0].toString());
+        promedio.setText(elementos[1].toString());
+        
+    }
+    
+    public static void llenarInformeTodasHabitaciones (JTable tabla) {
+        
+        JDBCInformeDAO jdbcinforme = new JDBCInformeDAO();
+        
+        ArrayList<Object[]> elementos = jdbcinforme.informeHabitaciones();
+        
+        DefaultTableModel model = (DefaultTableModel)tabla.getModel();
+        
+        elementos.forEach((elemento) -> {model.addRow(elemento);});
+        
+    }
 }
