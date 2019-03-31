@@ -22,21 +22,30 @@ public class JDBCInformeDAO implements InformeDAO {
         ArrayList<Object[]> elementosTabla = new ArrayList<Object[]>();
 
         try {
-            String query = "SELECT h.nombre, r.num_pasajeros \"numero de pasajeros\", p.nombre \"nombre producto consumido\", r.limite_tiempo \"limite de tiempo\"\n"
-                    + "FROM habitacion h\n"
-                    + "JOIN reserva r\n"
-                    + "ON (h.idhabitacion = r.habitacion_idhabitacion)\n"
-                    + "INNER JOIN (SELECT rr.habitacion_idhabitacion idhabitacion, MAX(idjornada) idjornada\n"
-                    + "FROM reserva rr\n"
-                    + "GROUP BY idhabitacion\n"
-                    + ") b ON h.idhabitacion = b.idhabitacion AND r.idjornada = b.idjornada\n"
-                    + "JOIN reserva_has_producto rhp\n"
-                    + "ON (r.idjornada = rhp.reserva_idjornada)\n"
-                    + "JOIN producto p\n"
-                    + "ON (rhp.producto_idproducto = p.idproducto)\n"
-                    + "WHERE h.ocupado = '1'\n"
-                    + "GROUP BY h.nombre\n"
-                    + "ORDER BY r.idjornada DESC\n";
+            String query = "SELECT \n" +
+                            "    h.nombre,\n" +
+                            "    r.num_pasajeros AS 'numero de pasajeros',\n" +
+                            "    p.nombre AS 'nombre producto consumido',\n" +
+                            "    r.limite_tiempo AS 'limite de tiempo'\n" +
+                            "FROM\n" +
+                            "    habitacion h\n" +
+                            "        JOIN\n" +
+                            "    reserva r ON (h.idhabitacion = r.habitacion_idhabitacion)\n" +
+                            "        INNER JOIN\n" +
+                            "    (SELECT \n" +
+                            "        rr.habitacion_idhabitacion idhabitacion,\n" +
+                            "            MAX(idjornada) idjornada\n" +
+                            "    FROM\n" +
+                            "        reserva rr\n" +
+                            "    GROUP BY idhabitacion) b ON h.idhabitacion = b.idhabitacion\n" +
+                            "        AND r.idjornada = b.idjornada\n" +
+                            "        JOIN\n" +
+                            "    reserva_has_producto rhp ON (r.idjornada = rhp.reserva_idjornada)\n" +
+                            "        JOIN\n" +
+                            "    producto p ON (rhp.producto_idproducto = p.idproducto)\n" +
+                            "WHERE\n" +
+                            "    h.ocupado = '1'\n" +
+                            "ORDER BY r.idjornada , rhp.idreserva_has_producto DESC";
 
             PreparedStatement ps = c.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
@@ -68,12 +77,13 @@ public class JDBCInformeDAO implements InformeDAO {
           
         try 
         {
+            // queri para ver el historial del cliente
             String query = "SELECT \n" +
                         "    r.inicio 'Fecha y hora de ingreso',\n" +
                         "    CASE r.pasajero_rut\n" +
                         "        WHEN '?' THEN 'Pasajero Principal'\n" +
                         "        ELSE 'Acompañante'\n" +
-                        "    END AS 'Visita como',\n" +
+                            "    END AS 'Visita como',\n" +
                         "    h.nombre AS 'Nombre Habitación',\n" +
                         "    SUM(p.precio) AS 'Consumo Total'\n" +
                         "FROM\n" +
@@ -143,70 +153,71 @@ public class JDBCInformeDAO implements InformeDAO {
         
         try
         {
-            if (mayorUso) {
+            if (mayorUso) 
+            {
+            query = "SELECT \n" +
+                    "    a.inicio,\n" +
+                    "    CASE a.momento\n" +
+                    "        WHEN '1' THEN 'Momento (3 hrs)'\n" +
+                    "        ELSE 'Jornada (12 hrs)'\n" +
+                    "    END AS 'Tipo de estadía',\n" +
+                    "    CONCAT(p.nombres , ' ',\n" +
+                    "        p.apellido_paterno,\n" +
+                    "        ' ',\n" +
+                    "        p.apellido_materno) AS 'Nombre Cliente',\n" +
+                    "    SUM(rhp.precio * rhp.cantidad) AS 'Consumo Total de la Visita (incluye precio habitacion)'\n" +
+                    "FROM\n" +
+                    "    reserva a\n" +
+                    "        JOIN\n" +
+                    "    pasajero p ON a.pasajero_rut = p.rut\n" +
+                    "        JOIN\n" +
+                    "    reserva_has_producto rhp ON a.idjornada = rhp.reserva_idjornada\n" +
+                    "        JOIN\n" +
+                    "    producto prod ON rhp.producto_idproducto = prod.idproducto\n" +
+                    "WHERE\n" +
+                    "    a.habitacion_idhabitacion = (SELECT \n" +
+                    "            r.habitacion_idhabitacion idhabitacion\n" +
+                    "        FROM\n" +
+                    "            reserva r\n" +
+                    "                JOIN\n" +
+                    "            habitacion h ON r.habitacion_idhabitacion = h.idhabitacion\n" +
+                    "        GROUP BY r.habitacion_idhabitacion\n" +
+                    "        ORDER BY COUNT(r.idjornada) DESC\n" +
+                    "        LIMIT 1)\n" +
+                    "GROUP BY a.idjornada";
+            } 
+            else 
+            {
                 query = "SELECT \n" +
-                                "    a.inicio,\n" +
-                                "    CASE a.momento\n" +
-                                "        WHEN '1' THEN 'Momento (3 hrs)'\n" +
-                                "        ELSE 'Jornada (12 hrs)'\n" +
-                                "    END AS 'Tipo de estadía',\n" +
-                                "    CONCAT(p.nombres,\n" +
-                                "            ' ',\n" +
-                                "            p.apellido_paterno,\n" +
-                                "            ' ',\n" +
-                                "            p.apellido_materno) AS 'Nombre Cliente',\n" +
-                                "    SUM(prod.precio * rhp.cantidad) AS 'Consumo Total de la Visita (incluye precio habitacion)'\n" +
-                                "FROM\n" +
-                                "    reserva a\n" +
-                                "        JOIN\n" +
-                                "    pasajero p ON a.pasajero_rut = p.rut\n" +
-                                "        JOIN\n" +
-                                "    reserva_has_producto rhp ON a.idjornada = rhp.reserva_idjornada\n" +
-                                "        JOIN\n" +
-                                "    producto prod ON rhp.producto_idproducto = prod.idproducto\n" +
-                                "WHERE\n" +
-                                "    a.habitacion_idhabitacion = (SELECT \n" +
-                                "            r.habitacion_idhabitacion idhabitacion\n" +
-                                "        FROM\n" +
-                                "            reserva r\n" +
-                                "                JOIN\n" +
-                                "            habitacion h ON r.habitacion_idhabitacion = h.idhabitacion\n" +
-                                "        GROUP BY r.habitacion_idhabitacion\n" +
-                                "        ORDER BY COUNT(r.idjornada) DESC\n" +
-                                "        LIMIT 1)\n" +
-                                "GROUP BY a.idjornada";
-            } else {
-                query = "SELECT \n" +
-                                "    a.inicio,\n" +
-                                "    CASE a.momento\n" +
-                                "        WHEN '1' THEN 'Momento (3 hrs)'\n" +
-                                "        ELSE 'Jornada (12 hrs)'\n" +
-                                "    END AS 'Tipo de estadía',\n" +
-                                "    CONCAT(p.nombres,\n" +
-                                "            ' ',\n" +
-                                "            p.apellido_paterno,\n" +
-                                "            ' ',\n" +
-                                "            p.apellido_materno) AS 'Nombre Cliente',\n" +
-                                "    SUM(prod.precio * rhp.cantidad) AS 'Consumo Total de la Visita (incluye precio habitacion)'\n" +
-                                "FROM\n" +
-                                "    reserva a\n" +
-                                "        JOIN\n" +
-                                "    pasajero p ON a.pasajero_rut = p.rut\n" +
-                                "        JOIN\n" +
-                                "    reserva_has_producto rhp ON a.idjornada = rhp.reserva_idjornada\n" +
-                                "        JOIN\n" +
-                                "    producto prod ON rhp.producto_idproducto = prod.idproducto\n" +
-                                "WHERE\n" +
-                                "    a.habitacion_idhabitacion = (SELECT \n" +
-                                "            r.habitacion_idhabitacion idhabitacion\n" +
-                                "        FROM\n" +
-                                "            reserva r\n" +
-                                "                JOIN\n" +
-                                "            habitacion h ON r.habitacion_idhabitacion = h.idhabitacion\n" +
-                                "        GROUP BY r.habitacion_idhabitacion\n" +
-                                "        ORDER BY COUNT(r.idjornada) ASC\n" +
-                                "        LIMIT 1)\n" +
-                                "GROUP BY a.idjornada";
+                    "    a.inicio,\n" +
+                    "    CASE a.momento\n" +
+                    "        WHEN '1' THEN 'Momento (3 hrs)'\n" +
+                    "        ELSE 'Jornada (12 hrs)'\n" +
+                    "    END AS 'Tipo de estadía',\n" +
+                    "    CONCAT(p.nombres , ' ',\n" +
+                    "        p.apellido_paterno,\n" +
+                    "        ' ',\n" +
+                    "        p.apellido_materno) AS 'Nombre Cliente',\n" +
+                    "    SUM(rhp.precio * rhp.cantidad) AS 'Consumo Total de la Visita (incluye precio habitacion)'\n" +
+                    "FROM\n" +
+                    "    reserva a\n" +
+                    "        JOIN\n" +
+                    "    pasajero p ON a.pasajero_rut = p.rut\n" +
+                    "        JOIN\n" +
+                    "    reserva_has_producto rhp ON a.idjornada = rhp.reserva_idjornada\n" +
+                    "        JOIN\n" +
+                    "    producto prod ON rhp.producto_idproducto = prod.idproducto\n" +
+                    "WHERE\n" +
+                    "    a.habitacion_idhabitacion = (SELECT \n" +
+                    "            r.habitacion_idhabitacion idhabitacion\n" +
+                    "        FROM\n" +
+                    "            reserva r\n" +
+                    "                JOIN\n" +
+                    "            habitacion h ON r.habitacion_idhabitacion = h.idhabitacion\n" +
+                    "        GROUP BY r.habitacion_idhabitacion\n" +
+                    "        ORDER BY COUNT(r.idjornada) ASC\n" +
+                    "        LIMIT 1)\n" +
+                    "GROUP BY a.idjornada";
             }
             PreparedStatement ps = c.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
@@ -270,7 +281,7 @@ public class JDBCInformeDAO implements InformeDAO {
                         "		JOIN\n" +
                         "	reserva r ON rhp.reserva_idjornada = r.idjornada\n" +
                         "GROUP BY p.idproducto\n" +
-                        "ORDER BY COUNT(rhp.producto_idproducto) ASC\n" +
+                        "ORDER BY COUNT(rhp.producto_idproducto) DESC\n" +
                         "LIMIT 1";
 
         String queryHabitacionMayorVenta = "SELECT \n" +

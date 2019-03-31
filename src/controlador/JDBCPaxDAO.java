@@ -154,5 +154,24 @@ public class JDBCPaxDAO implements PaxDAO {
       pase = pax.getRut() == rut;
       return pase;
     }
-
+    
+    @Override
+    public ArrayList<Object> llenarRuts() {
+        String query = "SELECT rut FROM pasajero";
+        ArrayList<Object> ruts = new ArrayList<Object>();
+        try
+        {
+            PreparedStatement ps = conexion.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                ruts.add(rs.getObject("rut"));
+            }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ruts;
+    }
+    
 }

@@ -5,6 +5,8 @@
  */
 package Vista;
 
+import controlador.ControlInforme;
+
 /**
  *
  * @author duoc
@@ -16,6 +18,7 @@ public class Informes extends javax.swing.JFrame {
      */
     public Informes() {
         initComponents();
+        ControlInforme.llenarListaInformes(jcbInformes);
     }
 
     /**
@@ -28,17 +31,14 @@ public class Informes extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jcbInformes = new javax.swing.JComboBox<>();
         BTNGenerar = new javax.swing.JButton();
-        LBIngreso = new javax.swing.JLabel();
-        TFVariable = new javax.swing.JTextField();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
         setMaximumSize(new java.awt.Dimension(421, 128));
         setMinimumSize(new java.awt.Dimension(421, 128));
-        setPreferredSize(new java.awt.Dimension(421, 128));
         setResizable(false);
         setSize(new java.awt.Dimension(421, 128));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -46,21 +46,60 @@ public class Informes extends javax.swing.JFrame {
         jLabel1.setText("Generar Informes");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 179, -1));
+        jcbInformes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(jcbInformes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 179, -1));
 
         BTNGenerar.setText("Generar");
+        BTNGenerar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTNGenerarActionPerformed(evt);
+            }
+        });
         getContentPane().add(BTNGenerar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, -1, -1));
-
-        LBIngreso.setText("variable");
-        getContentPane().add(LBIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 50, 20));
-        getContentPane().add(TFVariable, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 121, -1));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/informes_bg.png"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BTNGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNGenerarActionPerformed
+        // TODO add your handling code here:
+        
+        String eleccion = String.valueOf(jcbInformes.getSelectedItem());
+        
+        if (eleccion.equalsIgnoreCase("informe cliente")) {
+            new InformeCliente().setVisible(true);
+        }
+        
+        if (eleccion.equalsIgnoreCase("informe cliente del amor")) {
+            
+        }
+        
+        if (eleccion.equalsIgnoreCase("habitación más visitada")) {
+            
+        }
+        
+        if (eleccion.equalsIgnoreCase("habitación menos visitada")) {
+            
+        }
+        
+        if (eleccion.equalsIgnoreCase("producto más vendido")) {
+            
+        }
+        
+        if (eleccion.equalsIgnoreCase("producto menos vendido")) {
+            
+        }
+        
+        if (eleccion.equalsIgnoreCase("habitacion grupos más grandes")) {
+            
+        }
+        
+        if (eleccion.equalsIgnoreCase("informe todas las habitaciones")) {
+            
+        }
+    }//GEN-LAST:event_BTNGenerarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -99,10 +138,8 @@ public class Informes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTNGenerar;
-    private javax.swing.JLabel LBIngreso;
-    private javax.swing.JTextField TFVariable;
     private javax.swing.JLabel background;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JComboBox<String> jcbInformes;
     // End of variables declaration//GEN-END:variables
 }

@@ -19,5 +19,6 @@ public interface PaxDAO {
     public Pax selectClienteFrecuente();
     public boolean isClienteFrecuente(Pax pax);
     public boolean existe(int rut);
+    public ArrayList<Object> llenarRuts();
     
 }

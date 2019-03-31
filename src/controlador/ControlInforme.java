@@ -6,9 +6,12 @@
 package controlador;
 
 import java.util.ArrayList;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
+import modelo.Pax;
 
 /**
  * clase de controlador para llenar objetos del tipo JTable
@@ -94,5 +97,46 @@ public class ControlInforme {
         });
 
     }
+    
+    public static void llenarListaInformes (JComboBox jc) {
+        jc.addItem("--Seleccione--");
+        jc.addItem("Informe Cliente");
+        jc.addItem("Informe Cliente del Amor");
+        jc.addItem("Habitación más visitada");
+        jc.addItem("Habitación menos visitada");
+        jc.addItem("Producto más vendido");
+        jc.addItem("Producto menos vendido");
+        jc.addItem("Habitación grupos más grandes");
+        jc.addItem("Informe todas las habitaciones");
+        
+    }
 
+    public static void llenarRutsInformeCliente(JComboBox jc) {
+        JDBCPaxDAO jdbcPaxDao = new JDBCPaxDAO();
+        
+        ArrayList<Object> ruts = jdbcPaxDao.llenarRuts();
+        
+        ruts.forEach((rut) -> jc.addItem(rut));
+        
+    }
+    
+    public static void llenarInformacionPaxInformeCliente(int rut, JLabel nombre, JLabel sexo, JLabel fechaNacimiento, JLabel nacionalidad, JTable tabla) {
+        Pax pax = Pax.getPax();
+        JDBCPaxDAO jdbcpax = new JDBCPaxDAO();
+        pax = jdbcpax.selectRead(rut);
+        
+        nombre.setText(pax.getNombre()+" "+pax.getApellidoPat()+" "+pax.getApellidoMat());
+        sexo.setText(pax.getSexo());
+        fechaNacimiento.setText(pax.getFechaNacimiento().toString());
+        nacionalidad.setText(pax.getNacionalidad());
+        
+        DefaultTableModel model = (DefaultTableModel)tabla.getModel();
+        
+        JDBCInformeDAO jdbcinforme = new JDBCInformeDAO();
+        
+        ArrayList<Object[]> elementosTabla = jdbcinforme.informeCliente(rut);
+        
+        elementosTabla.forEach((elemento) -> {model.addRow(elemento);});
+        
+    }
 }
