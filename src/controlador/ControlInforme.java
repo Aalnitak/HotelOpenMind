@@ -150,4 +150,23 @@ public class ControlInforme {
         elementosTabla.forEach((elemento) -> {model.addRow(elemento);});
         
     }
+    
+    public static void llenarInformeClienteAmor(JLabel nombreCliente, JLabel sexoCliente, JLabel fechaCliente, JLabel nacionalidadCliente, JTable tabla) {
+        Pax pax = Pax.getPax();
+        JDBCPaxDAO jdbcpax = new JDBCPaxDAO();
+        pax = jdbcpax.selectClienteFrecuente();
+        
+        nombreCliente.setText(pax.getNombre()+" "+pax.getApellidoPat()+" "+pax.getApellidoMat());
+        sexoCliente.setText(pax.getSexo());
+        fechaCliente.setText(pax.getFechaNacimiento().toString());
+        nacionalidadCliente.setText(pax.getNacionalidad());
+        
+        DefaultTableModel model = (DefaultTableModel)tabla.getModel();
+        
+        JDBCInformeDAO jdbcinforme = new JDBCInformeDAO();
+        
+        ArrayList<Object[]> elementosTabla = jdbcinforme.informeClienteDelAmor();
+        
+        elementosTabla.forEach((elemento) -> {model.addRow(elemento);});
+    }
 }
