@@ -10,9 +10,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import modelo.Reserva;
 
 
 public class JDBCInformeDAO implements InformeDAO {
@@ -141,19 +138,92 @@ public class JDBCInformeDAO implements InformeDAO {
 }
     @Override
     public ArrayList<Object[]> informeHabitacion(boolean mayorUso){
-        // Habitacion con mayor registro de utilizacion cuando mayourUso == True
-        // cuando False, menor registro de utilizacion
-        // clientes que la han utilizado, gasto por periodo, total gasto
-        // 
-        // JLabel: nombre de la habitacion
-        // Tabla 1:
-        // cliente X: total veces utilizada, como principal, como acompañante
-        // Tabla 2:
-        // Fecha jornada, gasto por periodo
-        // UNION total jornadas, gasto total
+        ArrayList<Object[]> elementosTabla = new ArrayList<Object[]>(); 
+        String query = "";
         
-        
-        return null;
+        try
+        {
+            if (mayorUso) {
+                query = "SELECT \n" +
+                                "    a.inicio,\n" +
+                                "    CASE a.momento\n" +
+                                "        WHEN '1' THEN 'Momento (3 hrs)'\n" +
+                                "        ELSE 'Jornada (12 hrs)'\n" +
+                                "    END AS 'Tipo de estadía',\n" +
+                                "    CONCAT(p.nombres,\n" +
+                                "            ' ',\n" +
+                                "            p.apellido_paterno,\n" +
+                                "            ' ',\n" +
+                                "            p.apellido_materno) AS 'Nombre Cliente',\n" +
+                                "    SUM(prod.precio * rhp.cantidad) AS 'Consumo Total de la Visita (incluye precio habitacion)'\n" +
+                                "FROM\n" +
+                                "    reserva a\n" +
+                                "        JOIN\n" +
+                                "    pasajero p ON a.pasajero_rut = p.rut\n" +
+                                "        JOIN\n" +
+                                "    reserva_has_producto rhp ON a.idjornada = rhp.reserva_idjornada\n" +
+                                "        JOIN\n" +
+                                "    producto prod ON rhp.producto_idproducto = prod.idproducto\n" +
+                                "WHERE\n" +
+                                "    a.habitacion_idhabitacion = (SELECT \n" +
+                                "            r.habitacion_idhabitacion idhabitacion\n" +
+                                "        FROM\n" +
+                                "            reserva r\n" +
+                                "                JOIN\n" +
+                                "            habitacion h ON r.habitacion_idhabitacion = h.idhabitacion\n" +
+                                "        GROUP BY r.habitacion_idhabitacion\n" +
+                                "        ORDER BY COUNT(r.idjornada) DESC\n" +
+                                "        LIMIT 1)\n" +
+                                "GROUP BY a.idjornada";
+            } else {
+                query = "SELECT \n" +
+                                "    a.inicio,\n" +
+                                "    CASE a.momento\n" +
+                                "        WHEN '1' THEN 'Momento (3 hrs)'\n" +
+                                "        ELSE 'Jornada (12 hrs)'\n" +
+                                "    END AS 'Tipo de estadía',\n" +
+                                "    CONCAT(p.nombres,\n" +
+                                "            ' ',\n" +
+                                "            p.apellido_paterno,\n" +
+                                "            ' ',\n" +
+                                "            p.apellido_materno) AS 'Nombre Cliente',\n" +
+                                "    SUM(prod.precio * rhp.cantidad) AS 'Consumo Total de la Visita (incluye precio habitacion)'\n" +
+                                "FROM\n" +
+                                "    reserva a\n" +
+                                "        JOIN\n" +
+                                "    pasajero p ON a.pasajero_rut = p.rut\n" +
+                                "        JOIN\n" +
+                                "    reserva_has_producto rhp ON a.idjornada = rhp.reserva_idjornada\n" +
+                                "        JOIN\n" +
+                                "    producto prod ON rhp.producto_idproducto = prod.idproducto\n" +
+                                "WHERE\n" +
+                                "    a.habitacion_idhabitacion = (SELECT \n" +
+                                "            r.habitacion_idhabitacion idhabitacion\n" +
+                                "        FROM\n" +
+                                "            reserva r\n" +
+                                "                JOIN\n" +
+                                "            habitacion h ON r.habitacion_idhabitacion = h.idhabitacion\n" +
+                                "        GROUP BY r.habitacion_idhabitacion\n" +
+                                "        ORDER BY COUNT(r.idjornada) ASC\n" +
+                                "        LIMIT 1)\n" +
+                                "GROUP BY a.idjornada";
+            }
+            PreparedStatement ps = c.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            
+              while (rs.next() ) {
+                elementosTabla.add(new Object[] {
+                    rs.getObject("inicio"),
+                    rs.getObject("Tipo de estadía"),
+                    rs.getObject("Nombre Cliente"),
+                    rs.getObject("Consumo Total de la Visita (incluye precio habitacion)")
+                });
+              }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+       return elementosTabla;
 }
     @Override
     public ArrayList<Object[]> informeProducto(boolean mayorVenta){
@@ -161,20 +231,196 @@ public class JDBCInformeDAO implements InformeDAO {
         // habitacion mayor ventas, numero ventas
         // habitacion menor ventas, numero ventas
         
+        ArrayList<Object[]> elementosTabla = new ArrayList<Object[]>(); 
+
+        // 1 recuperar producto mayor o menor venta
         
-        return null;
+        // 2 a partir de la idproducto calcular habitacion que mas vende y que menos vende
+        int idproducto = 0;
+        
+        Object nombreProducto;
+        Object nombreHabitacionMasVentas;
+        Object nombreHabitacionMenosVentas;
+        
+        String queryMenorProducto = "SELECT \n" +
+                        "    p.idproducto,\n" +
+                        "    p.nombre AS 'Nombre Producto Menos Vendido',\n" +
+                        "    COUNT(rhp.producto_idproducto) 'numero de ventas',\n" +
+                        "    p.precio AS 'Precio Unidad',\n" +
+                        "    SUM(p.precio * rhp.cantidad) 'Total'\n" +
+                        "FROM\n" +
+                        "    reserva_has_producto rhp\n" +
+                        "        JOIN\n" +
+                        "    producto p ON rhp.producto_idproducto = p.idproducto\n" +
+                        "		JOIN\n" +
+                        "	reserva r ON rhp.reserva_idjornada = r.idjornada\n" +
+                        "GROUP BY p.idproducto\n" +
+                        "ORDER BY COUNT(rhp.producto_idproducto) ASC\n" +
+                        "LIMIT 1";
+        String queryMayorProducto = "SELECT \n" +
+                        "    p.idproducto,\n" +
+                        "    p.nombre AS 'Nombre Producto Más Vendido',\n" +
+                        "    COUNT(rhp.producto_idproducto) 'numero de ventas',\n" +
+                        "    p.precio AS 'Precio Unidad',\n" +
+                        "    SUM(p.precio * rhp.cantidad) 'Total'\n" +
+                        "FROM\n" +
+                        "    reserva_has_producto rhp\n" +
+                        "        JOIN\n" +
+                        "    producto p ON rhp.producto_idproducto = p.idproducto\n" +
+                        "		JOIN\n" +
+                        "	reserva r ON rhp.reserva_idjornada = r.idjornada\n" +
+                        "GROUP BY p.idproducto\n" +
+                        "ORDER BY COUNT(rhp.producto_idproducto) ASC\n" +
+                        "LIMIT 1";
+
+        String queryHabitacionMayorVenta = "SELECT \n" +
+                        "    COUNT(rhp.producto_idproducto) AS 'N ventas',\n" +
+                        "    rhp.producto_idproducto AS 'idproducto',\n" +
+                        "    r.habitacion_idhabitacion AS 'idhabitacion',\n" +
+                        "    h.nombre AS 'Nombre Habitacion Mayor Ventas'\n" +
+                        "FROM\n" +
+                        "    reserva_has_producto rhp\n" +
+                        "        JOIN\n" +
+                        "    reserva r ON rhp.reserva_idjornada = r.idjornada\n" +
+                        "        JOIN\n" +
+                        "    habitacion h ON h.idhabitacion = r.habitacion_idhabitacion\n" +
+                        "GROUP BY rhp.producto_idproducto , r.habitacion_idhabitacion\n" +
+                        "HAVING rhp.producto_idproducto = '?'\n" +
+                        "ORDER BY COUNT(rhp.producto_idproducto) DESC\n" +
+                        "LIMIT 1";
+
+        String queryHabitacionMenorVenta = "SELECT \n" +
+                        "    COUNT(rhp.producto_idproducto) AS 'N ventas',\n" +
+                        "    rhp.producto_idproducto AS 'idproducto',\n" +
+                        "    r.habitacion_idhabitacion AS 'idhabitacion',\n" +
+                        "    h.nombre AS 'Nombre Habitacion Menor Ventas'\n" +
+                        "FROM\n" +
+                        "    reserva_has_producto rhp\n" +
+                        "        JOIN\n" +
+                        "    reserva r ON rhp.reserva_idjornada = r.idjornada\n" +
+                        "        JOIN\n" +
+                        "    habitacion h ON h.idhabitacion = r.habitacion_idhabitacion\n" +
+                        "GROUP BY rhp.producto_idproducto , r.habitacion_idhabitacion\n" +
+                        "HAVING rhp.producto_idproducto = '?'\n" +
+                        "ORDER BY COUNT(rhp.producto_idproducto) ASC\n" +
+                        "LIMIT 1";
+        
+        try
+        {
+            PreparedStatement ps1;
+            if (mayorVenta) {
+                ps1 = c.prepareStatement(queryMayorProducto);
+            } else {
+                ps1 = c.prepareStatement(queryMenorProducto);
+            }
+            ResultSet rs1 = ps1.executeQuery();
+            rs1.next();
+            idproducto = rs1.getInt("idproducto");
+            
+            if (mayorVenta) {
+                nombreProducto = rs1.getObject("Nombre Producto Más Vendido");
+            } else {
+                nombreProducto = rs1.getObject("Nombre Producto Menos Vendido");
+            }
+            
+            PreparedStatement ps2 = c.prepareStatement(queryHabitacionMayorVenta);
+            ps2.setInt(1, idproducto);
+            
+            ResultSet rs2 = ps2.executeQuery();
+            rs2.next();
+            nombreHabitacionMasVentas = rs2.getObject("Nombre Habitacion Mayor Ventas");
+            
+            PreparedStatement ps3 = c.prepareStatement(queryHabitacionMenorVenta);
+            ps3.setInt(1, idproducto);
+            
+            ResultSet rs3 = ps3.executeQuery();
+            rs3.next();
+            
+            nombreHabitacionMenosVentas = rs3.getObject("Nombre Habitacion Menos Ventas");
+            
+            elementosTabla.add(new Object[] {
+                nombreProducto,
+                nombreHabitacionMasVentas,
+                nombreHabitacionMenosVentas
+            });
+            
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return elementosTabla;
 }
     @Override
     public ArrayList<Object[]> informeHabitacionMayorPromedioPasajeros(){
         // informe habitacion pero en vez de mayor uso mayor promedio pasajeros ingreso
         
-        return null;
+        ArrayList<Object[]> elementosTabla = new ArrayList<Object[]>(); 
+        String query = "SELECT \n" +
+                        "    h.nombre, AVG(r.num_pasajeros) AS 'promedio pasajeros'\n" +
+                        "FROM\n" +
+                        "    reserva r\n" +
+                        "        JOIN\n" +
+                        "    habitacion h ON r.habitacion_idhabitacion = h.idhabitacion\n" +
+                        "GROUP BY r.habitacion_idhabitacion\n" +
+                        "ORDER BY AVG(r.num_pasajeros) DESC\n" +
+                        "LIMIT 1";
+        
+        try
+        {
+            PreparedStatement ps = c.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            rs.next();
+            
+            elementosTabla.add(new Object[] {
+                rs.getObject("nombre"),
+                rs.getObject("promedio pasajeros")
+            });
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return elementosTabla;
 }
     @Override
     public ArrayList<Object[]> informeHabitaciones(){
         
-        // nombre habitacion, promedio pasajeros
+        ArrayList<Object[]> elementosTabla = new ArrayList<Object[]>(); 
         
-        return null;
-}
+        String query =  "SELECT \n" +
+                        "    r.habitacion_idhabitacion AS idhabitacion,\n" +
+                        "    h.nombre AS 'Nombre Habitacion',\n" +
+                        "    CASE r.momento\n" +
+                        "        WHEN '1' THEN 'Momento'\n" +
+                        "        ELSE 'Jornada'\n" +
+                        "    END AS 'Tipo Estadía',\n" +
+                        "    AVG(r.num_pasajeros) AS 'Promedio Pasajeros',\n" +
+                        "    COUNT(r.num_pasajeros) AS 'Numero de visitas',\n" +
+                        "    SUM(r.num_pasajeros) AS 'Total Pasajeros'\n" +
+                        "FROM\n" +
+                        "    reserva r\n" +
+                        "        JOIN\n" +
+                        "    habitacion h ON r.habitacion_idhabitacion = h.idhabitacion\n" +
+                        "GROUP BY r.habitacion_idhabitacion , r.momento;";
+        
+        try
+        {
+            PreparedStatement ps = c.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                elementosTabla.add(new Object[] {
+                    rs.getObject("Nombre Habitacion"),
+                    rs.getObject("Tipo Estadía"),
+                    rs.getObject("Promedio Pasajeros"),
+                    rs.getObject("Numero de visitas"),
+                    rs.getObject("Total Pasajeros")
+                });
+            }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return elementosTabla;
+    }
 }
