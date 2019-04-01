@@ -66,7 +66,7 @@ public class JDBCReservaDAO implements ReservaDAO {
         if (res.getMomento()) {
             nombreProducto = nombreHabitacion+"_momento";
         } else {
-            nombreProducto = nombreHabitacion+"jornada";
+            nombreProducto = nombreHabitacion+"_jornada";
         }
         
         String query4 = "SELECT * FROM producto WHERE nombre = ?";
