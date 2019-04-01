@@ -81,7 +81,7 @@ public class JDBCInformeDAO implements InformeDAO {
             String query = "SELECT \n" +
                         "    r.inicio 'Fecha y hora de ingreso',\n" +
                         "    CASE r.pasajero_rut\n" +
-                        "        WHEN '?' THEN 'Pasajero Principal'\n" +
+                        "        WHEN ? THEN 'Pasajero Principal'\n" +
                         "        ELSE 'Acompañante'\n" +
                             "    END AS 'Visita como',\n" +
                         "    h.nombre AS 'Nombre Habitación',\n" +
@@ -101,6 +101,7 @@ public class JDBCInformeDAO implements InformeDAO {
                         "GROUP BY r.idjornada";
             PreparedStatement ps = c.prepareStatement(query);
             ps.setInt(1, rut);
+            ps.setInt(2, rut);
             ResultSet rs = ps.executeQuery();
             while (rs.next() ) {
                 elementosTabla.add(new Object[] {
