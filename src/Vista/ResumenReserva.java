@@ -168,8 +168,12 @@ public class ResumenReserva extends javax.swing.JFrame {
 
     private void BTNCobrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNCobrarActionPerformed
         // TODO add your handling code here:
+        // el problema radicaba en que el id de la habitacion es uno mayor a el indice de la habitacion[]
         h[res.getIdhabitacion()].setOcupado(true);
+        h[res.getIdhabitacion()].setId(res.getIdhabitacion());
         h[res.getIdhabitacion()].setRutPaxOcupante(res.getRut());
+        JOptionPane.showMessageDialog(null, h[res.getIdhabitacion()].getId() +" "+h[res.getIdhabitacion()].isOcupado() );
+        
         jdbchab.updateOcupado(h[res.getIdhabitacion()]);
         
         //JOptionPane.showMessageDialog(null, res.getRut() +" "+ h[res.getIdhabitacion()].getRutPaxOcupante());

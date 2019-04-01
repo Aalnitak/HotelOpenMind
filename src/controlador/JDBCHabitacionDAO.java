@@ -73,13 +73,23 @@ public class JDBCHabitacionDAO implements HabitacionDAO {
     @Override
     public void updateOcupado(Habitacion habitacion) {
         try {
-            String sql = "UPDATE habitacion set  ocupado = ? WHERE idhabitacion = ?";
+            String sql;
+            if(habitacion.isOcupado()){
+            sql ="UPDATE `habitacion` SET `ocupado` = '1' WHERE `idhabitacion` = ?;";
+                
+            }else{
+            sql = "UPDATE `habitacion` SET `ocupado` = '0' WHERE `idhabitacion` = ?;";
+            
+            }
             PreparedStatement ps = c.prepareStatement(sql);
-            ps.setBoolean(1, habitacion.isOcupado());
-            ps.setInt(2, habitacion.getId());
+            System.out.println(sql);
+            
+            ps.setInt(1, habitacion.getId());
+            System.out.println("query reculia "+ps.toString());
             ps.executeUpdate();
 
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
 
         }
 
