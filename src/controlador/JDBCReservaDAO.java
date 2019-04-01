@@ -143,7 +143,30 @@ public class JDBCReservaDAO implements ReservaDAO {
 
     @Override
     public Reserva select(int id_reserva) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        Reserva res = Reserva.getRes();
+        Reserva.clearRes();
+        try
+        {
+        String query = "SELECT * FROM reserva WHERE idjornada = ?";
+        PreparedStatement ps = c.prepareStatement(query);
+        ps.setInt(1,id_reserva);
+        ResultSet rs = ps.executeQuery();
+        rs.next();
+        
+        res.setRut(rs.getInt("pasajero_rut"));
+        res.setIdJornada(id_reserva);
+        res.setFechaEntrada(rs.getTimestamp("inicio").toLocalDateTime());
+        res.setFechaSalida(rs.getTimestamp("limite_tiempo").toLocalDateTime());
+        res.setIdhabitacion(rs.getInt("habitacion_idhabitacion"));
+        res.setMomento(rs.getBoolean("momento"));
+        res.setOcupantes(rs.getInt("num_pasajeros"));
+        
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return res;
     }
 
     /**
@@ -188,7 +211,7 @@ public class JDBCReservaDAO implements ReservaDAO {
         
         try
         {
-            String query1 = "SELECT r.idjornada FROM reserva r JOIN habitacion h ON r.habitacion_idhabitacion = h.idhabitacion WHERE h.ocupado=1 AND h.idhabitacion = ? ORDER BY r.idjornada DESC LIMIT 1";
+            String query1 = "SELECT r.idjornada FROM reserva r JOIN habitacion h ON r.habitacion_idhabitacion = h.idhabitacion WHERE h.ocupado='1' AND h.idhabitacion = ? ORDER BY r.idjornada DESC LIMIT 1";
             PreparedStatement ps1 = c.prepareStatement(query1);
             ps1.setInt(1, idhabitacion);
             ResultSet rs = ps1.executeQuery();
@@ -224,7 +247,8 @@ public class JDBCReservaDAO implements ReservaDAO {
         try
              
         {
-            String query1 = "SELECT r.idjornada FROM reserva r JOIN habitacion h ON r.habitacion_idhabitacion = h.idhabitacion WHERE h.ocupado=1 AND h.idhabitacion = ? ORDER BY r.idjornada DESC LIMIT 1";
+            System.out.println(idhabitacion);
+            String query1 = "SELECT r.idjornada FROM reserva r JOIN habitacion h ON r.habitacion_idhabitacion = h.idhabitacion WHERE h.ocupado = '1' AND h.idhabitacion = ? ORDER BY r.idjornada DESC LIMIT 1";
             PreparedStatement ps1 = c.prepareStatement(query1);
             ps1.setInt(1, idhabitacion);
             ResultSet rs = ps1.executeQuery();

@@ -86,7 +86,7 @@ public class JDBCInformeDAO implements InformeDAO {
                         "        ELSE 'Acompañante'\n" +
                             "    END AS 'Visita como',\n" +
                         "    h.nombre AS 'Nombre Habitación',\n" +
-                        "    SUM(p.precio) AS 'Consumo Total'\n" +
+                        "    SUM(rhp.precio * rhp.cantidad) AS 'Consumo Total'\n" +
                         "FROM\n" +
                         "    registro_pasajeros rp\n" +
                         "        JOIN\n" +

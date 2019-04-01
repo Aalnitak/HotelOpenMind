@@ -177,6 +177,9 @@ public class ResumenReserva extends javax.swing.JFrame {
         
         //JOptionPane.showMessageDialog(null, res.getRut() +" "+ h[res.getIdhabitacion()].getRutPaxOcupante());
         jdbcReservaDAO.insert(res);
+        
+        // ingresar a tabla registro pasajaros
+        
         dispose();
         //agregar a bbdd lo correspondiente a la habitacion reserva_has_producto
         
