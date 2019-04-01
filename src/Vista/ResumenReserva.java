@@ -10,7 +10,9 @@ import controlador.ControlLabel;
 import controlador.JDBCReservaDAO;
 import controlador.JDBCHabitacionDAO;
 import controlador.JDBCPaxDAO;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import modelo.ArrayRuts;
 import modelo.Habitacion;
 import modelo.Pax;
 import modelo.Reserva;
@@ -26,6 +28,7 @@ public class ResumenReserva extends javax.swing.JFrame {
     JDBCHabitacionDAO jdbchab = new JDBCHabitacionDAO();
     Habitacion[] h;
     JDBCReservaDAO jdbcReservaDAO = new JDBCReservaDAO();
+    
 
     /**
      * Creates new form Cobro
@@ -178,7 +181,12 @@ public class ResumenReserva extends javax.swing.JFrame {
         //JOptionPane.showMessageDialog(null, res.getRut() +" "+ h[res.getIdhabitacion()].getRutPaxOcupante());
         jdbcReservaDAO.insert(res);
         
+        
         // ingresar a tabla registro pasajaros
+        ArrayList<Integer> ar = ArrayRuts.getArray();
+        
+        jdbcReservaDAO.insertarArrayRutsRegistroPax(ar,res.getIdJornada());
+
         
         dispose();
         //agregar a bbdd lo correspondiente a la habitacion reserva_has_producto

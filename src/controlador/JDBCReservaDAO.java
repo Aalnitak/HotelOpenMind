@@ -11,7 +11,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import modelo.ArrayRuts;
 import modelo.Producto;
 import modelo.Reserva;
 
@@ -63,6 +65,7 @@ public class JDBCReservaDAO implements ReservaDAO {
         rs2.next();
        
         idjornada = rs2.getInt("idjornada");
+        res.setIdJornada(idjornada);
        } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Error al recuperar idjornada");
@@ -282,6 +285,24 @@ public class JDBCReservaDAO implements ReservaDAO {
         }
         
         
+        
+    }
+
+    @Override
+    public void insertarArrayRutsRegistroPax(ArrayList<Integer> ar,int idjornada) {
+        try
+        {
+            for (int i = 0; i < ar.size(); i++) {
+            System.out.println(ar.get(i));
+            String query = "INSERT INTO registro_pasajeros (reserva_idjornada, pasajero_rut) VALUES (?,?)";
+            PreparedStatement ps = c.prepareStatement(query);
+            ps.setInt(1, idjornada);
+            ps.setInt(2, ar.get(i));
+            ps.executeUpdate();
+        }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
         
     }
     

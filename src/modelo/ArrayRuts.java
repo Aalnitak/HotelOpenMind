@@ -20,9 +20,9 @@ public class ArrayRuts {
     }
 
     public static ArrayList<Integer> getArray() {
-        if (ruts == null){
+        if (ruts==null){
             ruts = new ArrayList<>();
-            ruts.clear();
+            
         }
         return ruts;
     }
