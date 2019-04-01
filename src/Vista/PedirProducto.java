@@ -23,6 +23,7 @@ public class PedirProducto extends javax.swing.JFrame {
     JDBCProductoDAO jdbcprod = new JDBCProductoDAO();
     /**
      * Creates new form PedirProducto
+     * @param nombreHabitacion
      */
     public PedirProducto(String nombreHabitacion) {
         initComponents();
@@ -204,6 +205,7 @@ public class PedirProducto extends javax.swing.JFrame {
         // TODO add your handling code here:
         ControlInforme.transferirProductoATablaPedido(TBLStock, TBLStock.getSelectedRow(), TBLCarrito,CBCantidad.getSelectedIndex());
         ControlInforme.restarProductoStock(TBLStock, CBCantidad.getSelectedIndex());
+        ControlInforme.calcularTotalPedidoProductos(TBLCarrito, LBTotal);
     }//GEN-LAST:event_BTNAgregarActionPerformed
 
     private void BTNPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNPagarActionPerformed
@@ -212,6 +214,7 @@ public class PedirProducto extends javax.swing.JFrame {
         String nombreProd = TBLStock.getValueAt(TBLStock.getSelectedRow(), 0).toString();
         int stock = (int)TBLStock.getValueAt(TBLStock.getSelectedRow(), 2);
         int cantidadPedido =  CBCantidad.getSelectedIndex();
+
         jdbcprod.updateStock(nombreProd, stock, cantidadPedido);
     }//GEN-LAST:event_BTNPagarActionPerformed
 
@@ -225,6 +228,7 @@ public class PedirProducto extends javax.swing.JFrame {
         int cantidad = (int)carrito.getValueAt(TBLCarrito.getSelectedRow(), TBLCarrito.getColumnCount()-1);
         ControlInforme.sumarProductoStock(TBLStock,cantidad,nombreProd );
         ControlInforme.eliminarProductoCarrito(TBLCarrito, TBLCarrito.getSelectedRow());
+        ControlInforme.calcularTotalPedidoProductos(TBLCarrito, LBTotal);
     }//GEN-LAST:event_BTNEliminarActionPerformed
 
     /**

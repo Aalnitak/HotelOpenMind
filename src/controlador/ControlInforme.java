@@ -5,13 +5,12 @@
  */
 package controlador;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.ListSelectionModel;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import modelo.Pax;
 
@@ -65,6 +64,18 @@ public class ControlInforme {
             modelcarrito.addRow(rowData);
         }
 
+    }
+
+    public static void calcularTotalPedidoProductos(JTable TBLCarrito, JLabel LBTotal) {
+        DefaultTableModel modeloCarrito = (DefaultTableModel) TBLCarrito.getModel();
+        int precioTemp, precioTotal, cantidad;
+        precioTotal = 0;
+        for (int i = 0; i < modeloCarrito.getRowCount(); i++) {
+            precioTemp = Integer.parseInt(modeloCarrito.getValueAt(i, 1).toString());
+            cantidad = Integer.valueOf(modeloCarrito.getValueAt(i, 2).toString());
+            precioTotal = precioTotal + (precioTemp * cantidad);   
+        }
+        LBTotal.setText("$"+precioTotal);
     }
 
     public static void eliminarProductoCarrito(JTable TBLCarrito, int rowIndex) {
