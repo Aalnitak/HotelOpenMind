@@ -6,6 +6,7 @@
 package controlador;
 
 import java.util.ArrayList;
+import modelo.Producto;
 import modelo.Reserva;
 
 /**
@@ -18,6 +19,7 @@ public interface ReservaDAO {
     public Reserva select(int id_reserva);
     public int getIdReserva(int rut);
     public void updateMomentoEfectivoSalida(int rut);
-
+    public int idjornadaPorIdhabitacion (int idhabitacion); 
+    public void insertarProductoReservaHasProducto(Producto p, int idjornada, int cantidad);
     
 }

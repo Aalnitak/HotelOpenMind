@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import javax.swing.JOptionPane;
+import modelo.Producto;
 import modelo.Reserva;
 
 
@@ -217,6 +218,49 @@ public class JDBCReservaDAO implements ReservaDAO {
         
         // ingresar timestamp now
     }
+    @Override
+    public int idjornadaPorIdhabitacion (int idhabitacion) {
+        int idjornada = 0; 
+        try
+             
+        {
+            String query1 = "SELECT r.idjornada FROM reserva r JOIN habitacion h ON r.habitacion_idhabitacion = h.idhabitacion WHERE h.ocupado=1 AND h.idhabitacion = ? ORDER BY r.idjornada DESC LIMIT 1";
+            PreparedStatement ps1 = c.prepareStatement(query1);
+            ps1.setInt(1, idhabitacion);
+            ResultSet rs = ps1.executeQuery();
+            rs.next();
+            idjornada = rs.getInt("idjornada");
+           
+            
+            
+        } catch (SQLException e) {
+            System.out.println("Error al recuperar idjornada");
+            e.printStackTrace();
+        }
+         
+         return idjornada;
+    }
+
+    @Override
+    public void insertarProductoReservaHasProducto(Producto p, int idjornada, int cantidad) {
+        // insert producto a reserva has producto
+        try
+        {
+            String query = "INSERT INTO reserva_has_producto (reserva_idjornada, producto_idproducto, precio, cantidad) VALUES (?,?,?,?)";
+            PreparedStatement ps = c.prepareStatement(query);
+            ps.setInt(1, idjornada);
+            ps.setInt(2, p.getId());
+            ps.setInt(3, p.getPrecio());
+            ps.setInt(4, cantidad);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        
+        
+    }
+    
     
     
 }

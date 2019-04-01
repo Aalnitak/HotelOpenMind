@@ -224,12 +224,15 @@ public class PedirProducto extends javax.swing.JFrame {
         DefaultTableModel carro = (DefaultTableModel)TBLCarrito.getModel();
         //se resta en el stcok bbdd
         Producto prod;
-        int idRes = jdbcres.getIdReserva(h[indiceHab].getRutPaxOcupante());
-        Reserva res = jdbcres.select(idRes);
+        // REVISAR COMO OBTENER IDJORNADA
+        int idjornada = jdbcres.idjornadaPorIdhabitacion(indiceHab);
+        
+        Reserva res = jdbcres.select(idjornada);
         for (int i = 0;i<carro.getRowCount();i++){
             prod = jdbcprod.select(carro.getValueAt(i,0).toString());
             prod.restarStock((int)carro.getValueAt(i,1));
             jdbcprod.update(prod);  
+            jdbcres.insertarProductoReservaHasProducto(prod, idjornada, (Integer)carro.getValueAt(i, 2));
         }
         //se suma a producto_has_reserva
         // funcion DAO prodHasRes donde se pueda insertar(int idprod,int idres,int cantidad, int precio , localdatetime.now());
