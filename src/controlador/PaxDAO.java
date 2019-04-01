@@ -21,4 +21,5 @@ public interface PaxDAO {
     public boolean existe(int rut);
     public ArrayList<Object> llenarRuts();
     
+    
 }

@@ -44,6 +44,7 @@ public class Menu_Principal extends javax.swing.JFrame {
                 // Aplicar funcion CuentaReg al elemento de la tabla de cada Habitación Ocupada
                 
                 // jtxtReloj.setText(ControlTimer.CuentaReg(pruebaLDT));
+                
 
             }
 

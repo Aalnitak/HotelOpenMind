@@ -61,20 +61,19 @@ public class InformeCliente extends javax.swing.JFrame {
 
         jlbNacionalidad.setText("Nacionalidad");
 
-        jcbRuts.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jcbRuts.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbRutsActionPerformed(evt);
             }
         });
 
-        jlblNombreCliente.setText("jLabel7");
+        jlblNombreCliente.setText(" ");
 
-        jlbSexoCliente.setText("jLabel8");
+        jlbSexoCliente.setText(" ");
 
-        jlbFechaCliente.setText("jLabel9");
+        jlbFechaCliente.setText(" ");
 
-        jlbNacionalidadCliente.setText("jLabel10");
+        jlbNacionalidadCliente.setText(" ");
 
         jtRegistroVisitas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

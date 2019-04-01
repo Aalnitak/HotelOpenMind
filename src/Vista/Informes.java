@@ -33,11 +33,11 @@ public class Informes extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jcbInformes = new javax.swing.JComboBox<>();
         BTNGenerar = new javax.swing.JButton();
+        jbVolver = new javax.swing.JButton();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
-        setMaximumSize(new java.awt.Dimension(421, 128));
         setMinimumSize(new java.awt.Dimension(421, 128));
         setResizable(false);
         setSize(new java.awt.Dimension(421, 128));
@@ -46,7 +46,6 @@ public class Informes extends javax.swing.JFrame {
         jLabel1.setText("Generar Informes");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, -1));
 
-        jcbInformes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jcbInformes, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 179, -1));
 
         BTNGenerar.setText("Generar");
@@ -55,7 +54,15 @@ public class Informes extends javax.swing.JFrame {
                 BTNGenerarActionPerformed(evt);
             }
         });
-        getContentPane().add(BTNGenerar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, -1, -1));
+        getContentPane().add(BTNGenerar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, -1, -1));
+
+        jbVolver.setText("Volver");
+        jbVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbVolverActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jbVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, -1, -1));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/informes_bg.png"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -101,6 +108,12 @@ public class Informes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BTNGenerarActionPerformed
 
+    private void jbVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbVolverActionPerformed
+        // TODO add your handling code here:
+        
+        dispose();
+    }//GEN-LAST:event_jbVolverActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -140,6 +153,7 @@ public class Informes extends javax.swing.JFrame {
     private javax.swing.JButton BTNGenerar;
     private javax.swing.JLabel background;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jbVolver;
     private javax.swing.JComboBox<String> jcbInformes;
     // End of variables declaration//GEN-END:variables
 }

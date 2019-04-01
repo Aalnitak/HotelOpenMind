@@ -101,15 +101,20 @@ public class JDBCPaxDAO implements PaxDAO {
         Pax pax = Pax.getPax();
         Pax.clearPax();
         try {
-            String sql = "select * from pasajero where rut = ("
-                    + "select pasajero_rut from reserva where MAX(count(pasajero_rut)";
+            String sql = "SELECT p.*\n" +
+                        "FROM reserva r\n" +
+                        "JOIN pasajero p\n" +
+                        "ON r.pasajero_rut = p.rut\n" +
+                        "GROUP BY r.pasajero_rut\n" +
+                        "ORDER BY COUNT(idjornada) DESC\n" +
+                        "LIMIT 1";
             PreparedStatement preparedStatement = conexion.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             resultSet.next();
             pax.setRut(resultSet.getInt("rut"));
-            pax.setDigitoVerificador(resultSet.getString("digito_verificaor"));
-            pax.setNombre(resultSet.getString("nombre"));
+            pax.setDigitoVerificador(resultSet.getString("digito_verificador"));
+            pax.setNombre(resultSet.getString("nombres"));
             pax.setApellidoPat(resultSet.getString("apellido_paterno"));
             pax.setApellidoMat(resultSet.getString("apellido_materno"));
             pax.setSexo(resultSet.getString("sexo"));

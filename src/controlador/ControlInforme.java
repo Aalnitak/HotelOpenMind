@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -138,10 +139,20 @@ public class ControlInforme {
         
         nombre.setText(pax.getNombre()+" "+pax.getApellidoPat()+" "+pax.getApellidoMat());
         sexo.setText(pax.getSexo());
-        fechaNacimiento.setText(pax.getFechaNacimiento().toString());
+        fechaNacimiento.setText(
+                String.valueOf(pax.getFechaNacimiento().getDayOfMonth())+"-"+
+                        String.valueOf(pax.getFechaNacimiento().getMonthValue())+"-"+
+                        String.valueOf(pax.getFechaNacimiento().getYear())
+                        );        
         nacionalidad.setText(pax.getNacionalidad());
         
         DefaultTableModel model = (DefaultTableModel)tabla.getModel();
+        
+        if (model.getRowCount() > 0) {
+            for (int i = model.getRowCount() -1 ; i > -1; i--) {
+                model.removeRow(i);
+            }
+        }
         
         JDBCInformeDAO jdbcinforme = new JDBCInformeDAO();
         
@@ -154,11 +165,15 @@ public class ControlInforme {
     public static void llenarInformeClienteAmor(JLabel nombreCliente, JLabel sexoCliente, JLabel fechaCliente, JLabel nacionalidadCliente, JTable tabla) {
         Pax pax = Pax.getPax();
         JDBCPaxDAO jdbcpax = new JDBCPaxDAO();
+        
         pax = jdbcpax.selectClienteFrecuente();
+        
         
         nombreCliente.setText(pax.getNombre()+" "+pax.getApellidoPat()+" "+pax.getApellidoMat());
         sexoCliente.setText(pax.getSexo());
-        fechaCliente.setText(pax.getFechaNacimiento().toString());
+        fechaCliente.setText(String.valueOf(pax.getFechaNacimiento().getDayOfMonth())+"-"+
+                        String.valueOf(pax.getFechaNacimiento().getMonthValue())+"-"+
+                        String.valueOf(pax.getFechaNacimiento().getYear()));
         nacionalidadCliente.setText(pax.getNacionalidad());
         
         DefaultTableModel model = (DefaultTableModel)tabla.getModel();
