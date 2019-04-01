@@ -27,6 +27,13 @@ public class ControlInforme {
 
         ArrayList<Object[]> elementosTabla = jdbcInforme.llenarTablaHabitacionOcupada();
 
+         if (model.getRowCount() > 0) {
+            for (int i = model.getRowCount() - 1; i > -1; i--) {
+                model.removeRow(i);
+            }
+        }
+
+        
         elementosTabla.forEach((elemento) -> {
             model.addRow(elemento);
         });

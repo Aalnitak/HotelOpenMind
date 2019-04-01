@@ -19,6 +19,12 @@ public class ControlMenu_Principal {
         
         DefaultTableModel model = (DefaultTableModel) tabla.getModel();
         
+        if (model.getRowCount() > 0) {
+            for (int i = model.getRowCount() - 1; i > -1; i--) {
+                model.removeRow(i);
+            }
+        }
+        
         jdbcHabitacion.mapHabitacionDisponible.keySet().forEach((name) -> {
                 model.addRow(new Object[] {name});
         });

@@ -8,6 +8,8 @@ package Vista;
 import controlador.ControlInforme;
 import controlador.ControlMenu_Principal;
 import controlador.ControlTimer;
+import controlador.JDBCHabitacionDAO;
+import controlador.JDBCReservaDAO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import static java.awt.image.ImageObserver.ERROR;
@@ -23,6 +25,9 @@ import modelo.Habitacion;
  */
 public class Menu_Principal extends javax.swing.JFrame {
     Habitacion[] h;
+    JDBCHabitacionDAO jdbchabitacion = new JDBCHabitacionDAO();
+    JDBCReservaDAO jdbcreserva = new JDBCReservaDAO();
+   
     /**
      * Creates new form Menu_Principal
      */
@@ -85,6 +90,8 @@ public class Menu_Principal extends javax.swing.JFrame {
         jtxtHeadHabitacionesOcupadas = new javax.swing.JLabel();
         jtxtHeadHabitacionesLibres = new javax.swing.JLabel();
         jtxtReloj = new javax.swing.JLabel();
+        jbtnDesocuparHabitacion = new javax.swing.JButton();
+        jbtnActualizar = new javax.swing.JButton();
         background = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
@@ -153,7 +160,7 @@ public class Menu_Principal extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jtableHabitacionesOcupadas);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 530, 180));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 530, 180));
 
         jtableHabitacionesLibres.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -168,13 +175,29 @@ public class Menu_Principal extends javax.swing.JFrame {
         getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 250, 120));
 
         jtxtHeadHabitacionesOcupadas.setText("Información Habitaciones Ocupadas");
-        getContentPane().add(jtxtHeadHabitacionesOcupadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
+        getContentPane().add(jtxtHeadHabitacionesOcupadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
 
         jtxtHeadHabitacionesLibres.setText("Información Habitaciones Libres");
         getContentPane().add(jtxtHeadHabitacionesLibres, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
 
         jtxtReloj.setText("jLabel3");
         getContentPane().add(jtxtReloj, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 80, 30));
+
+        jbtnDesocuparHabitacion.setText("Desocupar Habitacion");
+        jbtnDesocuparHabitacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnDesocuparHabitacionActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jbtnDesocuparHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 420, -1, -1));
+
+        jbtnActualizar.setText("ActualizarTablas");
+        jbtnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnActualizarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jbtnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, -1, -1));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/menu_principal_bg.png"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -202,6 +225,33 @@ public class Menu_Principal extends javax.swing.JFrame {
         new ControlStock().setVisible(true);
 
     }//GEN-LAST:event_BTNControlStockActionPerformed
+
+    private void jbtnDesocuparHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDesocuparHabitacionActionPerformed
+        
+        // nombre habitacion
+        // set ocupado = 0
+        // reserva = salida efectiva como now
+        DefaultTableModel model = (DefaultTableModel)jtableHabitacionesOcupadas.getModel();
+        String nombreHabitacion = model.getValueAt(jtableHabitacionesOcupadas.getSelectedRow(), 0).toString();
+        
+        int idhabitacion = Habitacion.getIDporNombre(nombreHabitacion);
+        
+        jdbcreserva.updateMomentoEfectivoSalida(idhabitacion);
+        
+        h[idhabitacion-1].setOcupado(false);
+        jdbchabitacion.updateOcupado(h[idhabitacion-1]);
+        
+        ControlInforme.llenarTablaHabitacionesOcupadas(jtableHabitacionesOcupadas);
+        ControlMenu_Principal.llenarTablaHabitacionesDisponibles(jtableHabitacionesLibres);
+
+    }//GEN-LAST:event_jbtnDesocuparHabitacionActionPerformed
+
+    private void jbtnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnActualizarActionPerformed
+        
+        ControlMenu_Principal.llenarTablaHabitacionesDisponibles(jtableHabitacionesLibres);
+        ControlInforme.llenarTablaHabitacionesOcupadas(jtableHabitacionesOcupadas);
+        
+    }//GEN-LAST:event_jbtnActualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -261,6 +311,8 @@ public class Menu_Principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable2;
+    private javax.swing.JButton jbtnActualizar;
+    private javax.swing.JButton jbtnDesocuparHabitacion;
     private javax.swing.JTable jtableHabitacionesLibres;
     private javax.swing.JTable jtableHabitacionesOcupadas;
     private javax.swing.JLabel jtxtHeadHabitacionesLibres;

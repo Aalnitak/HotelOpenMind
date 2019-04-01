@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import javax.swing.JOptionPane;
 import modelo.Reserva;
 
@@ -178,10 +179,42 @@ public class JDBCReservaDAO implements ReservaDAO {
     }
 
     @Override
-    public void updateMomentoEfectivoSalida(int rut) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void updateMomentoEfectivoSalida(int idhabitacion) {
         
-        // recuperar idjornada por rut
+        
+        // recuperar idjornada por idhabitacion
+        int idjornada = 0;
+        
+        try
+        {
+            String query1 = "SELECT r.idjornada FROM reserva r JOIN habitacion h ON r.habitacion_idhabitacion = h.idhabitacion WHERE h.ocupado=1 AND h.idhabitacion = ? ORDER BY r.idjornada DESC LIMIT 1";
+            PreparedStatement ps1 = c.prepareStatement(query1);
+            ps1.setInt(1, idhabitacion);
+            ResultSet rs = ps1.executeQuery();
+            rs.next();
+            idjornada = rs.getInt("idjornada");
+           
+            
+            
+        } catch (SQLException e) {
+            System.out.println("Error al recuperar idjornada");
+            e.printStackTrace();
+        }
+       
+        try
+        {
+            String query2 = "UPDATE reserva SET momento_salida = ? WHERE idjornada = ?";
+            PreparedStatement ps2 = c.prepareStatement(query2);
+            ps2.setObject(1, Timestamp.valueOf(LocalDateTime.now()));
+            ps2.setInt(2, idjornada);
+            ps2.executeUpdate();
+            
+        } catch (SQLException e) {
+            System.out.println("Error al ingresar hora de salida");
+            e.printStackTrace();
+        }
+        
+        
         // ingresar timestamp now
     }
     
