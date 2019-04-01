@@ -41,6 +41,13 @@ public class JDBCInformeDAO implements InformeDAO {
                             "        AND r.idjornada = b.idjornada\n" +
                             "        JOIN\n" +
                             "    reserva_has_producto rhp ON (r.idjornada = rhp.reserva_idjornada)\n" +
+                            "		INNER JOIN\n" +
+                            "	(SELECT rrhp.reserva_idjornada idjornada,\n" +
+                            "		MAX(rrhp.idreserva_has_producto) idreserva_has_producto\n" +
+                            "    FROM\n" +
+                            "		reserva_has_producto rrhp\n" +
+                            "	GROUP BY idjornada) c ON r.idjornada = c.idjornada AND\n" +
+                            "    c.idreserva_has_producto = rhp.idreserva_has_producto\n" +
                             "        JOIN\n" +
                             "    producto p ON (rhp.producto_idproducto = p.idproducto)\n" +
                             "WHERE\n" +
