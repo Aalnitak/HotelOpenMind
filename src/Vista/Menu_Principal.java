@@ -48,19 +48,14 @@ public class Menu_Principal extends javax.swing.JFrame {
                 jtxtReloj.setText(LocalDateTime.now().plusHours(0).format(DateTimeFormatter.ofPattern("HH:mm:ss")));
                 
                 
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
                 
-                // TODO:
-                // Aplicar funcion CuentaReg al elemento de la tabla de cada Habitación Ocupada
-                
-                // jtxtReloj.setText(ControlTimer.CuentaReg(pruebaLDT));
-//                DefaultTableModel model = (DefaultTableModel)jtableHabitacionesOcupadas.getModel();
-//                for (int i = 0; i < model.getRowCount(); i++) {
-//                    
-//                    
-//                }
-                
-
-            }
+                for (int i = 0; i < jtableHabitacionesOcupadas.getModel().getRowCount(); i++) {
+                    String a = jtableHabitacionesOcupadas.getModel().getValueAt(i, 3).toString();
+                    LocalDateTime b = LocalDateTime.parse(a, formatter);
+                    jtableHabitacionesOcupadas.getModel().setValueAt(ControlTimer.CuentaReg(b), i, 1);
+                }
+                }
 
             
         }).start();
@@ -155,7 +150,7 @@ public class Menu_Principal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nombre Habitacion", "Número Pasajeros", "Última Acción", "Tiempo Restante"
+                "Nombre Habitacion", "Número Pasajeros", "Última Acción", "Fecha y hora limite", "Tiempo Restante"
             }
         ));
         jScrollPane1.setViewportView(jtableHabitacionesOcupadas);
