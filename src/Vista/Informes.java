@@ -99,7 +99,7 @@ public class Informes extends javax.swing.JFrame {
             new InformeProductoMenosVendido().setVisible(true);
         }
         
-        if (eleccion.equalsIgnoreCase("habitacion grupos más grandes")) {
+        if (eleccion.equalsIgnoreCase("habitación grupos más grandes")) {
             new InformeHabitacionGrupos().setVisible(true);
         }
         
