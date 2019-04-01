@@ -204,8 +204,6 @@ public class PedirProducto extends javax.swing.JFrame {
         // TODO add your handling code here:
         ControlInforme.transferirProductoATablaPedido(TBLStock, TBLStock.getSelectedRow(), TBLCarrito,CBCantidad.getSelectedIndex());
         ControlInforme.restarProductoStock(TBLStock, CBCantidad.getSelectedIndex());
-        
-        
     }//GEN-LAST:event_BTNAgregarActionPerformed
 
     private void BTNPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNPagarActionPerformed
