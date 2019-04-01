@@ -10,6 +10,7 @@ import controlador.ControlLabel;
 import controlador.JDBCReservaDAO;
 import controlador.JDBCHabitacionDAO;
 import controlador.JDBCPaxDAO;
+import javax.swing.JOptionPane;
 import modelo.Habitacion;
 import modelo.Pax;
 import modelo.Reserva;
@@ -35,6 +36,7 @@ public class ResumenReserva extends javax.swing.JFrame {
         h = jdbchab.selectAll();
         pasajero = jdbcpax.selectRead(res.getRut());
         LBPaxPpal.setText(pasajero.getNombre()+" "+pasajero.getApellidoPat());
+        //LBPaxPpal.setText(String.valueOf(pasajero.getRut()));
         LBOcupantes.setText(res.getOcupantes().toString());
         LBHab.setText(jdbchab.selectNombreHab(res.getIdhabitacion()));
         ControlLabel.setLabelPrecioPorPersona(res, LBPreciopp);
@@ -166,14 +168,23 @@ public class ResumenReserva extends javax.swing.JFrame {
 
     private void BTNCobrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNCobrarActionPerformed
         // TODO add your handling code here:
-        
+        h[res.getIdhabitacion()].setOcupado(true);
+        h[res.getIdhabitacion()].setRutPaxOcupante(res.getRut());
         jdbchab.updateOcupado(h[res.getIdhabitacion()]);
+        
+        //JOptionPane.showMessageDialog(null, res.getRut() +" "+ h[res.getIdhabitacion()].getRutPaxOcupante());
         jdbcReservaDAO.insert(res);
         dispose();
+        //agregar a bbdd lo correspondiente a la habitacion reserva_has_producto
+        
+        // funcion DAO prodHasRes donde se pueda insertar(int idprod,int idres,int cantidad, int precio , localdatetime.now());
+        //con Producto se recupera el precio unitario y ocupantes es cantidad
+        //en caso de premiado deberia haber algun boleano pero no esta implementado aun.
         
         
-        //falta cambiar estado de habitacion seleccionada además de agregar el insert en la reserva
-        //dispose
+        
+        
+     
     }//GEN-LAST:event_BTNCobrarActionPerformed
 
     /**

@@ -138,32 +138,32 @@ public class Habitaciones extends javax.swing.JFrame {
 
     private void BTNHab4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNHab4ActionPerformed
         // TODO add your handling code here:
-        new PedirProducto(h[4].getNombre()).setVisible(true);
+        new PedirProducto(4).setVisible(true);
         dispose();
         
     }//GEN-LAST:event_BTNHab4ActionPerformed
 
     private void BTNHab0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNHab0ActionPerformed
         // TODO add your handling code here:
-        new PedirProducto(h[0].getNombre()).setVisible(true);
+        new PedirProducto(0).setVisible(true);
         dispose();
     }//GEN-LAST:event_BTNHab0ActionPerformed
 
     private void BTNHab1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNHab1ActionPerformed
         // TODO add your handling code here:
-        new PedirProducto(h[1].getNombre()).setVisible(true);
+        new PedirProducto(1).setVisible(true);
         dispose();
     }//GEN-LAST:event_BTNHab1ActionPerformed
 
     private void BTNHab2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNHab2ActionPerformed
         // TODO add your handling code here:
-        new PedirProducto(h[2].getNombre()).setVisible(true);
+        new PedirProducto(2).setVisible(true);
         dispose();
     }//GEN-LAST:event_BTNHab2ActionPerformed
 
     private void BTNHab3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNHab3ActionPerformed
         // TODO add your handling code here:
-        new PedirProducto(h[3].getNombre()).setVisible(true);
+        new PedirProducto(3).setVisible(true);
         dispose();
     }//GEN-LAST:event_BTNHab3ActionPerformed
 

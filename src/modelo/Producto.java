@@ -40,6 +40,12 @@ public class Producto {
         producto.descripcion=null;
         producto.tipo=null;
     }
+    
+    public void restarStock(int cantidad){
+       int aux = producto.getStock();
+       aux -=cantidad;
+       producto.setStock(aux);
+    }
 
     public int getId() {
         return id;
