@@ -41,26 +41,40 @@ public class JDBCReservaDAO implements ReservaDAO {
         ps1.setBoolean(6, res.getMomento());
         
         ps1.executeUpdate();
-        
-        String query2 = "SELECT idjornada FROM reserva WHERE pasajero_rut = ?, habitacion_idhabitacion = ?, inicio = ?";
+        } catch (SQLException e) {
+            System.out.println("Error en insertar a tabla rerserva");
+            e.printStackTrace();
+        }
+        try 
+        {
+        String query2 = "SELECT idjornada FROM reserva WHERE pasajero_rut = ? AND habitacion_idhabitacion = ? ORDER BY idjornada DESC LIMIT 1";
         PreparedStatement ps2 = c.prepareStatement(query2);
         ps2.setInt(1, res.getRut());
+//        System.out.println(res.getRut());
         ps2.setInt(2, res.getIdhabitacion());
-        ps2.setObject(3, Timestamp.valueOf(res.getFechaEntrada()));
+//        System.out.println(res.getIdhabitacion());
+        
+        
         
         ResultSet rs2 = ps2.executeQuery();
         
         rs2.next();
        
         idjornada = rs2.getInt("idjornada");
-        
+       } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error al recuperar idjornada");
+       }
+       
+        try 
+        { 
         String query3 = "SELECT nombre FROM habitacion WHERE idhabitacion = ?";
         PreparedStatement ps3 = c.prepareStatement(query3);
         ps3.setInt(1, res.getIdhabitacion());
         
         ResultSet rs3 = ps3.executeQuery();
         rs3.next();
-        String nombreHabitacion = rs3.getObject("nombre").toString();
+        String nombreHabitacion = rs3.getString("nombre");
         
         
         if (res.getMomento()) {
@@ -77,17 +91,29 @@ public class JDBCReservaDAO implements ReservaDAO {
         
         idproducto = rs4.getInt("idproducto");
         precio = rs4.getInt("precio");
+        } catch (SQLException e) {
+            System.out.println("Error al recuperar informacion del producto (pagar habitacion)");
+            e.printStackTrace();
+        }
         
+        try 
+        {
         String query5 = "INSERT INTO reserva_has_producto (reserva_idjornada, producto_idproducto, precio, cantidad) VALUES (?,?,?,1)";
         PreparedStatement ps5 = c.prepareStatement(query5);
-        ps5.setInt(1,idjornada);
+        ps5.setInt(1, idjornada);
+        System.out.println(idjornada);
         ps5.setInt(2, idproducto);
+        System.out.println(idproducto);
         ps5.setInt(3, precio);
+        System.out.println(precio);
+        
+        
         
         ps5.executeUpdate();
         
         JOptionPane.showMessageDialog(null, "Reserva ingresada exitosamente");
         }catch (SQLException e){
+            System.out.println("Error al ingresar reserva has producto.");
         System.out.println(e.getMessage());
         JOptionPane.showMessageDialog(null, "Error al ingresar reserva");
         }
