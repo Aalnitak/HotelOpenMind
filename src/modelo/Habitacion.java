@@ -14,7 +14,8 @@ import controlador.JDBCHabitacionDAO;
 public class Habitacion {
 
     private String nombre;
-    private int id;
+    private int id,
+            rutPaxOcupante;
     private boolean ocupado;
     private static Habitacion[] hab;
 
@@ -91,6 +92,14 @@ public class Habitacion {
 
     public void setOcupado(boolean ocupado) {
         this.ocupado = ocupado;
+    }
+
+    public int getRutPaxOcupante() {
+        return rutPaxOcupante;
+    }
+
+    public void setRutPaxOcupante(int rutPaxOcupante) {
+        this.rutPaxOcupante = rutPaxOcupante;
     }
 
 }

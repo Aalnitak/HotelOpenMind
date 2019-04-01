@@ -7,11 +7,15 @@ package Vista;
 
 import controlador.ControlComboBox;
 import controlador.ControlInforme;
+import controlador.JDBCHabitacionDAO;
 import controlador.JDBCProductoDAO;
+import controlador.JDBCReservaDAO;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import modelo.Habitacion;
+import modelo.Producto;
+import modelo.Reserva;
 
 /**
  *
@@ -21,15 +25,21 @@ public class PedirProducto extends javax.swing.JFrame {
     Habitacion[] h;
     int indiceHab;
     JDBCProductoDAO jdbcprod = new JDBCProductoDAO();
+    JDBCHabitacionDAO jdbchab = new JDBCHabitacionDAO();
+    JDBCReservaDAO jdbcres = new JDBCReservaDAO();
     /**
      * Creates new form PedirProducto
      * @param nombreHabitacion
      */
-    public PedirProducto(String nombreHabitacion) {
+    public PedirProducto(int idHab) {
         initComponents();
-        LBNombreHab.setText(nombreHabitacion);
-        //h=Habitacion.getHab();
-        //indiceHab = Habitacion.getIDporNombre(nombreHabitacion);
+        indiceHab=idHab;
+        h=Habitacion.getHab();
+        LBNombreHab.setText(h[indiceHab].getNombre());
+        LBRut.setText( String.valueOf(h[indiceHab].getRutPaxOcupante()));
+        for (Habitacion ha : h){
+            System.out.print(ha.getRutPaxOcupante());
+        }
         ControlInforme.llenarTablaProductosHabitacion(TBLStock);
         
         TBLStock.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
@@ -59,7 +69,7 @@ public class PedirProducto extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         CBCantidad = new javax.swing.JComboBox<>();
         javax.swing.JButton BTNAgregar = new javax.swing.JButton();
-        LBAgregado = new javax.swing.JLabel();
+        LBRut = new javax.swing.JLabel();
         BTNPagar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         TBLCarrito = new javax.swing.JTable();
@@ -84,7 +94,6 @@ public class PedirProducto extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(464, 491));
         setMinimumSize(new java.awt.Dimension(464, 491));
         setSize(new java.awt.Dimension(464, 491));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -114,7 +123,7 @@ public class PedirProducto extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(TBLStock);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 28, 268, 189));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 28, 330, 189));
 
         jLabel1.setText("Elija el producto");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
@@ -123,7 +132,7 @@ public class PedirProducto extends javax.swing.JFrame {
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 227, -1, -1));
 
         CBCantidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---cantidad---" }));
-        getContentPane().add(CBCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 50, -1, -1));
+        getContentPane().add(CBCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(351, 120, 90, -1));
 
         BTNAgregar.setText("Agregar");
         BTNAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -131,10 +140,10 @@ public class PedirProducto extends javax.swing.JFrame {
                 BTNAgregarActionPerformed(evt);
             }
         });
-        getContentPane().add(BTNAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 95, 158, -1));
+        getContentPane().add(BTNAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(358, 180, 90, -1));
 
-        LBAgregado.setText("-");
-        getContentPane().add(LBAgregado, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 142, -1, -1));
+        LBRut.setText("-");
+        getContentPane().add(LBRut, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, 60, -1));
 
         BTNPagar.setText("Pagar");
         BTNPagar.addActionListener(new java.awt.event.ActionListener() {
@@ -142,7 +151,7 @@ public class PedirProducto extends javax.swing.JFrame {
                 BTNPagarActionPerformed(evt);
             }
         });
-        getContentPane().add(BTNPagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 420, -1, -1));
+        getContentPane().add(BTNPagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 440, 180, -1));
 
         TBLCarrito.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -162,13 +171,13 @@ public class PedirProducto extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(TBLCarrito);
 
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 249, 268, 149));
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 249, 320, 149));
 
         jLabel3.setText("Total a pagar");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 352, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 410, -1, -1));
 
         LBTotal.setText("-");
-        getContentPane().add(LBTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 382, -1, -1));
+        getContentPane().add(LBTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 410, 40, -1));
 
         BTNEliminar.setText("Eliminar");
         BTNEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -176,10 +185,10 @@ public class PedirProducto extends javax.swing.JFrame {
                 BTNEliminarActionPerformed(evt);
             }
         });
-        getContentPane().add(BTNEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(292, 265, 158, -1));
+        getContentPane().add(BTNEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 370, 90, -1));
 
         LBNombreHab.setText("-");
-        getContentPane().add(LBNombreHab, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, -1, -1));
+        getContentPane().add(LBNombreHab, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, -1, -1));
 
         BTNVolver.setText("Volver");
         BTNVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -187,7 +196,7 @@ public class PedirProducto extends javax.swing.JFrame {
                 BTNVolverActionPerformed(evt);
             }
         });
-        getContentPane().add(BTNVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, -1, -1));
+        getContentPane().add(BTNVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, -1, -1));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/pedirproducto_bg.png"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -211,11 +220,21 @@ public class PedirProducto extends javax.swing.JFrame {
     private void BTNPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNPagarActionPerformed
         // TODO add your handling code here:
         // 
-        String nombreProd = TBLStock.getValueAt(TBLStock.getSelectedRow(), 0).toString();
-        int stock = (int)TBLStock.getValueAt(TBLStock.getSelectedRow(), 2);
-        int cantidadPedido =  CBCantidad.getSelectedIndex();
+        
+        DefaultTableModel carro = (DefaultTableModel)TBLCarrito.getModel();
+        //se resta en el stcok bbdd
+        Producto prod;
+        int idRes = jdbcres.getIdReserva(h[indiceHab].getRutPaxOcupante());
+        Reserva res = jdbcres.select(idRes);
+        for (int i = 0;i<carro.getRowCount();i++){
+            prod = jdbcprod.select(carro.getValueAt(i,0).toString());
+            prod.restarStock((int)carro.getValueAt(i,1));
+            jdbcprod.update(prod);  
+        }
+        //se suma a producto_has_reserva
+        // funcion DAO prodHasRes donde se pueda insertar(int idprod,int idres,int cantidad, int precio , localdatetime.now());
+        
 
-        jdbcprod.updateStock(nombreProd, stock, cantidadPedido);
     }//GEN-LAST:event_BTNPagarActionPerformed
 
     private void BTNEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNEliminarActionPerformed
@@ -271,8 +290,8 @@ public class PedirProducto extends javax.swing.JFrame {
     private javax.swing.JButton BTNPagar;
     private javax.swing.JButton BTNVolver;
     private javax.swing.JComboBox<String> CBCantidad;
-    private javax.swing.JLabel LBAgregado;
     private javax.swing.JLabel LBNombreHab;
+    private javax.swing.JLabel LBRut;
     private javax.swing.JLabel LBTotal;
     private javax.swing.JTable TBLCarrito;
     private javax.swing.JTable TBLStock;

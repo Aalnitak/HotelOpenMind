@@ -42,6 +42,7 @@ public class JDBCHabitacionDAO implements HabitacionDAO {
                 hab.setId(rs.getInt("idhabitacion"));
                 hab.setNombre(rs.getString("nombre"));
                 hab.setOcupado(rs.getBoolean("ocupado"));
+                
 
             }
 

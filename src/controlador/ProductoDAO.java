@@ -19,5 +19,4 @@ public interface ProductoDAO {
     public void update(Producto producto);
     public Producto select(String nombre);
     public ArrayList<Object[]> selectProductos();
-    public void updateStock(String nombreProducto, int stock, int cantidadPedido);
 }
