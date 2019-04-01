@@ -117,7 +117,7 @@ public class Menu_Principal extends javax.swing.JFrame {
                 BTNControlStockActionPerformed(evt);
             }
         });
-        getContentPane().add(BTNControlStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 130, 120, 50));
+        getContentPane().add(BTNControlStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 70, 120, 50));
 
         BTNInformes.setText("Informes");
         BTNInformes.addActionListener(new java.awt.event.ActionListener() {
@@ -125,7 +125,7 @@ public class Menu_Principal extends javax.swing.JFrame {
                 BTNInformesActionPerformed(evt);
             }
         });
-        getContentPane().add(BTNInformes, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 63, 120, 50));
+        getContentPane().add(BTNInformes, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 70, 120, 50));
 
         BTNHab.setText("Pedidos");
         BTNHab.addActionListener(new java.awt.event.ActionListener() {
@@ -133,7 +133,7 @@ public class Menu_Principal extends javax.swing.JFrame {
                 BTNHabActionPerformed(evt);
             }
         });
-        getContentPane().add(BTNHab, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 191, 120, 50));
+        getContentPane().add(BTNHab, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, 120, 50));
 
         BTNIngreso.setText("Ingreso");
         BTNIngreso.addActionListener(new java.awt.event.ActionListener() {
@@ -141,7 +141,7 @@ public class Menu_Principal extends javax.swing.JFrame {
                 BTNIngresoActionPerformed(evt);
             }
         });
-        getContentPane().add(BTNIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 253, 120, 50));
+        getContentPane().add(BTNIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 130, 120, 50));
 
         jtableHabitacionesOcupadas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -153,7 +153,7 @@ public class Menu_Principal extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jtableHabitacionesOcupadas);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 356, 128));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 530, 180));
 
         jtableHabitacionesLibres.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -165,13 +165,13 @@ public class Menu_Principal extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(jtableHabitacionesLibres);
 
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 356, 200));
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 250, 120));
 
         jtxtHeadHabitacionesOcupadas.setText("Información Habitaciones Ocupadas");
-        getContentPane().add(jtxtHeadHabitacionesOcupadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
+        getContentPane().add(jtxtHeadHabitacionesOcupadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
 
         jtxtHeadHabitacionesLibres.setText("Información Habitaciones Libres");
-        getContentPane().add(jtxtHeadHabitacionesLibres, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
+        getContentPane().add(jtxtHeadHabitacionesLibres, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
 
         jtxtReloj.setText("jLabel3");
         getContentPane().add(jtxtReloj, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 80, 30));

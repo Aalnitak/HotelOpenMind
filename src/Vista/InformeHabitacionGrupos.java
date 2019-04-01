@@ -5,6 +5,8 @@
  */
 package Vista;
 
+import controlador.ControlInforme;
+
 /**
  *
  * @author ljrojas
@@ -16,6 +18,7 @@ public class InformeHabitacionGrupos extends javax.swing.JFrame {
      */
     public InformeHabitacionGrupos() {
         initComponents();
+        ControlInforme.llenarInformeHabitacionGrupos(jlblNombre, jlblPromedio);
         
     }
 

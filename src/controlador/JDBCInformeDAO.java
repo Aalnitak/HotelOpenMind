@@ -368,14 +368,16 @@ public class JDBCInformeDAO implements InformeDAO {
         // informe habitacion pero en vez de mayor uso mayor promedio pasajeros ingreso
         
         Object[] elementos = new Object[2]; 
-        String query = "SELECT \n" +
-                        "    h.nombre, AVG(r.num_pasajeros) AS 'promedio pasajeros'\n" +
+        String query = "SELECT\n" +
+                        "	h.nombre, AVG(r.num_pasajeros) AS 'promedio pasajeros'\n" +
                         "FROM\n" +
-                        "    reserva r\n" +
-                        "        JOIN\n" +
-                        "    habitacion h ON r.habitacion_idhabitacion = h.idhabitacion\n" +
-                        "GROUP BY r.habitacion_idhabitacion\n" +
-                        "ORDER BY AVG(r.num_pasajeros) DESC\n" +
+                        "	reserva r\n" +
+                        "JOIN\n" +
+                        "	habitacion h ON r.habitacion_idhabitacion = h.idhabitacion\n" +
+                        "GROUP BY\n" +
+                        "	r.habitacion_idhabitacion\n" +
+                        "ORDER BY\n" +
+                        "	AVG(r.num_pasajeros) DESC\n" +
                         "LIMIT 1";
         
         try
