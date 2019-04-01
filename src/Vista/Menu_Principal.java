@@ -10,9 +10,11 @@ import controlador.ControlMenu_Principal;
 import controlador.ControlTimer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import static java.awt.image.ImageObserver.ERROR;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javax.swing.Timer;
+import javax.swing.table.DefaultTableModel;
 import modelo.Habitacion;
 
 /**
@@ -40,10 +42,17 @@ public class Menu_Principal extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 jtxtReloj.setText(LocalDateTime.now().plusHours(0).format(DateTimeFormatter.ofPattern("HH:mm:ss")));
                 
+                
+                
                 // TODO:
                 // Aplicar funcion CuentaReg al elemento de la tabla de cada Habitación Ocupada
                 
                 // jtxtReloj.setText(ControlTimer.CuentaReg(pruebaLDT));
+//                DefaultTableModel model = (DefaultTableModel)jtableHabitacionesOcupadas.getModel();
+//                for (int i = 0; i < model.getRowCount(); i++) {
+//                    
+//                    
+//                }
                 
 
             }

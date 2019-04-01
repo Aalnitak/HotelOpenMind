@@ -51,7 +51,8 @@ public class JDBCInformeDAO implements InformeDAO {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-
+                
+                
                 elementosTabla.add(new Object[]{
                     rs.getObject("nombre"),
                     rs.getObject("numero de pasajeros"),
@@ -297,7 +298,7 @@ public class JDBCInformeDAO implements InformeDAO {
                         "        JOIN\n" +
                         "    habitacion h ON h.idhabitacion = r.habitacion_idhabitacion\n" +
                         "GROUP BY rhp.producto_idproducto , r.habitacion_idhabitacion\n" +
-                        "HAVING rhp.producto_idproducto = '?'\n" +
+                        "HAVING rhp.producto_idproducto = ?\n" +
                         "ORDER BY COUNT(rhp.producto_idproducto) DESC\n" +
                         "LIMIT 1";
 
@@ -305,7 +306,7 @@ public class JDBCInformeDAO implements InformeDAO {
                         "    COUNT(rhp.producto_idproducto) AS 'N ventas',\n" +
                         "    rhp.producto_idproducto AS 'idproducto',\n" +
                         "    r.habitacion_idhabitacion AS 'idhabitacion',\n" +
-                        "    h.nombre AS 'Nombre Habitacion Menor Ventas'\n" +
+                        "    h.nombre AS 'Nombre Habitacion Menos Ventas'\n" +
                         "FROM\n" +
                         "    reserva_has_producto rhp\n" +
                         "        JOIN\n" +
@@ -313,7 +314,7 @@ public class JDBCInformeDAO implements InformeDAO {
                         "        JOIN\n" +
                         "    habitacion h ON h.idhabitacion = r.habitacion_idhabitacion\n" +
                         "GROUP BY rhp.producto_idproducto , r.habitacion_idhabitacion\n" +
-                        "HAVING rhp.producto_idproducto = '?'\n" +
+                        "HAVING rhp.producto_idproducto = ?\n" +
                         "ORDER BY COUNT(rhp.producto_idproducto) ASC\n" +
                         "LIMIT 1";
         
