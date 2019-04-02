@@ -65,6 +65,7 @@ public class JDBCInformeDAO implements InformeDAO {
                     rs.getObject("numero de pasajeros"),
                     rs.getObject("nombre producto consumido"),
                     rs.getObject("limite de tiempo")
+//                    rs.getObject("limite de tiempo"
                 });
 
             }
