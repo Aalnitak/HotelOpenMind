@@ -53,7 +53,12 @@ public class Menu_Principal extends javax.swing.JFrame {
                 for (int i = 0; i < jtableHabitacionesOcupadas.getModel().getRowCount(); i++) {
                     String a = jtableHabitacionesOcupadas.getModel().getValueAt(i, 3).toString();
                     LocalDateTime b = LocalDateTime.parse(a, formatter);
-                    jtableHabitacionesOcupadas.getModel().setValueAt(ControlTimer.CuentaReg(b), i, 1);
+                    if (LocalDateTime.now().isBefore(b)) {
+                        jtableHabitacionesOcupadas.getModel().setValueAt(ControlTimer.CuentaReg(b), i, 4);
+                    } else {
+                        jtableHabitacionesOcupadas.getModel().setValueAt("Tiempo Terminado", i, 4);
+                    }
+                    
                 }
                 }
 
@@ -192,7 +197,7 @@ public class Menu_Principal extends javax.swing.JFrame {
                 jbtnActualizarActionPerformed(evt);
             }
         });
-        getContentPane().add(jbtnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, -1, -1));
+        getContentPane().add(jbtnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 420, -1, -1));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/menu_principal_bg.png"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
