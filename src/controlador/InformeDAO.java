@@ -24,5 +24,6 @@ public interface InformeDAO {
     public Object[] informeHabitacionMayorPromedioPasajeros();
     public ArrayList<Object[]> informeHabitaciones();
     public Object nombreHabitacion(boolean mayorUso);
+    public ArrayList<Object[]> informeConsumoReserva(int idjornada);
 
 }

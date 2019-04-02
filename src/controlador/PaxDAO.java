@@ -20,6 +20,7 @@ public interface PaxDAO {
     public boolean isClienteFrecuente(Pax pax);
     public boolean existe(int rut);
     public ArrayList<Object> llenarRuts();
+    public ArrayList<Object[]> llenarTablaPaxResumenVisita(int idjornada);
     
     
 }

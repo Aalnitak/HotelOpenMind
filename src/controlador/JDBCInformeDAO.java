@@ -484,4 +484,37 @@ public class JDBCInformeDAO implements InformeDAO {
         
         return nombre;
     }
+
+    @Override
+    public ArrayList<Object[]> informeConsumoReserva(int idjornada) {
+        
+        ArrayList<Object[]> elementos = new ArrayList<Object[]>();
+        String queri ="SELECT p.nombre, rhp.cantidad, rhp.precio, rhp.cantidad*rhp.precio AS 'Subtotal'\n" +
+                        "FROM reserva r \n" +
+                        "JOIN reserva_has_producto rhp\n" +
+                        "ON r.idjornada = rhp.reserva_idjornada\n" +
+                        "JOIN producto p\n" +
+                        "ON rhp.producto_idproducto = p.idproducto\n" +
+                        "WHERE r.idjornada = ?";
+        try
+        {
+            PreparedStatement ps = c.prepareStatement(queri);
+            ps.setInt(1, idjornada);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()) {
+                elementos.add(new Object[] {
+                    rs.getObject("nombre"),
+                    rs.getObject("cantidad"),
+                    rs.getObject("precio"),
+                    rs.getObject("Subtotal")
+                });
+            }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return elementos;
+    }
 }

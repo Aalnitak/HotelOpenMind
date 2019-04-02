@@ -12,7 +12,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import modelo.Habitacion;
 import modelo.Pax;
+import modelo.Reserva;
 
 /**
  * clase de controlador para llenar objetos del tipo JTable
@@ -284,5 +286,45 @@ public class ControlInforme {
             model.addRow(elemento);
         });
 
+    }
+    
+    public static void llenarResumenVisita(int idjornada, JLabel idreserva, JLabel inicio, JLabel termino, JLabel nombreHabitacion, JLabel numPasajeros, JTable pasajeros, JTable consumo, JLabel consumoTotal) {
+        
+        Habitacion[] h;
+        JDBCHabitacionDAO jdbchabitacion = new JDBCHabitacionDAO();
+        JDBCReservaDAO jdbcreserva = new JDBCReservaDAO();
+        JDBCPaxDAO jdbcpax = new JDBCPaxDAO();
+        JDBCInformeDAO jdbcinforme = new JDBCInformeDAO();
+     
+        
+        Reserva res = Reserva.getRes();
+        res = jdbcreserva.select(idjornada);
+        
+        
+        
+        idreserva.setText(res.getIdJornada().toString());
+        inicio.setText(res.getFechaEntrada().toString());
+        termino.setText(res.getFechaSalidaEfectiva().toString());
+        nombreHabitacion.setText(jdbchabitacion.selectNombreHab(res.getIdhabitacion()));
+        numPasajeros.setText(res.getOcupantes().toString());
+        
+        DefaultTableModel modelPasajeros = (DefaultTableModel) pasajeros.getModel();
+        ArrayList<Object[]> ArrayPax = jdbcpax.llenarTablaPaxResumenVisita(idjornada);
+        ArrayPax.forEach((elemento) -> {modelPasajeros.addRow(elemento);});
+        
+        DefaultTableModel modelConsumo = (DefaultTableModel) consumo.getModel();
+        ArrayList<Object[]> ArrayConsumo = jdbcinforme.informeConsumoReserva(idjornada);
+        ArrayConsumo.forEach((elemento) -> {modelConsumo.addRow(elemento);});
+        
+        int cTotal = 0;
+        
+        for (int i=0; i <modelConsumo.getRowCount(); i++) {
+            cTotal = cTotal + Integer.valueOf(modelConsumo.getValueAt(i, 3).toString());
+        }
+        
+        consumoTotal.setText(String.valueOf(cTotal));        
+        
+        
+        
     }
 }

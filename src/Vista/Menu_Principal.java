@@ -57,6 +57,22 @@ public class Menu_Principal extends javax.swing.JFrame {
                         jtableHabitacionesOcupadas.getModel().setValueAt(ControlTimer.CuentaReg(b), i, 4);
                     } else {
                         jtableHabitacionesOcupadas.getModel().setValueAt("Tiempo Terminado", i, 4);
+                         DefaultTableModel model = (DefaultTableModel)jtableHabitacionesOcupadas.getModel();
+                        String nombreHabitacion = model.getValueAt(jtableHabitacionesOcupadas.getSelectedRow(), 0).toString();
+
+                        int idhabitacion = Habitacion.getIDporNombre(nombreHabitacion);
+
+                        jdbcreserva.updateMomentoEfectivoSalida(idhabitacion);
+
+                        h[idhabitacion-1].setOcupado(false);
+                        jdbchabitacion.updateOcupado(h[idhabitacion-1]);
+
+                        ControlInforme.llenarTablaHabitacionesOcupadas(jtableHabitacionesOcupadas);
+                        ControlMenu_Principal.llenarTablaHabitacionesDisponibles(jtableHabitacionesLibres);
+
+                        int idjornada = jdbcreserva.idjornadaPorIdhabitacion(idhabitacion);
+
+                        new ResumenVisita(idjornada).setVisible(true);
                     }
                     
                 }
@@ -243,6 +259,10 @@ public class Menu_Principal extends javax.swing.JFrame {
         
         ControlInforme.llenarTablaHabitacionesOcupadas(jtableHabitacionesOcupadas);
         ControlMenu_Principal.llenarTablaHabitacionesDisponibles(jtableHabitacionesLibres);
+        
+        int idjornada = jdbcreserva.idjornadaPorIdhabitacion(idhabitacion);
+        
+        new ResumenVisita(idjornada).setVisible(true);
 
     }//GEN-LAST:event_jbtnDesocuparHabitacionActionPerformed
 

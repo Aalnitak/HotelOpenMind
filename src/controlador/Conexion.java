@@ -23,10 +23,15 @@ public class Conexion {
 // commit comentario en conexion
     public static Connection getConnection() {
         
-        String url = "jdbc:mysql://shared40.accountservergroup.com:3306/bbbn5jj_hopenmind";
-        String user = "bbbn5jj_proyetco";
-        String pass = "u4@D%2%qXStc";
+        String url = "jdbc:mysql://localhost:3306/bbbn5jj_hopenmind";
+        String user = "root";
+        String pass = "system";
         System.out.println("Conectando..");  
+        
+//        String url = "jdbc:mysql://shared40.accountservergroup.com:3306/bbbn5jj_hopenmind";
+//        String user = "bbbn5jj_proyetco";
+//        String pass = "u4@D%2%qXStc";
+//        System.out.println("Conectando..");  
 
         try {
             conexion = DriverManager.getConnection(url, user, pass);

@@ -178,5 +178,39 @@ public class JDBCPaxDAO implements PaxDAO {
         }
         return ruts;
     }
+
+    @Override
+    public ArrayList<Object[]> llenarTablaPaxResumenVisita(int idjornada) {
+        
+        String queri ="SELECT \n" +
+                    "	CONCAT(p.nombres,\" \",p.apellido_paterno,\" \",p.apellido_materno) AS 'nombre',\n" +
+                    "    p.rut,\n" +
+                    "    CASE p.rut WHEN r.pasajero_rut THEN 'principal' ELSE 'acompañante' END AS 'calidad'\n" +
+                    "FROM pasajero p\n" +
+                    "JOIN registro_pasajeros rp\n" +
+                    "ON rp.pasajero_rut = p.rut\n" +
+                    "JOIN reserva r\n" +
+                    "ON r.pasajero_rut = rp.pasajero_rut\n" +
+                    "WHERE reserva_idjornada = ?";
+        
+        ArrayList<Object[]> elementos = new ArrayList<Object[]>();
+        
+        try
+        {
+            PreparedStatement ps = conexion.prepareStatement(queri);
+            ps.setInt(1, idjornada);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                elementos.add(new Object[] {
+                    rs.getObject("nombre"),
+                    rs.getObject("rut"),
+                    rs.getObject("calidad")
+                });
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return elementos;
+    }
     
 }
