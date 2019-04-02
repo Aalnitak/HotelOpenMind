@@ -280,8 +280,10 @@ public class JDBCReservaDAO implements ReservaDAO {
             ps.setInt(3, p.getPrecio());
             ps.setInt(4, cantidad);
             ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Producto agregado a la habitación exitosamente");
         } catch (SQLException e) {
             e.printStackTrace();
+             JOptionPane.showMessageDialog(null, "Error al cargar el producto a la habitación, favor intentar nuevamente");
         }
         
         
