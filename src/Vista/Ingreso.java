@@ -175,6 +175,7 @@ public class Ingreso extends javax.swing.JFrame {
     private void BTNVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNVolverActionPerformed
         // TODO add your handling code here:
         dispose();
+        new Menu_Principal().setVisible(true);
     }//GEN-LAST:event_BTNVolverActionPerformed
 
     private void RBMomentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RBMomentoActionPerformed

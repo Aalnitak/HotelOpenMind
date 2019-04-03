@@ -174,7 +174,7 @@ public class ResumenReserva extends javax.swing.JFrame {
         // el problema radicaba en que el id de la habitacion es uno mayor a el indice de la habitacion[]
         h[res.getIdhabitacion()-1].setOcupado(true);
         h[res.getIdhabitacion()-1].setRutPaxOcupante(res.getRut());
-        JOptionPane.showMessageDialog(null, h[res.getIdhabitacion()-1].getId() +" "+h[res.getIdhabitacion()-1].isOcupado() );
+
         
         jdbchab.updateOcupado(h[res.getIdhabitacion()-1]);
         
@@ -189,6 +189,7 @@ public class ResumenReserva extends javax.swing.JFrame {
 
         
         dispose();
+        new Menu_Principal().setVisible(true);
         //agregar a bbdd lo correspondiente a la habitacion reserva_has_producto
         
         // funcion DAO prodHasRes donde se pueda insertar(int idprod,int idres,int cantidad, int precio , localdatetime.now());

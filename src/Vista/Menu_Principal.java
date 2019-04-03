@@ -15,6 +15,7 @@ import java.awt.event.ActionListener;
 import static java.awt.image.ImageObserver.ERROR;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 import modelo.Habitacion;
@@ -24,32 +25,30 @@ import modelo.Habitacion;
  * @author duoc
  */
 public class Menu_Principal extends javax.swing.JFrame {
+
     Habitacion[] h;
     JDBCHabitacionDAO jdbchabitacion = new JDBCHabitacionDAO();
     JDBCReservaDAO jdbcreserva = new JDBCReservaDAO();
-   
+
     /**
      * Creates new form Menu_Principal
      */
     public Menu_Principal() {
-        
-        
+
         //usar el constructor 
         initComponents();
         h = Habitacion.setHab();
-        
+
         ControlMenu_Principal.llenarTablaHabitacionesDisponibles(jtableHabitacionesLibres);
         ControlInforme.llenarTablaHabitacionesOcupadas(jtableHabitacionesOcupadas);
 
-        
-        new Timer (1000, new ActionListener() {
+        new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 jtxtReloj.setText(LocalDateTime.now().plusHours(0).format(DateTimeFormatter.ofPattern("HH:mm:ss")));
-                
-                
+
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
-                
+
                 for (int i = 0; i < jtableHabitacionesOcupadas.getModel().getRowCount(); i++) {
                     String a = jtableHabitacionesOcupadas.getModel().getValueAt(i, 3).toString();
                     LocalDateTime b = LocalDateTime.parse(a, formatter);
@@ -57,15 +56,15 @@ public class Menu_Principal extends javax.swing.JFrame {
                         jtableHabitacionesOcupadas.getModel().setValueAt(ControlTimer.CuentaReg(b), i, 4);
                     } else {
                         jtableHabitacionesOcupadas.getModel().setValueAt("Tiempo Terminado", i, 4);
-                         DefaultTableModel model = (DefaultTableModel)jtableHabitacionesOcupadas.getModel();
+                        DefaultTableModel model = (DefaultTableModel) jtableHabitacionesOcupadas.getModel();
                         String nombreHabitacion = model.getValueAt(jtableHabitacionesOcupadas.getSelectedRow(), 0).toString();
 
                         int idhabitacion = Habitacion.getIDporNombre(nombreHabitacion);
 
                         jdbcreserva.updateMomentoEfectivoSalida(idhabitacion);
 
-                        h[idhabitacion-1].setOcupado(false);
-                        jdbchabitacion.updateOcupado(h[idhabitacion-1]);
+                        h[idhabitacion - 1].setOcupado(false);
+                        jdbchabitacion.updateOcupado(h[idhabitacion - 1]);
 
                         ControlInforme.llenarTablaHabitacionesOcupadas(jtableHabitacionesOcupadas);
                         ControlMenu_Principal.llenarTablaHabitacionesDisponibles(jtableHabitacionesLibres);
@@ -74,11 +73,10 @@ public class Menu_Principal extends javax.swing.JFrame {
 
                         new ResumenVisita(idjornada).setVisible(true);
                     }
-                    
-                }
-                }
 
-            
+                }
+            }
+
         }).start();
     }
 
@@ -205,7 +203,7 @@ public class Menu_Principal extends javax.swing.JFrame {
                 jbtnDesocuparHabitacionActionPerformed(evt);
             }
         });
-        getContentPane().add(jbtnDesocuparHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 420, -1, -1));
+        getContentPane().add(jbtnDesocuparHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 420, -1, -1));
 
         jbtnActualizar.setText("ActualizarTablas");
         jbtnActualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -213,7 +211,7 @@ public class Menu_Principal extends javax.swing.JFrame {
                 jbtnActualizarActionPerformed(evt);
             }
         });
-        getContentPane().add(jbtnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 420, -1, -1));
+        getContentPane().add(jbtnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 420, -1, -1));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/menu_principal_bg.png"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -224,6 +222,7 @@ public class Menu_Principal extends javax.swing.JFrame {
     private void BTNIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNIngresoActionPerformed
         // TODO add your handling code here:
         new Ingreso().setVisible(true);
+        dispose();
     }//GEN-LAST:event_BTNIngresoActionPerformed
 
     private void BTNHabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNHabActionPerformed
@@ -243,41 +242,44 @@ public class Menu_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_BTNControlStockActionPerformed
 
     private void jbtnDesocuparHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDesocuparHabitacionActionPerformed
-        
+
         // nombre habitacion
         // set ocupado = 0
         // reserva = salida efectiva como now
-        DefaultTableModel model = (DefaultTableModel)jtableHabitacionesOcupadas.getModel();
-        String nombreHabitacion = model.getValueAt(jtableHabitacionesOcupadas.getSelectedRow(), 0).toString();
-        
-        int idhabitacion = Habitacion.getIDporNombre(nombreHabitacion);
-        
-        jdbcreserva.updateMomentoEfectivoSalida(idhabitacion);
-        
-        h[idhabitacion-1].setOcupado(false);
-        jdbchabitacion.updateOcupado(h[idhabitacion-1]);
-        
-        ControlInforme.llenarTablaHabitacionesOcupadas(jtableHabitacionesOcupadas);
-        ControlMenu_Principal.llenarTablaHabitacionesDisponibles(jtableHabitacionesLibres);
-        
-        int idjornada = jdbcreserva.idjornadaPorIdhabitacion(idhabitacion);
-        
-        new ResumenVisita(idjornada).setVisible(true);
+        DefaultTableModel model = (DefaultTableModel) jtableHabitacionesOcupadas.getModel();
+        try {
+            String nombreHabitacion = model.getValueAt(jtableHabitacionesOcupadas.getSelectedRow(), 0).toString();
+            int idhabitacion = Habitacion.getIDporNombre(nombreHabitacion);
+
+            jdbcreserva.updateMomentoEfectivoSalida(idhabitacion);
+
+            h[idhabitacion - 1].setOcupado(false);
+            jdbchabitacion.updateOcupado(h[idhabitacion - 1]);
+
+            ControlInforme.llenarTablaHabitacionesOcupadas(jtableHabitacionesOcupadas);
+            ControlMenu_Principal.llenarTablaHabitacionesDisponibles(jtableHabitacionesLibres);
+
+            int idjornada = jdbcreserva.idjornadaPorIdhabitacion(idhabitacion);
+
+            new ResumenVisita(idjornada).setVisible(true);
+        } catch(ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null, "Ninguna habitación seleccionada");
+        }
+
 
     }//GEN-LAST:event_jbtnDesocuparHabitacionActionPerformed
 
     private void jbtnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnActualizarActionPerformed
-        
-        ControlMenu_Principal.llenarTablaHabitacionesDisponibles(jtableHabitacionesLibres);
-        ControlInforme.llenarTablaHabitacionesOcupadas(jtableHabitacionesOcupadas);
-        
+
+        // ControlMenu_Principal.llenarTablaHabitacionesDisponibles(jtableHabitacionesLibres);
+        // ControlInforme.llenarTablaHabitacionesOcupadas(jtableHabitacionesOcupadas);
+        dispose();
+        new Menu_Principal().setVisible(true);
     }//GEN-LAST:event_jbtnActualizarActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    
-    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -301,22 +303,15 @@ public class Menu_Principal extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Menu_Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
 
         /* Create and display the form */
-        
-        
-        
-        
-        
-        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Menu_Principal().setVisible(true);
             }
         });
-        
-          
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

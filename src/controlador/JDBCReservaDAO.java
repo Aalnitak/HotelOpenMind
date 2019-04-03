@@ -13,7 +13,6 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import modelo.ArrayRuts;
 import modelo.Producto;
 import modelo.Reserva;
 

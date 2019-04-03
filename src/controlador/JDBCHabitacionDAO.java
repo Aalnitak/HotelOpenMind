@@ -85,7 +85,6 @@ public class JDBCHabitacionDAO implements HabitacionDAO {
             System.out.println(sql);
             
             ps.setInt(1, habitacion.getId());
-            System.out.println("query reculia "+ps.toString());
             ps.executeUpdate();
 
         } catch (SQLException e) {

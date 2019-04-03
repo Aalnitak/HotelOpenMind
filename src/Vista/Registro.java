@@ -254,7 +254,8 @@ public class Registro extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         Pax.clearPax();
-        if (Validacion.validarInt(TFRut.getText())) {
+        try {
+                    if (Validacion.validarInt(TFRut.getText())) {
             int rut = Integer.parseInt(TFRut.getText());
             if (jdbcpax.existe(rut)) {
                 pasajero = jdbcpax.selectRead(rut);
@@ -271,6 +272,10 @@ public class Registro extends javax.swing.JFrame {
             }
 
         }
+        } catch(NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, "Cliente no encontrado, favor registrarse");
+        }
+
 
 
     }//GEN-LAST:event_BTNVerificarActionPerformed
