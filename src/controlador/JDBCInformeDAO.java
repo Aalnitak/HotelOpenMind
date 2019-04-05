@@ -252,7 +252,7 @@ public class JDBCInformeDAO implements InformeDAO {
         // habitacion mayor ventas, numero ventas
         // habitacion menor ventas, numero ventas
         
-        Object[] elementos = new Object[3];
+        Object[] elementos = new Object[6];
 
         // 1 recuperar producto mayor o menor venta
         
@@ -261,42 +261,52 @@ public class JDBCInformeDAO implements InformeDAO {
         
         Object nombreProducto;
         Object nombreHabitacionMasVentas;
+        Object cantidadMayorVentas;
         Object nombreHabitacionMenosVentas;
+        Object cantidadMenorVentas;
+        Object cantidadVendida;
+        
         
         String queryMenorProducto = "SELECT \n" +
-                        "    p.idproducto,\n" +
+                       "    p.idproducto,\n" +
                         "    p.nombre AS 'Nombre Producto Menos Vendido',\n" +
                         "    COUNT(rhp.producto_idproducto) 'numero de ventas',\n" +
+                        "    sum(rhp.cantidad) AS 'unidades vendidas',\n" +
                         "    p.precio AS 'Precio Unidad',\n" +
                         "    SUM(p.precio * rhp.cantidad) 'Total'\n" +
                         "FROM\n" +
                         "    reserva_has_producto rhp\n" +
                         "        JOIN\n" +
                         "    producto p ON rhp.producto_idproducto = p.idproducto\n" +
-                        "		JOIN\n" +
-                        "	reserva r ON rhp.reserva_idjornada = r.idjornada\n" +
+                        "        JOIN\n" +
+                        "    reserva r ON rhp.reserva_idjornada = r.idjornada\n" +
+                        "WHERE NOT p.tipo = 'Habitacion'\n" +
                         "GROUP BY p.idproducto\n" +
-                        "ORDER BY COUNT(rhp.producto_idproducto) ASC\n" +
+                        "ORDER BY SUM(rhp.cantidad) ASC\n" +
                         "LIMIT 1";
+
         String queryMayorProducto = "SELECT \n" +
                         "    p.idproducto,\n" +
                         "    p.nombre AS 'Nombre Producto Más Vendido',\n" +
                         "    COUNT(rhp.producto_idproducto) 'numero de ventas',\n" +
+                        "    sum(rhp.cantidad) AS 'unidades vendidas',\n" +
                         "    p.precio AS 'Precio Unidad',\n" +
                         "    SUM(p.precio * rhp.cantidad) 'Total'\n" +
                         "FROM\n" +
                         "    reserva_has_producto rhp\n" +
                         "        JOIN\n" +
                         "    producto p ON rhp.producto_idproducto = p.idproducto\n" +
-                        "		JOIN\n" +
-                        "	reserva r ON rhp.reserva_idjornada = r.idjornada\n" +
+                        "        JOIN\n" +
+                        "    reserva r ON rhp.reserva_idjornada = r.idjornada\n" +
+                        "WHERE NOT p.tipo = 'Habitacion'\n" +
                         "GROUP BY p.idproducto\n" +
-                        "ORDER BY COUNT(rhp.producto_idproducto) DESC\n" +
+                        "ORDER BY SUM(rhp.cantidad) DESC\n" +
                         "LIMIT 1";
 
         String queryHabitacionMayorVenta = "SELECT \n" +
-                        "    COUNT(rhp.producto_idproducto) AS 'N ventas',\n" +
+                        "    SUM(rhp.cantidad) AS 'N ventas',\n" +
                         "    rhp.producto_idproducto AS 'idproducto',\n" +
+                        "    p.nombre,\n" +
                         "    r.habitacion_idhabitacion AS 'idhabitacion',\n" +
                         "    h.nombre AS 'Nombre Habitacion Mayor Ventas'\n" +
                         "FROM\n" +
@@ -305,14 +315,16 @@ public class JDBCInformeDAO implements InformeDAO {
                         "    reserva r ON rhp.reserva_idjornada = r.idjornada\n" +
                         "        JOIN\n" +
                         "    habitacion h ON h.idhabitacion = r.habitacion_idhabitacion\n" +
+                        "		JOIN\n" +
+                        "	producto p ON rhp.producto_idproducto = p.idproducto\n" +
+                        "where rhp.producto_idproducto = ?\n" +
                         "GROUP BY rhp.producto_idproducto , r.habitacion_idhabitacion\n" +
-                        "HAVING rhp.producto_idproducto = ?\n" +
-                        "ORDER BY COUNT(rhp.producto_idproducto) DESC\n" +
-                        "LIMIT 1";
+                        "ORDER BY COUNT(rhp.producto_idproducto) DESC LIMIT 1";
 
         String queryHabitacionMenorVenta = "SELECT \n" +
-                        "    COUNT(rhp.producto_idproducto) AS 'N ventas',\n" +
+                        "    SUM(rhp.cantidad) AS 'N ventas',\n" +
                         "    rhp.producto_idproducto AS 'idproducto',\n" +
+                        "    p.nombre,\n" +
                         "    r.habitacion_idhabitacion AS 'idhabitacion',\n" +
                         "    h.nombre AS 'Nombre Habitacion Menos Ventas'\n" +
                         "FROM\n" +
@@ -321,10 +333,11 @@ public class JDBCInformeDAO implements InformeDAO {
                         "    reserva r ON rhp.reserva_idjornada = r.idjornada\n" +
                         "        JOIN\n" +
                         "    habitacion h ON h.idhabitacion = r.habitacion_idhabitacion\n" +
+                        "		JOIN\n" +
+                        "	producto p ON rhp.producto_idproducto = p.idproducto\n" +
+                        "where rhp.producto_idproducto = ?\n" +
                         "GROUP BY rhp.producto_idproducto , r.habitacion_idhabitacion\n" +
-                        "HAVING rhp.producto_idproducto = ?\n" +
-                        "ORDER BY COUNT(rhp.producto_idproducto) ASC\n" +
-                        "LIMIT 1";
+                        "ORDER BY COUNT(rhp.producto_idproducto) ASC LIMIT 1";
         
         try
         {
@@ -344,12 +357,16 @@ public class JDBCInformeDAO implements InformeDAO {
                 nombreProducto = rs1.getObject("Nombre Producto Menos Vendido");
             }
             
+            cantidadVendida = rs1.getObject("unidades vendidas");
+            
             PreparedStatement ps2 = c.prepareStatement(queryHabitacionMayorVenta);
             ps2.setInt(1, idproducto);
             
             ResultSet rs2 = ps2.executeQuery();
             rs2.next();
             nombreHabitacionMasVentas = rs2.getObject("Nombre Habitacion Mayor Ventas");
+            cantidadMayorVentas = rs2.getObject("N ventas");
+            
             
             PreparedStatement ps3 = c.prepareStatement(queryHabitacionMenorVenta);
             ps3.setInt(1, idproducto);
@@ -358,11 +375,14 @@ public class JDBCInformeDAO implements InformeDAO {
             rs3.next();
             
             nombreHabitacionMenosVentas = rs3.getObject("Nombre Habitacion Menos Ventas");
+            cantidadMenorVentas = rs3.getObject("N ventas");
             
             elementos[0] = nombreProducto;
             elementos[1] = nombreHabitacionMasVentas;
             elementos[2] = nombreHabitacionMenosVentas;
-            
+            elementos[3] = cantidadMayorVentas;
+            elementos[4] = cantidadMenorVentas;
+            elementos[5] = cantidadVendida;
             
             
         } catch (SQLException e) {

@@ -18,7 +18,7 @@ public class InformeProductoMasVendido extends javax.swing.JFrame {
      */
     public InformeProductoMasVendido() {
         initComponents();
-        ControlInforme.llenarInformeProductoMasVendido(jlblNombreProducto, jlblNombreHabitacionMas, jlblNombreHabitacionMenos);
+        ControlInforme.llenarInformeProductoMasVendido(jlblNombreProducto, jlblNombreHabitacionMas, jlblNombreHabitacionMenos, jlblCantidadMayorVentas, jlblCantidadMenosVentas, jlblTotalVentas );
     }
 
     /**
@@ -38,6 +38,15 @@ public class InformeProductoMasVendido extends javax.swing.JFrame {
         jlblNomHabMenos = new javax.swing.JLabel();
         jlblNombreHabitacionMenos = new javax.swing.JLabel();
         jbVolver = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jlblCantidadMayorVentas = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jlblCantidadMenosVentas = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jLabel3 = new javax.swing.JLabel();
+        jlblTotalVentas = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,56 +71,102 @@ public class InformeProductoMasVendido extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Cantidad de Ventas en habitación más vendida: ");
+
+        jlblCantidadMayorVentas.setText("jLabel2");
+
+        jLabel2.setText("Cantidad de Ventas en habitación menos vendida: ");
+
+        jlblCantidadMenosVentas.setText("jLabel3");
+
+        jLabel3.setText("Total Ventas:");
+
+        jlblTotalVentas.setText("jLabel4");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jbVolver))
+                    .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jSeparator1)))
+                .addGap(19, 19, 19))
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(94, 94, 94)
-                        .addComponent(jlblTitulo))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jlblNombre)
+                        .addComponent(jlblNomHabMenos)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jlblNombreProducto))
+                        .addComponent(jlblNombreHabitacionMenos))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(jlblNomHabMas)
                         .addGap(18, 18, 18)
                         .addComponent(jlblNombreHabitacionMas))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jlblNomHabMenos)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jlblCantidadMayorVentas))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jlblNombreHabitacionMenos)))
-                .addContainerGap(8, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jbVolver)
-                .addGap(16, 16, 16))
+                        .addComponent(jlblCantidadMenosVentas))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jlblNombre)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlblTitulo)
+                            .addComponent(jlblNombreProducto)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jlblTotalVentas)))
+                .addGap(35, 77, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jlblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlblNombre)
                     .addComponent(jlblNombreProducto))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jlblTotalVentas))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlblNomHabMas)
                     .addComponent(jlblNombreHabitacionMas))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jlblCantidadMayorVentas))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlblNomHabMenos)
                     .addComponent(jlblNombreHabitacionMenos))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jlblCantidadMenosVentas))
+                .addGap(33, 33, 33)
                 .addComponent(jbVolver)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addGap(15, 15, 15))
         );
 
         pack();
@@ -158,7 +213,15 @@ public class InformeProductoMasVendido extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JButton jbVolver;
+    private javax.swing.JLabel jlblCantidadMayorVentas;
+    private javax.swing.JLabel jlblCantidadMenosVentas;
     private javax.swing.JLabel jlblNomHabMas;
     private javax.swing.JLabel jlblNomHabMenos;
     private javax.swing.JLabel jlblNombre;
@@ -166,5 +229,6 @@ public class InformeProductoMasVendido extends javax.swing.JFrame {
     private javax.swing.JLabel jlblNombreHabitacionMenos;
     private javax.swing.JLabel jlblNombreProducto;
     private javax.swing.JLabel jlblTitulo;
+    private javax.swing.JLabel jlblTotalVentas;
     // End of variables declaration//GEN-END:variables
 }

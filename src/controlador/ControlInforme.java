@@ -276,7 +276,7 @@ public class ControlInforme {
 
     }
 
-    public static void llenarInformeProductoMasVendido(JLabel nombreProducto, JLabel habitacionMas, JLabel habitacionMenos) {
+    public static void llenarInformeProductoMasVendido(JLabel nombreProducto, JLabel habitacionMas, JLabel habitacionMenos, JLabel cantidadMasVendida, JLabel cantidadMenosVendida, JLabel totalVentas) {
         JDBCInformeDAO jdbcinforme = new JDBCInformeDAO();
 
         Object[] elementos = jdbcinforme.informeProducto(true);
@@ -284,9 +284,12 @@ public class ControlInforme {
         nombreProducto.setText(elementos[0].toString());
         habitacionMas.setText(elementos[1].toString());
         habitacionMenos.setText(elementos[2].toString());
+        cantidadMasVendida.setText(elementos[3].toString());
+        cantidadMenosVendida.setText(elementos[4].toString());
+        totalVentas.setText(elementos[5].toString());
     }
 
-    public static void llenarInformeProductoMenisVendido(JLabel nombreProducto, JLabel habitacionMas, JLabel habitacionMenos) {
+    public static void llenarInformeProductoMenosVendido(JLabel nombreProducto, JLabel habitacionMas, JLabel habitacionMenos, JLabel cantidadMasVentas, JLabel cantidadMenosVentas, JLabel totalVentas) {
         JDBCInformeDAO jdbcinforme = new JDBCInformeDAO();
 
         Object[] elementos = jdbcinforme.informeProducto(false);
@@ -294,6 +297,9 @@ public class ControlInforme {
         nombreProducto.setText(elementos[0].toString());
         habitacionMas.setText(elementos[1].toString());
         habitacionMenos.setText(elementos[2].toString());
+        cantidadMasVentas.setText(elementos[3].toString());
+        cantidadMenosVentas.setText(elementos[4].toString());
+        totalVentas.setText(elementos[5].toString());
     }
 
     public static void llenarInformeHabitacionGrupos(JLabel nombre, JLabel promedio) {
