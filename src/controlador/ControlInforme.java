@@ -46,6 +46,12 @@ public class ControlInforme {
         DefaultTableModel model = (DefaultTableModel) TBLStock.getModel();
         JDBCProductoDAO jdbcprod = new JDBCProductoDAO();
         ArrayList<Object[]> productos = jdbcprod.selectProductos();
+        
+        if (model.getRowCount() > 0) {
+            for (int i = model.getRowCount() - 1; i > -1; i--) {
+                model.removeRow(i);
+            }
+        }
         for (Object obj[] : productos) {
             Object[] objetosTabla = {obj[1], obj[3], obj[4]};
             model.addRow(objetosTabla);
@@ -129,6 +135,12 @@ public class ControlInforme {
         JDBCProductoDAO jdbcProductDAO = new JDBCProductoDAO();
 
         ArrayList<Object[]> productos = jdbcProductDAO.selectProductos();
+        
+        if (model.getRowCount() > 0) {
+            for (int i = model.getRowCount() - 1; i > -1; i--) {
+                model.removeRow(i);
+            }
+        }
 
         productos.forEach((elemento) -> {
             model.addRow(elemento);
@@ -183,6 +195,8 @@ public class ControlInforme {
         JDBCInformeDAO jdbcinforme = new JDBCInformeDAO();
 
         ArrayList<Object[]> elementosTabla = jdbcinforme.informeCliente(rut);
+        
+        
 
         elementosTabla.forEach((elemento) -> {
             model.addRow(elemento);
@@ -208,6 +222,12 @@ public class ControlInforme {
         JDBCInformeDAO jdbcinforme = new JDBCInformeDAO();
 
         ArrayList<Object[]> elementosTabla = jdbcinforme.informeClienteDelAmor();
+        
+        if (model.getRowCount() > 0) {
+            for (int i = model.getRowCount() - 1; i > -1; i--) {
+                model.removeRow(i);
+            }
+        }
 
         elementosTabla.forEach((elemento) -> {
             model.addRow(elemento);
@@ -222,6 +242,12 @@ public class ControlInforme {
         ArrayList<Object[]> elementos = jdbcinforme.informeHabitacion(true);
 
         DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+        
+        if (model.getRowCount() > 0) {
+            for (int i = model.getRowCount() - 1; i > -1; i--) {
+                model.removeRow(i);
+            }
+        }
 
         elementos.forEach((elemento) -> {
             model.addRow(elemento);
@@ -237,6 +263,12 @@ public class ControlInforme {
         ArrayList<Object[]> elementos = jdbcinforme.informeHabitacion(false);
 
         DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+        
+        if (model.getRowCount() > 0) {
+            for (int i = model.getRowCount() - 1; i > -1; i--) {
+                model.removeRow(i);
+            }
+        }
 
         elementos.forEach((elemento) -> {
             model.addRow(elemento);
@@ -281,6 +313,13 @@ public class ControlInforme {
         ArrayList<Object[]> elementos = jdbcinforme.informeHabitaciones();
 
         DefaultTableModel model = (DefaultTableModel) tabla.getModel();
+        
+        if (model.getRowCount() > 0) {
+            for (int i = model.getRowCount() - 1; i > -1; i--) {
+                model.removeRow(i);
+            }
+        }
+        
 
         elementos.forEach((elemento) -> {
             model.addRow(elemento);
@@ -310,6 +349,13 @@ public class ControlInforme {
         
         DefaultTableModel modelPasajeros = (DefaultTableModel) pasajeros.getModel();
         ArrayList<Object[]> ArrayPax = jdbcpax.llenarTablaPaxResumenVisita(idjornada);
+        if (modelPasajeros.getRowCount() > 0) {
+            for (int i = modelPasajeros.getRowCount() - 1; i > -1; i--) {
+                modelPasajeros.removeRow(i);
+            }
+        }
+            
+        
         ArrayPax.forEach((elemento) -> {modelPasajeros.addRow(elemento);});
         
         DefaultTableModel modelConsumo = (DefaultTableModel) consumo.getModel();

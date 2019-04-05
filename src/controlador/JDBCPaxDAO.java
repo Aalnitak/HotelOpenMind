@@ -182,16 +182,25 @@ public class JDBCPaxDAO implements PaxDAO {
     @Override
     public ArrayList<Object[]> llenarTablaPaxResumenVisita(int idjornada) {
         
-        String queri ="SELECT \n" +
-                    "	CONCAT(p.nombres,\" \",p.apellido_paterno,\" \",p.apellido_materno) AS 'nombre',\n" +
-                    "    p.rut,\n" +
-                    "    CASE p.rut WHEN r.pasajero_rut THEN 'principal' ELSE 'acompañante' END AS 'calidad'\n" +
-                    "FROM pasajero p\n" +
-                    "JOIN registro_pasajeros rp\n" +
-                    "ON rp.pasajero_rut = p.rut\n" +
-                    "JOIN reserva r\n" +
-                    "ON r.pasajero_rut = rp.pasajero_rut\n" +
-                    "WHERE reserva_idjornada = ?";
+        String queri ="SELECT DISTINCT\n" +
+                        "    CONCAT(p.nombres,\n" +
+                        "            ' ',\n" +
+                        "            p.apellido_paterno,\n" +
+                        "            ' ',\n" +
+                        "            p.apellido_materno) AS 'nombre',\n" +
+                        "    p.rut,\n" +
+                        "    CASE rp.pasajero_rut\n" +
+                        "        WHEN r.pasajero_rut THEN 'principal'\n" +
+                        "        ELSE 'acompañante'\n" +
+                        "    END AS 'calidad'\n" +
+                        "FROM\n" +
+                        "    reserva r \n" +
+                        "        JOIN\n" +
+                        "    registro_pasajeros rp ON rp.reserva_idjornada = r.idjornada\n" +
+                        "        JOIN\n" +
+                        "    pasajero p ON rp.pasajero_rut = p.rut\n" +
+                        "WHERE\n" +
+                        "    reserva_idjornada = ?";
         
         ArrayList<Object[]> elementos = new ArrayList<Object[]>();
         
