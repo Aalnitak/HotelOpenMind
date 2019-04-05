@@ -230,7 +230,7 @@ public class PedirProducto extends javax.swing.JFrame {
         Reserva res = jdbcres.select(idjornada);
         for (int i = 0;i<carro.getRowCount();i++){
             prod = jdbcprod.select(carro.getValueAt(i,0).toString());
-            prod.restarStock((int)carro.getValueAt(i,1));
+            prod.restarStock((int)carro.getValueAt(i,2));
             jdbcprod.update(prod);  
             jdbcres.insertarProductoReservaHasProducto(prod, idjornada, (Integer)carro.getValueAt(i, 2));
         }
