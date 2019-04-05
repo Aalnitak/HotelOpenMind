@@ -163,6 +163,8 @@ public class JDBCReservaDAO implements ReservaDAO {
         res.setIdhabitacion(rs.getInt("habitacion_idhabitacion"));
         res.setMomento(rs.getBoolean("momento"));
         res.setOcupantes(rs.getInt("num_pasajeros"));
+
+        
         
         } catch (SQLException e) {
             e.printStackTrace();
@@ -205,7 +207,7 @@ public class JDBCReservaDAO implements ReservaDAO {
     }
 
     @Override
-    public void updateMomentoEfectivoSalida(int idhabitacion) {
+    public int updateMomentoEfectivoSalida(int idhabitacion) {
         
         
         // recuperar idjornada por idhabitacion
@@ -240,6 +242,8 @@ public class JDBCReservaDAO implements ReservaDAO {
             e.printStackTrace();
         }
         
+        
+        return idjornada;
         
         // ingresar timestamp now
     }
@@ -306,6 +310,39 @@ public class JDBCReservaDAO implements ReservaDAO {
         }
         
     }
+
+    @Override
+    public Reserva selectSalida(int id_reserva) {
+        
+        Reserva res = Reserva.getRes();
+        Reserva.clearRes();
+        try
+        {
+        String query = "SELECT * FROM reserva WHERE idjornada = ?";
+        PreparedStatement ps = c.prepareStatement(query);
+        ps.setInt(1,id_reserva);
+        ResultSet rs = ps.executeQuery();
+        rs.next();
+        
+        res.setRut(rs.getInt("pasajero_rut"));
+        res.setIdJornada(id_reserva);
+        res.setFechaEntrada(rs.getTimestamp("inicio").toLocalDateTime());
+        res.setFechaSalida(rs.getTimestamp("limite_tiempo").toLocalDateTime());
+        res.setIdhabitacion(rs.getInt("habitacion_idhabitacion"));
+        res.setMomento(rs.getBoolean("momento"));
+        res.setOcupantes(rs.getInt("num_pasajeros"));
+        res.setFechaSalidaEfectiva(rs.getTimestamp("momento_salida").toLocalDateTime());
+
+        
+        
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return res;
+    }
+
+    
     
     
     

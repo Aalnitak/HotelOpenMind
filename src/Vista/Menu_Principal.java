@@ -251,7 +251,7 @@ public class Menu_Principal extends javax.swing.JFrame {
             String nombreHabitacion = model.getValueAt(jtableHabitacionesOcupadas.getSelectedRow(), 0).toString();
             int idhabitacion = Habitacion.getIDporNombre(nombreHabitacion);
 
-            jdbcreserva.updateMomentoEfectivoSalida(idhabitacion);
+            int idjornada = jdbcreserva.updateMomentoEfectivoSalida(idhabitacion);
 
             h[idhabitacion - 1].setOcupado(false);
             jdbchabitacion.updateOcupado(h[idhabitacion - 1]);
@@ -259,8 +259,8 @@ public class Menu_Principal extends javax.swing.JFrame {
             ControlInforme.llenarTablaHabitacionesOcupadas(jtableHabitacionesOcupadas);
             ControlMenu_Principal.llenarTablaHabitacionesDisponibles(jtableHabitacionesLibres);
 
-            int idjornada = jdbcreserva.idjornadaPorIdhabitacion(idhabitacion);
-
+//            int idjornada = jdbcreserva.idjornadaPorIdhabitacion(idhabitacion-1);
+            System.out.println("id jornada "+idjornada);
             new ResumenVisita(idjornada).setVisible(true);
         } catch(ArrayIndexOutOfBoundsException ex) {
             JOptionPane.showMessageDialog(null, "Ninguna habitación seleccionada");

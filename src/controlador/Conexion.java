@@ -25,7 +25,7 @@ public class Conexion {
         
         String url = "jdbc:mysql://localhost:3306/bbbn5jj_hopenmind?autoReconnect=true&useSSL=false";
         String user = "root";
-        String pass = "Pass1234";
+        String pass = "system";
         System.out.println("Conectando..");  
         
 //        String url = "jdbc:mysql://shared40.accountservergroup.com:3306/bbbn5jj_hopenmind";

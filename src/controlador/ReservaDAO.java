@@ -19,8 +19,9 @@ public interface ReservaDAO {
     public void update(Reserva habitacion, int idjornada);
     public Reserva select(int id_reserva);
     public int getIdReserva(int rut);
-    public void updateMomentoEfectivoSalida(int rut);
+    public int updateMomentoEfectivoSalida(int rut);
     public int idjornadaPorIdhabitacion (int idhabitacion); 
     public void insertarProductoReservaHasProducto(Producto p, int idjornada, int cantidad);
     public void insertarArrayRutsRegistroPax(ArrayList<Integer> ar, int idjornada);
+    public Reserva selectSalida(int id_reserva);
 }

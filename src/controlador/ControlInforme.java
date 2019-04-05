@@ -298,7 +298,7 @@ public class ControlInforme {
      
         
         Reserva res = Reserva.getRes();
-        res = jdbcreserva.select(idjornada);
+        res = jdbcreserva.selectSalida(idjornada);
         
         
         
