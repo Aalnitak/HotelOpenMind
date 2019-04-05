@@ -95,6 +95,10 @@ public class JDBCReservaDAO implements ReservaDAO {
         
         idproducto = rs4.getInt("idproducto");
         precio = rs4.getInt("precio");
+        if (res.getOcupantes()>2 && res.getOcupantes()<8) {
+            precio = (int) (precio * ((1-(res.getOcupantes()-2)*.1)));
+        }
+        
         } catch (SQLException e) {
             System.out.println("Error al recuperar informacion del producto (pagar habitacion)");
             e.printStackTrace();
@@ -102,7 +106,7 @@ public class JDBCReservaDAO implements ReservaDAO {
         
         try 
         {
-        String query5 = "INSERT INTO reserva_has_producto (reserva_idjornada, producto_idproducto, precio, cantidad) VALUES (?,?,?,1)";
+        String query5 = "INSERT INTO reserva_has_producto (reserva_idjornada, producto_idproducto, precio, cantidad) VALUES (?,?,?,?)";
         PreparedStatement ps5 = c.prepareStatement(query5);
         ps5.setInt(1, idjornada);
         System.out.println(idjornada);
@@ -110,6 +114,7 @@ public class JDBCReservaDAO implements ReservaDAO {
         System.out.println(idproducto);
         ps5.setInt(3, precio);
         System.out.println(precio);
+        ps5.setInt(4, res.getOcupantes());
         
         
         
