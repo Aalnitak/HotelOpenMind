@@ -35,8 +35,8 @@ public class PedirProducto extends javax.swing.JFrame {
         initComponents();
         indiceHab=idHab;
         h=Habitacion.getHab();
-        LBNombreHab.setText(h[indiceHab].getNombre());
-        LBRut.setText( String.valueOf(h[indiceHab].getRutPaxOcupante()));
+        LBNombreHab.setText(h[indiceHab-1].getNombre());
+        LBRut.setText( String.valueOf(h[indiceHab-1].getRutPaxOcupante()));
         for (Habitacion ha : h){
             System.out.print(ha.getRutPaxOcupante());
         }
